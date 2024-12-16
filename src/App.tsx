@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./styles/App.scss";
-import { Mui } from "./Mui";
-import { Chartjs } from "./Chartjs";
+import { Chartjs } from "./charts/Chartjs";
 import { Navbar } from "./Navbar";
-import { D3 } from "./D3";
-import { Plotly } from "./Plotly";
+import { D3 } from "./charts/D3";
+import { Plotly } from "./charts/Plotly";
+import { LineChartMui } from "./charts/LineChartMui";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
-          <Route path="/" element={<Mui />} />
-          <Route path="/chartjs" element={<Chartjs />} />
+          <Route path="/" element={<LineChartMui />} />
+          <Route path="/chartjs/line-chart" element={<Chartjs />} />
           <Route path="/D3" element={<D3 />} />
           <Route path="/Plotly" element={<Plotly />} />
         </Routes>

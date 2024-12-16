@@ -13,14 +13,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px; 
+  height: 60px;
 
   .theme {
-    display: flex;              /* Ensure this div uses flexbox */
-    align-items: center;        /* Vertically center the button */
-    margin-left: auto;          /* Push it to the far right */
+    display: flex;
+    align-items: center;
+    margin-left: auto;
     z-index: 1;
+    height: 100%;
   }
+
   .navigation {
     position: fixed;
     width: 100%;
@@ -35,33 +37,65 @@ body {
       list-style-type: none;
       margin: 0;
       padding: 0;
-      display: flex; 
+      display: flex;
+      height: 100%;
 
       li {
+        position: relative;
         display: flex;
         align-items: center;
+        height: 100%;
 
         a {
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          padding: 0 16px;
           color: white;
-          text-align: center;
-          padding: 14px 16px;
           text-decoration: none;
+
+          &:hover {
+            background-color: #555;
+          }
+        }
+
+        &:hover {
+          background-color: #555; /* Highlight the parent li when hovered */
+        }
+        &:hover .dropdown {
+          display: block;
+        }
+
+        .dropdown {
+          display: none;
+          position: absolute;
+          top: 60px; /* Adjust based on navbar height */
+          left: 0;
+          background-color: #333;
+          min-width: 50vh;
+          z-index: 1;
+
+          li {
+            display: block;
+            width: 100%;
+            background-color: #333;
+            border-top: 1px solid #444;
+
+            a {
+              text-align: left;
+
+              &:hover {
+                background-color: #555;
+              }
+            }
+          }
         }
       }
     }
   }
-
-  a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-
-    &:hover {
-      color: #535bf2;
-    }
-  }
 }
+
 .content {
   flex: 1;
   display: flex;

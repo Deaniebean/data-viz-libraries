@@ -25,7 +25,9 @@ export const Navbar = () => {
                 <NavLink to="/chartjs/line-chart">Line Chart</NavLink>
               </li>
               <li>
-                <NavLink to="/chartjs/custom-line-chart">Custom Line Chart</NavLink>
+                <NavLink to="/chartjs/custom-line-chart">
+                  Custom Line Chart
+                </NavLink>
               </li>
             </ul>
           </li>
@@ -47,9 +49,14 @@ export const Navbar = () => {
                 <NavLink to="/plotly/line-chart">Line Chart</NavLink>
               </li>
               <li>
-                <NavLink to="/plotly/custom-line-chart">Custom Line Chart</NavLink>
+                <NavLink to="/plotly/custom-line-chart">
+                  Custom Line Chart
+                </NavLink>
               </li>
             </ul>
+          </li>
+          <li>
+            <NavLink to="/echarts/line-chart">Echarts</NavLink>
           </li>
         </ul>
       </div>

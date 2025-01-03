@@ -58,6 +58,32 @@ export const Navbar = () => {
           <li>
             <NavLink to="/echarts/line-chart">Echarts</NavLink>
           </li>
+          <li>
+            <NavLink to="/rechart">Rechart</NavLink>
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/rechart/line-chart">Line Chart</NavLink>
+              </li>
+              <li>
+                <NavLink to="/rechart/line-chart-custom">
+                  Custom Line Chart
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <NavLink to="/apexchart">ApexCharts</NavLink>
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/apexcharts/line-chart">Line Chart</NavLink>
+              </li>
+              <li>
+                <NavLink to="/apexcharts/line-chart-custom">
+                  Custom Line Chart
+                </NavLink>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div className="theme">

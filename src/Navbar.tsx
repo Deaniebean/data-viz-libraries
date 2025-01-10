@@ -32,13 +32,13 @@ export const Navbar = () => {
             </ul>
           </li>
           <li>
-            <NavLink to="/d3">D3</NavLink>
+            <NavLink to="/plot">Plot</NavLink>
             <ul className="dropdown">
               <li>
-                <NavLink to="/mui/line-chart">Line Chart</NavLink>
+                <NavLink to="/plot/line-chart">Line Chart</NavLink>
               </li>
               <li>
-                <NavLink to="/mui/custom-line-chart">Custom Line Chart</NavLink>
+                <NavLink to="/plot/custom-line-chart">Custom Line Chart</NavLink>
               </li>
             </ul>
           </li>
@@ -79,6 +79,19 @@ export const Navbar = () => {
               </li>
               <li>
                 <NavLink to="/apexcharts/line-chart-custom">
+                  Custom Line Chart
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <NavLink to="/d3">D3</NavLink>
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/d3/line-chart">Line Chart</NavLink>
+              </li>
+              <li>
+                <NavLink to="/d3/line-chart-custom">
                   Custom Line Chart
                 </NavLink>
               </li>

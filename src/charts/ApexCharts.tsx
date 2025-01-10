@@ -1,28 +1,75 @@
 import Chart from "react-apexcharts";
+import { Data } from "../utils/Data";
+import { useState } from "react";
 
 export const ApexCharts = () => {
-  
-    const options = {
-        chart: {
-          id: "basic-bar"
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-        }
-      };
-    
-      const series = [
+  const [chartData] = useState(Data);
+  const chartOptions = {
+    chart: {
+      id: 'dynamic-threshold',
+    },
+    xaxis: {
+      categories: chartData.map((data) => data.month),
+      tooltip: {
+        enabled: false,
+      },
+    },
+    yaxis: {
+      min: 0,
+    },
+    stroke: {
+      curve: 'smooth',
+      colors: chartData.map((data) => {
+        return function({ value }: { value: any }) {
+          if (value < data.target) {
+            return '#7E36AF';
+          } else {
+            return '#D9534F';
+          }
+        };
+      })
+    },
+      
+    markers: {
+      size: 5,
+    },
+    series: [{
+      name: 'series-1',
+      data: chartData.map((data) => ({
+        x: data.month,
+        y: data.actual,
+      })),
+    }],
+    annotations: {
+      yaxis: [
         {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
+          y: 49,
+          borderColor: '#00E396',
+          label: {
+            borderColor: '#00E396',
+            style: {
+              color: '#fff',
+              background: '#00E396'
+            },
+            text: 'Y-axis annotation on 8800'
+          }
         }
-      ];
-  
-    return (
+      ]
+    },
+    /*
+    plotOptions: {
+      line: {
+        colors: chartData.map((data) => (data.actual > data.target ? '#0088ee' : '#ff0000')),
+      },
+    },
+    */
+  };
+
+  return (
     <Chart
-    options={options}
-    series={series}
     type="line"
+    options={chartOptions}
+    series={chartOptions.series}
     width="500"
   />
   );

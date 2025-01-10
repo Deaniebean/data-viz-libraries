@@ -19,6 +19,7 @@
     "@types/plotly.js": "^2.35.1",
     "apexcharts": "^4.3.0",
     "chart.js": "^4.4.7",
+    "d3": "^7.9.0",
     "echarts-for-react": "^3.0.2",
     "plotly.js": "^2.35.3",
     "plotly.js-dist": "^2.35.3",

@@ -25,7 +25,7 @@ export const Navbar = () => {
                 <NavLink to="/chartjs/line-chart">Line Chart</NavLink>
               </li>
               <li>
-                <NavLink to="/chartjs/custom-line-chart">
+                <NavLink to="/chartjs/line-chart-custom">
                   Custom Line Chart
                 </NavLink>
               </li>

@@ -10,6 +10,8 @@ import { Rechart } from "./charts/Rechart";
 import { RechartCustom } from "./charts/RechartCustom";
 import { ApexCharts } from "./charts/ApexCharts";
 import { D3 } from "./charts/D3";
+import { ApexChartsCustom } from "./charts/ApexChartsCustom";
+import { ChartjsCustom } from "./charts/ChartjsCustom";
 
 
 function App() {
@@ -20,12 +22,14 @@ function App() {
         <Routes>
           <Route path="/mui/line-chart" element={<LineChartMui />} />
           <Route path="/chartjs/line-chart" element={<Chartjs />} />
+          <Route path="/chartjs/line-chart-custom" element={<ChartjsCustom />} />
           <Route path="/echarts/line-chart" element={<Echarts/>} />
           <Route path="/plot" element={<PlotChartLib/>} />
           <Route path="/Plotly" element={<PlotlyChart />} />
           <Route path="/rechart/line-chart" element={<Rechart />} />
           <Route path="/rechart/line-chart-custom" element={<RechartCustom/>} />
           <Route path="/apexcharts/line-chart" element={<ApexCharts/>} />
+          <Route path="/apexcharts/line-chart-custom" element={<ApexChartsCustom/>} />
           <Route path="/d3/line-chart" element={<D3/>} />
         </Routes>
       </div>

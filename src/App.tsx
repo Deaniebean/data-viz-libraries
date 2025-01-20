@@ -1,17 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import "./styles/App.scss";
-import { Chartjs } from "./charts/Chartjs";
+import { Chartjs } from "./charts/basicCharts/Chartjs";
 import { Navbar } from "./Navbar";
-import { PlotChartLib } from "./charts/Plot";
-import { PlotlyChart } from "./charts/Plotly";
-import { LineChartMui } from "./charts/LineChartMui";
-import { Echarts } from "./charts/Echarts";
-import { Rechart } from "./charts/Rechart";
-import { RechartCustom } from "./charts/RechartCustom";
-import { ApexCharts } from "./charts/ApexCharts";
-import { D3 } from "./charts/D3";
-import { ApexChartsCustom } from "./charts/ApexChartsCustom";
-import { ChartjsCustom } from "./charts/ChartjsCustom";
+import { ApexChartsCustom } from "./charts/customLineChart/ApexChartsCustom";
+import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
+import { LineChartMui } from "./charts/basicCharts/LineChartMui";
+import { Echarts } from "./charts/basicCharts/Echarts";
+import { PlotChartLib } from "./charts/basicCharts/Plot";
+import { PlotlyChart } from "./charts/basicCharts/Plotly";
+import { Rechart } from "./charts/basicCharts/Rechart";
+import { RechartCustom } from "./charts/customLineChart/RechartCustom";
+import { ApexCharts } from "./charts/basicCharts/ApexCharts";
+import { D3 } from "./charts/basicCharts/D3";
 
 
 function App() {

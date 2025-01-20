@@ -24,7 +24,7 @@ export const Data = [
     id: 4,
     month: "April",
     target: 3,
-    actual: 4,
+    actual: 2,
     greaterOrLess: "greater",
   },
   {

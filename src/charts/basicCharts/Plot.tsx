@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as Plot from "@observablehq/plot";
-import { Data } from "../utils/Data";
+import { Data } from "../../utils/Data";
 
 export const PlotChartLib = () => {
   const containerRef = useRef<HTMLDivElement>(null);

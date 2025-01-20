@@ -8,7 +8,8 @@ import {
   axisBottom,
   axisLeft,
 } from "d3";
-import { Data } from "../utils/Data";
+import { Data } from "../../utils/Data";
+
 
 // Chart component
 export const D3 = () => {

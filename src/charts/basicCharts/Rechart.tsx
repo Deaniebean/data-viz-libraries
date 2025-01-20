@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Data } from "../utils/Data";
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import { Data } from "../../utils/Data";
 
 export const Rechart = () => {
 

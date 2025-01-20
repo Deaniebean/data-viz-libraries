@@ -1,12 +1,12 @@
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import { Data } from "../utils/Data";
+import { Data } from "../../utils/Data";
 import { useState } from "react";
 import { CategoryScale } from "chart.js";
 
 Chart.register(CategoryScale);
 
-export const Chartjs = () => {
+export const ChartjsCustom = () => {
   const [chartData] = useState({
     labels: Data.map((data) => data.month),
     datasets: [

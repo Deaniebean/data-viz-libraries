@@ -1,5 +1,5 @@
 import Chart from "react-apexcharts";
-import { Data } from "../utils/Data";
+import { Data } from "../../utils/Data";
 import { useState} from "react";
 
 export const ApexChartsCustom = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Plotly from "plotly.js-dist-min"; // Use plotly.js-dist-min for better compatibility with Vite
-import { Data } from "../utils/Data";
+import { Data } from "../../utils/Data";
 
 export const PlotlyChart = () => {
   const chartRef = useRef<HTMLDivElement>(null);

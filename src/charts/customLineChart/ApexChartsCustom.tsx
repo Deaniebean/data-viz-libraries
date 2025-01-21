@@ -1,6 +1,7 @@
 import Chart from "react-apexcharts";
 import { Data } from "../../utils/Data";
 import { useState} from "react";
+import { ChartWrapper } from "../../common/chartWrapper";
 
 export const ApexChartsCustom = () => {
   const [chartData] = useState(Data);
@@ -52,11 +53,14 @@ export const ApexChartsCustom = () => {
   };
 
   return (
-    <Chart
-      type="line"
-      options={chartOptions}
-      series={series}
-      width="500"
-    />
+    <ChartWrapper title="ApexCharts Custom">
+      <Chart
+        type="line"
+        options={chartOptions}
+        series={series}
+        width="100%"
+        height="100%"
+      />
+    </ChartWrapper>
   );
 };

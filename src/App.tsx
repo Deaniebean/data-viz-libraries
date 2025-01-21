@@ -1,17 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import "./styles/App.scss";
-import { Chartjs } from "./charts/basicCharts/Chartjs";
 import { Navbar } from "./Navbar";
 import { ApexChartsCustom } from "./charts/customLineChart/ApexChartsCustom";
-import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
 import { LineChartMui } from "./charts/basicCharts/LineChartMui";
 import { Echarts } from "./charts/basicCharts/Echarts";
-import { PlotChartLib } from "./charts/basicCharts/Plot";
+import { Nivo } from "./charts/basicCharts/Nivo";
 import { PlotlyChart } from "./charts/basicCharts/Plotly";
 import { Rechart } from "./charts/basicCharts/Rechart";
 import { RechartCustom } from "./charts/customLineChart/RechartCustom";
 import { ApexCharts } from "./charts/basicCharts/ApexCharts";
 import { D3 } from "./charts/basicCharts/D3";
+import { Chartjs } from "./charts/basicCharts/Chartjs";
+import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
 
 
 function App() {
@@ -24,8 +24,8 @@ function App() {
           <Route path="/chartjs/line-chart" element={<Chartjs />} />
           <Route path="/chartjs/line-chart-custom" element={<ChartjsCustom />} />
           <Route path="/echarts/line-chart" element={<Echarts/>} />
-          <Route path="/plot" element={<PlotChartLib/>} />
-          <Route path="/Plotly" element={<PlotlyChart />} />
+          <Route path="/nivo/line-chart" element={<Nivo/>} />
+          <Route path="/Plotly/line-chart" element={<PlotlyChart />} />
           <Route path="/rechart/line-chart" element={<Rechart />} />
           <Route path="/rechart/line-chart-custom" element={<RechartCustom/>} />
           <Route path="/apexcharts/line-chart" element={<ApexCharts/>} />

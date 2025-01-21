@@ -1,3 +1,12 @@
+export type DataType = {
+  id: number;
+  month: string;
+  target: number;
+  actual: number;
+  greaterOrLess: string;
+};
+
+
 export const Data = [
   {
     id: 1,

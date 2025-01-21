@@ -32,6 +32,7 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
+    z-index: 1;
 
     ul {
       list-style-type: none;
@@ -46,7 +47,21 @@ body {
         align-items: center;
         height: 100%;
 
-        a {
+        &.title {
+          cursor: default;
+          padding: 0 16px;
+          color: white;
+
+          &:hover .dropdown {
+            display: block;
+            height: 100%;
+          }
+        }
+        p {
+          margin: 0; 
+        }
+
+        a, p {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -61,7 +76,7 @@ body {
         }
 
         &:hover {
-          background-color: #555; /* Highlight the parent li when hovered */
+          background-color: #555; 
         }
         &:hover .dropdown {
           display: block;
@@ -70,10 +85,10 @@ body {
         .dropdown {
           display: none;
           position: absolute;
-          top: 60px; /* Adjust based on navbar height */
+          top: 60px; 
           left: 0;
           background-color: #333;
-          min-width: 50vh;
+          min-width: 200px;
           z-index: 1;
 
           li {
@@ -82,11 +97,29 @@ body {
             background-color: #333;
             border-top: 1px solid #444;
 
+            &:hover .sub-dropdown {
+              display: block;
+            }
+
             a {
               text-align: left;
 
               &:hover {
                 background-color: #555;
+              }
+            }
+
+            .sub-dropdown {
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 100%;
+              background-color: #333;
+              min-width: 200px;
+              z-index: 1;
+
+              li {
+                border-top: none;
               }
             }
           }

@@ -2,6 +2,7 @@ import { CategoryScale, Chart } from "chart.js";
 import { useState } from "react";
 import { Data } from "../../utils/Data";
 import { Line } from "react-chartjs-2";
+import { ChartWrapper } from "../../common/chartWrapper";
 
 Chart.register(CategoryScale);
 
@@ -24,7 +25,7 @@ export const ChartjsCustom = () => {
         backgroundColor: "rgba(255,99,132,0.4)",
         borderColor: "rgba(255,99,132,1)",
         segment: {
-          borderColor: (ctx: { p0DataIndex: any; }) => {
+          borderColor: (ctx: { p0DataIndex: any }) => {
             const index = ctx.p0DataIndex; // Get the current index
             return chartData[index].target > chartData[index].actual
               ? "rgb(192,75,75)" // Red color if target > actual
@@ -45,5 +46,9 @@ export const ChartjsCustom = () => {
     },
   };
 
-  return <Line data={data} options={options} />;
+  return (
+    <ChartWrapper title="Chartjs">
+  <Line data={data} options={options} />
+  </ChartWrapper>
+  )
 };

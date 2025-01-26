@@ -12,7 +12,7 @@ import { D3 } from "./charts/basicCharts/D3";
 import { Chartjs } from "./charts/basicCharts/Chartjs";
 import { RechartCustom } from "./charts/customLineChart/RechartCustom";
 import { ChartjsCustom } from "./charts/customLineChart/Chartjs";
-import { ApexChartsCustom2 } from "./charts/customLineChart/ApexCHartsCustom2";
+import { ApexChartsCustom2 } from "./charts/customLineChart/ApexChartsCustom2";
 import { CustomApexCharts3 } from "./charts/customLineChart/ApexCharts3";
 
 

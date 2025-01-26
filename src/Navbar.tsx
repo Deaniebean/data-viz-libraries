@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import "./styles/App.scss";
-import { ThemeToggle } from "./themeToggle";
 
 export const Navbar = () => {
   return (
@@ -103,10 +102,14 @@ export const Navbar = () => {
                 <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
               </li>
               <li>
-                <NavLink to="/apexcharts/line-chart-custom-2">Apexcharts2</NavLink>
+                <NavLink to="/apexcharts/line-chart-custom-2">
+                  Apexcharts2
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/apexcharts/line-chart-custom-3">Apexcharts3</NavLink>
+                <NavLink to="/apexcharts/line-chart-custom-3">
+                  Apexcharts3
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/chartjs/line-chart-custom">Chartjs</NavLink>
@@ -116,11 +119,24 @@ export const Navbar = () => {
               </li>
             </ul>
           </li>
-        </ul>
+          <li className="title">
+            Use Case 2: Pareto Chart
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
+              </li>
+            </ul>
+          </li>
+          <li className="title">
+            Use Case 3
+            <ul className="dropdown">
+              <li>
+                <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
+              </li>
+            </ul>
+          </li>
+          </ul>
+        </div>
       </div>
-      <div className="theme">
-        <ThemeToggle />
-      </div>
-    </div>
-  );
-};
+    )
+}

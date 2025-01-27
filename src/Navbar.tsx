@@ -131,7 +131,7 @@ export const Navbar = () => {
             Use Case 3
             <ul className="dropdown">
               <li>
-                <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
+                <NavLink to="/recharts/sankey">Recharts</NavLink>
               </li>
             </ul>
           </li>

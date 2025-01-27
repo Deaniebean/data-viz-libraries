@@ -14,6 +14,7 @@ import { RechartCustom } from "./charts/customLineChart/RechartCustom";
 import { ChartjsCustom } from "./charts/customLineChart/Chartjs";
 import { ApexChartsCustom2 } from "./charts/customLineChart/ApexChartsCustom2";
 import { CustomApexCharts3 } from "./charts/customLineChart/ApexCharts3";
+import { RechartsSankey } from "./charts/sankeyChart/rechartsSankey";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
             element={<CustomApexCharts3 />}
           />
           <Route path="/d3/line-chart" element={<D3 />} />
+          <Route path="/recharts/sankey" element={<RechartsSankey />} />
         </Routes>
       </div>
     </div>

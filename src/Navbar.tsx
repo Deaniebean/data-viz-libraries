@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./styles/App.scss";
+import { ThemeToggle } from "./themeToggle";
 
 export const Navbar = () => {
   return (
@@ -99,24 +100,29 @@ export const Navbar = () => {
             Use Case 1: Line Chart
             <ul className="dropdown">
               <li>
-                <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
-              </li>
-              <li>
-                <NavLink to="/apexcharts/line-chart-custom-2">
-                  Apexcharts2
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/apexcharts/line-chart-custom-3">
-                  Apexcharts3
-                </NavLink>
+              <p>ApexCharts</p>
+                <ul className="sub-dropdown">
+                  <li>
+                  <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
+                  </li>
+                  <li>
+                  <NavLink to="/apexcharts/line-chart-custom-2">Apexcharts2</NavLink>
+                  </li>
+                  <li>
+                  <NavLink to="/apexcharts/line-chart-custom-3">Apexcharts3</NavLink>
+                  </li>
+                </ul>
               </li>
               <li>
                 <NavLink to="/chartjs/line-chart-custom">Chartjs</NavLink>
               </li>
               <li>
+                <NavLink to="/echarts/line-chart-custom">Echarts</NavLink>
+              </li>
+              <li>
                 <NavLink to="/rechart/line-chart-custom">Recharts</NavLink>
               </li>
+              
             </ul>
           </li>
           <li className="title">
@@ -135,8 +141,11 @@ export const Navbar = () => {
               </li>
             </ul>
           </li>
-          </ul>
-        </div>
+        </ul>
       </div>
-    )
-}
+      <div className="theme">
+        <ThemeToggle />
+      </div>
+    </div>
+  );
+};

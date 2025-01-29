@@ -114,7 +114,7 @@ export const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <NavLink to="/chartjs/line-chart-custom">Chartjs</NavLink>
+                <NavLink to="/chartjs/line-chart-custom">Chart.js</NavLink>
               </li>
               <li>
                 <NavLink to="/echarts/line-chart-custom">Echarts</NavLink>
@@ -129,12 +129,18 @@ export const Navbar = () => {
             Use Case 2: Pareto Chart
             <ul className="dropdown">
               <li>
-                <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
+                <NavLink to="/apexcharts/pareto">Apexcharts</NavLink>
+              </li>
+              <li>
+                <NavLink to="/chartjs/pareto">Chart.js</NavLink>
+              </li>
+              <li>
+                <NavLink to="/echarts/pareto">Echarts</NavLink>
               </li>
             </ul>
           </li>
           <li className="title">
-            Use Case 3
+            Use Case 3: Sankey Chart
             <ul className="dropdown">
               <li>
                 <NavLink to="/recharts/sankey">Recharts</NavLink>

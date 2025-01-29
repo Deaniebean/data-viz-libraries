@@ -61,7 +61,8 @@ export const EchartsLineChart = () => {
         type: "line",
         lineStyle: {
           width: 3,
-          color: "gray",
+          color: "black",
+          type: "dashed",
         },
       },
     ],

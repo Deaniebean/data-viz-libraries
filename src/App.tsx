@@ -16,6 +16,9 @@ import { ApexChartsCustom2 } from "./charts/customLineChart/ApexChartsCustom2";
 import { CustomApexCharts3 } from "./charts/customLineChart/ApexCharts3";
 import { RechartsSankey } from "./charts/sankeyChart/rechartsSankey";
 import { EchartsLineChart } from "./charts/customLineChart/EchartsLineChart";
+import { ApexPareto } from "./charts/paretoChart/ApexPareto";
+import { ChartjsPareto } from "./charts/paretoChart/ChartjsPareto";
+import { EchartsPareto } from "./charts/paretoChart/EchartsPareto";
 
 
 function App() {
@@ -55,6 +58,9 @@ function App() {
             path="/echarts/line-chart-custom"
             element={<EchartsLineChart />}
           />
+            <Route path="/apexcharts/pareto" element={<ApexPareto />} />
+            <Route path="/chartjs/pareto" element={<ChartjsPareto />} />
+            <Route path="/echarts/pareto" element={<EchartsPareto />} />
           <Route path="/d3/line-chart" element={<D3 />} />
           <Route path="/recharts/sankey" element={<RechartsSankey />} />
         </Routes>

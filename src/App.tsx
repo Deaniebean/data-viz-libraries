@@ -19,6 +19,9 @@ import { EchartsLineChart } from "./charts/customLineChart/EchartsLineChart";
 import { ApexPareto } from "./charts/paretoChart/ApexPareto";
 import { ChartjsPareto } from "./charts/paretoChart/ChartjsPareto";
 import { EchartsPareto } from "./charts/paretoChart/EchartsPareto";
+import { ChartjsSankey } from "./charts/sankeyChart/ChartjsSankey";
+import { ApexSankey } from "./charts/sankeyChart/ApexSankey";
+import { EchartsSankey } from "./charts/sankeyChart/EchartsSankey";
 
 
 function App() {
@@ -37,6 +40,7 @@ function App() {
           <Route path="/nivo/line-chart" element={<Nivo />} />
           <Route path="/Plotly/line-chart" element={<PlotlyChart />} />
           <Route path="/rechart/line-chart" element={<Rechart />} />
+          <Route path="/d3/line-chart" element={<D3 />} />
           <Route
             path="/rechart/line-chart-custom"
             element={<RechartCustom />}
@@ -61,8 +65,13 @@ function App() {
             <Route path="/apexcharts/pareto" element={<ApexPareto />} />
             <Route path="/chartjs/pareto" element={<ChartjsPareto />} />
             <Route path="/echarts/pareto" element={<EchartsPareto />} />
-          <Route path="/d3/line-chart" element={<D3 />} />
+
+
+
           <Route path="/recharts/sankey" element={<RechartsSankey />} />
+          <Route path="/chartjs/sankey" element={<ChartjsSankey />} />
+          <Route path="/apexcharts/sankey" element={<ApexSankey />} />
+          <Route path="/echarts/sankey" element={<EchartsSankey />} />
         </Routes>
       </div>
     </div>

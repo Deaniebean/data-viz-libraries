@@ -145,6 +145,15 @@ export const Navbar = () => {
               <li>
                 <NavLink to="/recharts/sankey">Recharts</NavLink>
               </li>
+              <li>
+                <NavLink to="/chartjs/sankey">Chart.js</NavLink>
+              </li>
+              <li>
+                <NavLink to="/apexcharts/sankey">ApexCharts</NavLink>
+              </li>
+              <li>
+                <NavLink to="/echarts/sankey">Echarts</NavLink>
+              </li>
             </ul>
           </li>
         </ul>

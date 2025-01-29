@@ -21,12 +21,12 @@ export const Echarts = () => {
       {
         data: chartData.map((data) => data.actual),
         type: "line",
-        smooth: true,
+        //smooth: true,
       },
       {
         data: chartData.map((data) => data.target),
         type: "line",
-        smooth: true,
+        //smooth: true,
       },
     ],
     tooltip: {

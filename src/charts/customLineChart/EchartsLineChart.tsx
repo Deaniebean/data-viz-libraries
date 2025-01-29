@@ -6,11 +6,22 @@ import { ChartWrapper } from "../../common/chartWrapper";
 export const EchartsLineChart = () => {
   const [chartData] = useState(Data);
 
-  const threshold = 50; // Define your threshold value here
+  // Generate dynamic gradient stops based on actual vs target
+  const colorStops = chartData
+    .map((data, index) => {
+      const nextData = chartData[index + 1];
+      if (!nextData) return null;
 
-  const getLineColor = (value: number) => {
-    return value >= threshold ? "#14b425" : "#ff0000"; // Green if above threshold, red if below
-  };
+      const isAboveTarget = data.actual >= data.target;
+      const nextIsAboveTarget = nextData.actual >= nextData.target;
+
+      return {
+        offset: index / (chartData.length - 1),
+        color: isAboveTarget ? "#14b425" : "#ff0000",
+        nextColor: nextIsAboveTarget ? "#14b425" : "#ff0000",
+      };
+    })
+    .filter(Boolean);
 
   const options = {
     grid: { top: 20, right: 20, bottom: 20, left: 30 },
@@ -25,45 +36,32 @@ export const EchartsLineChart = () => {
     },
     series: [
       {
-        type: "custom",
-        renderItem: function (params, api) {
-          const start = api.coord([api.value(0), api.value(1)]);
-          const end = api.coord([api.value(2), api.value(3)]);
-
-          return {
-            type: "line",
-            shape: {
-              x1: start[0],
-              y1: start[1],
-              x2: end[0],
-              y2: end[1],
-            },
-            style: {
-              lineWidth: 2,
-              stroke: getLineColor(api.value(1)),
-            },
-          };
+        name: "Actual",
+        data: chartData.map((data) => data.actual),
+        type: "line",
+        lineStyle: {
+          width: 3,
+          color: {
+            type: "linear",
+            x: 0,
+            y: 0,
+            x2: 1,
+            y2: 0,
+            colorStops: colorStops.flatMap((stop) => [
+              { offset: stop.offset, color: stop.color },
+              { offset: stop.offset + 0.01, color: stop.nextColor },
+            ]),
+            global: false,
+          },
         },
-        dimensions: ["x1", "y1", "x2", "y2"],
-        encode: {
-          x: [0, 2],
-          y: [1, 3],
-        },
-        data: chartData
-          .map((data, index) => {
-            const nextData = chartData[index + 1];
-            if (!nextData) return null;
-            return [data.month, data.actual, nextData.month, nextData.actual];
-          })
-          .filter(Boolean),
       },
       {
+        name: "Target",
         data: chartData.map((data) => data.target),
         type: "line",
-        smooth: true,
         lineStyle: {
-          type: "dashed",
-          color: "#000000", // Solid black line for the target series
+          width: 3,
+          color: "gray",
         },
       },
     ],
@@ -73,7 +71,7 @@ export const EchartsLineChart = () => {
   };
 
   return (
-    <ChartWrapper title="Echarts Line Chart">
+    <ChartWrapper title="Echarts">
       <ReactECharts option={options} />
     </ChartWrapper>
   );

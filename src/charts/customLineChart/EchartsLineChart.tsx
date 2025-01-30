@@ -49,7 +49,7 @@ export const EchartsLineChart = () => {
             y2: 0,
             colorStops: colorStops.flatMap((stop) => [
               { offset: stop.offset, color: stop.color },
-              { offset: stop.offset + 0.01, color: stop.nextColor },
+              { offset: stop.offset , color: stop.nextColor },
             ]),
             global: false,
           },

@@ -13,7 +13,6 @@ import { Chartjs } from "./charts/basicCharts/Chartjs";
 import { RechartCustom } from "./charts/customLineChart/RechartCustom";
 import { ChartjsCustom } from "./charts/customLineChart/Chartjs";
 import { ApexChartsCustom2 } from "./charts/customLineChart/ApexChartsCustom2";
-import { CustomApexCharts3 } from "./charts/customLineChart/ApexCharts3";
 import { RechartsSankey } from "./charts/sankeyChart/rechartsSankey";
 import { EchartsLineChart } from "./charts/customLineChart/EchartsLineChart";
 import { ApexPareto } from "./charts/paretoChart/ApexPareto";
@@ -53,10 +52,6 @@ function App() {
           <Route
             path="/apexcharts/line-chart-custom-2"
             element={<ApexChartsCustom2 />}
-          />
-          <Route
-            path="/apexcharts/line-chart-custom-3"
-            element={<CustomApexCharts3 />}
           />
           <Route
             path="/echarts/line-chart-custom"

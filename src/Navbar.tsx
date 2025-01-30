@@ -108,9 +108,6 @@ export const Navbar = () => {
                   <li>
                   <NavLink to="/apexcharts/line-chart-custom-2">Apexcharts2</NavLink>
                   </li>
-                  <li>
-                  <NavLink to="/apexcharts/line-chart-custom-3">Apexcharts3</NavLink>
-                  </li>
                 </ul>
               </li>
               <li>

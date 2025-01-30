@@ -1,10 +1,7 @@
-import { CategoryScale, Chart } from "chart.js";
-import { useState } from "react";
-import { Data } from "../../utils/Data";
 import { Line } from "react-chartjs-2";
 import { ChartWrapper } from "../../common/chartWrapper";
-
-Chart.register(CategoryScale);
+import { useState } from "react";
+import { Data } from "../../utils/Data";
 
 export const ChartjsCustom = () => {
   const [chartData] = useState(Data);
@@ -16,8 +13,9 @@ export const ChartjsCustom = () => {
         label: "Target",
         data: chartData.map((data) => data.target),
         backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
+        borderColor: "rgba(0,0,0,1)", 
         borderWidth: 1,
+        borderDash: [5, 5], 
       },
       {
         label: "Actual",
@@ -25,11 +23,20 @@ export const ChartjsCustom = () => {
         backgroundColor: "rgba(255,99,132,0.4)",
         borderColor: "rgba(255,99,132,1)",
         segment: {
-          borderColor: (ctx: { p0DataIndex: any }) => {
+          borderColor: (ctx) => {
             const index = ctx.p0DataIndex; // Get the current index
-            return chartData[index].target > chartData[index].actual
-              ? "rgb(192,75,75)" // Red color if target > actual
-              : "rgb(79, 161, 12)"; // Default color
+            const nextIndex = ctx.p1DataIndex; // Get the next index
+            const currentActual = chartData[index].actual;
+            const nextActual = chartData[nextIndex].actual;
+            const currentTarget = chartData[index].target;
+            const nextTarget = chartData[nextIndex].target;
+
+            // Determine the color based on the comparison between actual and target values
+            const currentColor = currentActual >= currentTarget ? "rgb(20, 180, 37)" : "rgb(255, 0, 0)";
+            const nextColor = nextActual >= nextTarget ? "rgb(20, 180, 37)" : "rgb(255, 0, 0)";
+
+            // Return the color for the segment
+            return currentColor === nextColor ? currentColor : nextColor;
           },
         },
         borderWidth: 1,
@@ -48,7 +55,7 @@ export const ChartjsCustom = () => {
 
   return (
     <ChartWrapper title="Chartjs">
-  <Line data={data} options={options} />
-  </ChartWrapper>
-  )
+      <Line data={data} options={options} />
+    </ChartWrapper>
+  );
 };

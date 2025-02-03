@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 import {
   CartesianGrid,
   Line,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LineChart } from "@mui/x-charts/LineChart";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 import { ChartWrapper } from "../../common/chartWrapper";
 
 export const LineChartMui = () => {

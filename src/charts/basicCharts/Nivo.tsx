@@ -1,5 +1,5 @@
 import { ResponsiveLine } from "@nivo/line";
-import { Data, DataType } from "../../utils/Data";
+import { Data, DataType } from "../../utils/DataLineChart";
 import { useState } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
 

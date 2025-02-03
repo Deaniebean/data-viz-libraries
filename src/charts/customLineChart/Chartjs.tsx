@@ -1,7 +1,7 @@
 import { Line } from "react-chartjs-2";
 import { ChartWrapper } from "../../common/chartWrapper";
 import { useState } from "react";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 
 export const ChartjsCustom = () => {
   const [chartData] = useState(Data);

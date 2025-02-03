@@ -1,6 +1,6 @@
 //$ npm install echarts-for-react decided against it because no resize
 import ReactECharts from "echarts-for-react";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 import { useState } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
 

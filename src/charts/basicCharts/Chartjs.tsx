@@ -1,6 +1,6 @@
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 import { useState } from "react";
 import { CategoryScale } from "chart.js";
 import { ChartWrapper } from "../../common/chartWrapper";

@@ -8,7 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 import { ChartWrapper } from "../../common/chartWrapper";
 
 export const Rechart = () => {

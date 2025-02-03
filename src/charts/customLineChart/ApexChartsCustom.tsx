@@ -1,5 +1,5 @@
 import Chart from "react-apexcharts";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 import { useState} from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
 

@@ -1,5 +1,5 @@
 import Plot from "react-plotly.js";
-import { Data } from "../../utils/Data";
+import { Data } from "../../utils/DataLineChart";
 import { ChartWrapper } from "../../common/chartWrapper";
 
 export const PlotlyChart = () => {

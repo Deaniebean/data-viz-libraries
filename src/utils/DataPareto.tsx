@@ -1,7 +1,10 @@
 export type ParetoDataType = {
-    id: number;
+  ticketId: number;
+  status: number;
+  history: (number | null)[];
+  group: string;
+};
 
-  };
 
   export type Status = {
     1: "Backlog",
@@ -11,7 +14,7 @@ export type ParetoDataType = {
   }
   
 
-export const ParetoData = [
+export const ParetoData: ParetoDataType[] = [
     {
         ticketId: 1,
         status: 1,

@@ -1,3 +1,4 @@
+import { SankeyLink } from "plotly.js/lib/sankey";
 import { ParetoData } from "../../utils/DataPareto";
 import ReactECharts from 'echarts-for-react';
 
@@ -25,15 +26,15 @@ export const EchartsSankey = () => {
     { name: "Q4 Done", depth: 3, y: 3, itemStyle: { color: "#008000" } },
   ];
 
-  const links = [];
+  const links: { source: string; target: string; value: number }[] = [];
 
   // Map the data to the nodes and links
   ParetoData.forEach((item) => {
     const history = item.history;
     for (let i = 0; i < history.length - 1; i++) {
       if (history[i] !== null && history[i + 1] !== null) {
-        const source = `Q${i + 1} ${getStatusName(history[i])}`;
-        const target = `Q${i + 2} ${getStatusName(history[i + 1])}`;
+        const source = `Q${i + 1} ${getStatusName(history[i]!)}`;
+        const target = `Q${i + 2} ${getStatusName(history[i + 1]!)}`;
         const existingLink = links.find(
           (link) => link.source === source && link.target === target
         );

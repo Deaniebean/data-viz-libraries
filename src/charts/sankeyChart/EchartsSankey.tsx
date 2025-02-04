@@ -1,4 +1,3 @@
-import { SankeyLink } from "plotly.js/lib/sankey";
 import { ParetoData } from "../../utils/DataPareto";
 import ReactECharts from 'echarts-for-react';
 

@@ -140,9 +140,6 @@ export const Navbar = () => {
             Use Case 3: Sankey Chart
             <ul className="dropdown">
               <li>
-                <NavLink to="/recharts/sankey">Recharts</NavLink>
-              </li>
-              <li>
                 <NavLink to="/chartjs/sankey">Chart.js</NavLink>
               </li>
               <li>

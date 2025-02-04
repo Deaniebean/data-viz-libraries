@@ -15,7 +15,7 @@ export const ParetoData = [
     {
         ticketId: 1,
         status: 1,
-        history: [null, null, 1, 1],
+        history: [null, 1, 1, 1],
         group: "B-Class"        
     },
     {
@@ -374,3 +374,28 @@ export const ParetoData = [
   history: [4, 4, 4, 4],
   group: "D-Class"
 }]
+
+
+/*
+const nodes = 
+[ 
+  {
+    id: "1_Quarter",
+    title: "1.Quarter",
+  },
+  {
+    id: "2_Quarter",
+    title: "2.Quarter",
+  },
+  {
+    id: "3_Quarter",
+    title: "3.Quarter", 
+  },
+  {
+    id: "3_Quarter",
+    title: "3.Quarter",
+  }
+
+
+]
+  */

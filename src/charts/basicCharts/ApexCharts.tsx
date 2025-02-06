@@ -5,7 +5,6 @@ import { ChartWrapper } from "../../common/chartWrapper";
 
 export const ApexCharts = () => {
   const [chartData] = useState(Data);
-  
 
 
 const chartOptions = {

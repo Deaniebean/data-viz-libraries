@@ -5,380 +5,615 @@ export type ParetoDataType = {
   group: string;
 };
 
-
-  export type Status = {
-    1: "Backlog",
-    2: "In Progess",
-    3: "In Review",
-    4: "Done"
-  }
-  
+export type Status = {
+  1: "Backlog";
+  2: "In Progress";
+  3: "In Review";
+  4: "Done";
+};
 
 export const ParetoData: ParetoDataType[] = [
-    {
-        ticketId: 1,
-        status: 1,
-        history: [null, 1, 1, 1],
-        group: "B-Class"        
-    },
-    {
-        ticketId: 2,
-        status: 2,
-        history: [null, 1, 2, 2],
-        group: "A-Class"        
-    },
-    {
-        ticketId: 3,
-        status: 3,
-        history: [1, 2, 3, 3],
-        group: "C-Class"        
-    },
-    {
-        ticketId: 4,
-        status: 4,
-        history: [4, 4, 4, 4],
-        group: "D-Class"        
-    },
-    {
-        ticketId: 5,
-        status: 1,
-        history: [null, null, 1, 1],
-        group: "B-Class"        
-    },
-    {
-        ticketId: 6,
-        status: 2,
-        history: [null, 1, 2, 2],
-        group: "A-Class"        
-    },
-    {
-        ticketId: 7,
-        status: 3,
-        history: [1, 2, 2, 3],
-        group: "C-Class"        
-    },
-    {
-        ticketId: 8,
-        status: 4,
-        history: [3, 4, 4, 4],
-        group: "D-Class"        
-    },
-    {
-        ticketId: 9,
-        status: 1,
-        history: [null, null, null, 1],
-        group: "B-Class"        
-    },
-    {
-        ticketId: 10,
-        status: 2,
-        history: [null, 1, 2, 2],
-        group: "A-Class"        
-    },
-    {
-        ticketId: 11,
-        status: 3,
-        history: [1, 2, 2, 3],
-        group: "C-Class"        
-    },
-    {
-        ticketId: 12,
-        status: 4,
-        history: [1, 2, 3, 4],
-        group: "D-Class"        
-    },
-    {
-        ticketId: 13,
-        status: 1,
-        history: [null, null, 1, 1],
-        group: "B-Class"        
-    },
-    {
-      ticketId: 14,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 15,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 16,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    },
-    {
-      ticketId: 17,
-      status: 1,
-      history: [null, null, 1, 1],
-      group: "B-Class"
-    },
-    {
-      ticketId: 18,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 19,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 20,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    },
-    {
-      ticketId: 21,
-      status: 1,
-      history: [null, null, 1, 1],
-      group: "B-Class"
-    },
-    {
-      ticketId: 22,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 23,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 24,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    },
-    {
-      ticketId: 25,
-      status: 1,
-      history: [null, null, 1, 1],
-      group: "B-Class"
-    },
-    {
-      ticketId: 26,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 27,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 28,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    },
-    {
-      ticketId: 29,
-      status: 1,
-      history: [null, null, 1, 1],
-      group: "B-Class"
-    },
-    {
-      ticketId: 30,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 31,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 32,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    },
-    {
-      ticketId: 33,
-      status: 1,
-      history: [null, null, 1, 1],
-      group: "B-Class"
-    },
-    {
-      ticketId: 34,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 35,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 36,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    },
-    {
-      ticketId: 37,
-      status: 1,
-      history: [null, null, 1, 1],
-      group: "B-Class"
-    },
-    {
-      ticketId: 38,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 39,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 40,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    },
-    {
-      ticketId: 41,
-      status: 1,
-      history: [null, null, 1, 1],
-      group: "B-Class"
-    },
-    {
-      ticketId: 42,
-      status: 2,
-      history: [null, 1, 2, 2],
-      group: "A-Class"
-    },
-    {
-      ticketId: 43,
-      status: 3,
-      history: [1, 2, 3, 3],
-      group: "C-Class"
-    },
-    {
-      ticketId: 44,
-      status: 4,
-      history: [4, 4, 4, 4],
-      group: "D-Class"
-    }
-,
-{
-  ticketId: 45,
-  status: 1,
-  history: [null, null, 1, 1],
-  group: "B-Class"
-},
-{
-  ticketId: 46,
-  status: 2,
-  history: [null, 1, 2, 2],
-  group: "A-Class"
-},
-{
-  ticketId: 47,
-  status: 3,
-  history: [1, 2, 3, 3],
-  group: "C-Class"
-},
-{
-  ticketId: 48,
-  status: 4,
-  history: [4, 4, 4, 4],
-  group: "D-Class"
-},
-{
-  ticketId: 49,
-  status: 1,
-  history: [null, null, 1, 1],
-  group: "B-Class"
-},
-{
-  ticketId: 50,
-  status: 2,
-  history: [null, 1, 2, 2],
-  group: "A-Class"
-},
-{
-  ticketId: 51,
-  status: 3,
-  history: [1, 2, 3, 3],
-  group: "C-Class"
-},
-{
-  ticketId: 52,
-  status: 4,
-  history: [4, 4, 4, 4],
-  group: "D-Class"
-},
-{
-  ticketId: 53,
-  status: 1,
-  history: [null, null, 1, 1],
-  group: "B-Class"
-},
-{
-  ticketId: 54,
-  status: 2,
-  history: [null, 1, 2, 2],
-  group: "A-Class"
-},
-{
-  ticketId: 55,
-  status: 3,
-  history: [1, 2, 3, 3],
-  group: "C-Class"
-},
-{
-  ticketId: 56,
-  status: 4,
-  history: [4, 4, 4, 4],
-  group: "D-Class"
-},
-{
-  ticketId: 57,
-  status: 1,
-  history: [null, null, 1, 1],
-  group: "B-Class"
-},
-{
-  ticketId: 58,
-  status: 2,
-  history: [null, 1, 2, 2],
-  group: "A-Class"
-}
-,
-{
-  ticketId: 59,
-  status: 3,
-  history: [1, 2, 3, 3],
-  group: "C-Class"
-},
-{
-  ticketId: 60,
-  status: 4,
-  history: [4, 4, 4, 4],
-  group: "D-Class"
-}]
-
-
+  {
+    ticketId: 1,
+    status: 1,
+    history: [null, 1, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 2,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 3,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 4,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 5,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 6,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 7,
+    status: 3,
+    history: [1, 2, 2, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 8,
+    status: 4,
+    history: [3, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 9,
+    status: 1,
+    history: [null, null, null, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 10,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 11,
+    status: 3,
+    history: [1, 2, 2, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 12,
+    status: 4,
+    history: [1, 2, 3, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 13,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 14,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 15,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 16,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 17,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 18,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 19,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 20,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 21,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 22,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 23,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 24,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 25,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 26,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 27,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 28,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 29,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 30,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 31,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 32,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 33,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 34,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 35,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 36,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 37,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 38,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 39,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 40,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 41,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 42,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 43,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 44,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 45,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 46,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 47,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 48,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 49,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 50,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 51,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 52,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 53,
+    status: 4,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 54,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 55,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 56,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 57,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "B-Class",
+  },
+  {
+    ticketId: 58,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 59,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 60,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+  {
+    ticketId: 61,
+    status: 1,
+    history: [null, 1, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 62,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 63,
+    status: 4,
+    history: [1, 2, 3, 4],
+    group: "C-Class",
+  },
+  {
+    ticketId: 64,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 65,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 66,
+    status: 3,
+    history: [1, 2, 2, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 67,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 68,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 69,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 70,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 71,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 72,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 73,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 74,
+    status: 4,
+    history: [null, 1, 2, 4],
+    group: "B-Class",
+  },
+  {
+    ticketId: 75,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 76,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 77,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 78,
+    status: 4,
+    history: [1, 2, 3, 4],
+    group: "C-Class",
+  },
+  {
+    ticketId: 79,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 80,
+    status: 4,
+    history: [null, 1, 2, 4],
+    group: "B-Class",
+  },
+  {
+    ticketId: 81,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 82,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 83,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 84,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 85,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 86,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 87,
+    status: 4,
+    history: [1, 2, 3, 4],
+    group: "C-Class",
+  },
+  {
+    ticketId: 88,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 89,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 90,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 91,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 92,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 93,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 94,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 95,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 96,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 97,
+    status: 1,
+    history: [null, null, 1, 1],
+    group: "A-Class",
+  },
+  {
+    ticketId: 98,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "B-Class",
+  },
+  {
+    ticketId: 99,
+    status: 3,
+    history: [1, 2, 3, 3],
+    group: "C-Class",
+  },
+  {
+    ticketId: 100,
+    status: 4,
+    history: [4, 4, 4, 4],
+    group: "D-Class",
+  },
+];
 /*
 const nodes = 
 [ 

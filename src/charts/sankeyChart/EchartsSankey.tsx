@@ -2,29 +2,30 @@ import { ParetoData } from "../../utils/DataPareto";
 import ReactECharts from 'echarts-for-react';
 
 export const EchartsSankey = () => {
-  // Prepare the data for the Sankey chart
+  
   const nodes = [
-    { name: "Q1 Backlog", depth: 0, y: 0, itemStyle: { color: "#808080" } }, 
-    { name: "Q1 In Progress", depth: 0, y: 1, itemStyle: { color: "#FFA500" } },
-    { name: "Q1 In Review", depth: 0, y: 2, itemStyle: { color: "#FF69B4" } },
-    { name: "Q1 Done", depth: 0, y: 3, itemStyle: { color: "#008000" } },
+    { name: "Q1 Backlog", depth: 0, y: 0, fixed: true, itemStyle: { color: "#808080" } }, 
+    { name: "Q1 In Progress", depth: 0, y: 1, fixed: true, itemStyle: { color: "#FFA500" } },
+    { name: "Q1 In Review", depth: 0, y: 2, fixed: true, itemStyle: { color: "#FF69B4" } },
+    { name: "Q1 Done", depth: 0, y: 3, fixed: true, itemStyle: { color: "#008000" } },
     
-    { name: "Q2 Backlog", depth: 1, y: 0, itemStyle: { color: "#808080" } },
-    { name: "Q2 In Progress", depth: 1, y: 1, itemStyle: { color: "#FFA500" } },
-    { name: "Q2 In Review", depth: 1, y: 2, itemStyle: { color: "#FF69B4" } },
-    { name: "Q2 Done", depth: 1, y: 3, itemStyle: { color: "#008000" } },
+    { name: "Q2 Backlog", depth: 1, y: 0, fixed: true, itemStyle: { color: "#808080" } },
+    { name: "Q2 In Progress", depth: 1, y: 1, fixed: true, itemStyle: { color: "#FFA500" } },
+    { name: "Q2 In Review", depth: 1, y: 2, fixed: true, itemStyle: { color: "#FF69B4" } },
+    { name: "Q2 Done", depth: 1, y: 3, fixed: true, itemStyle: { color: "#008000" } },
   
-    { name: "Q3 Backlog", depth: 2, y: 0, itemStyle: { color: "#808080" } },
-    { name: "Q3 In Progress", depth: 2, y: 1, itemStyle: { color: "#FFA500" } },
-    { name: "Q3 In Review", depth: 2, y: 2, itemStyle: { color: "#FF69B4" } },
-    { name: "Q3 Done", depth: 2, y: 3, itemStyle: { color: "#008000" } },
+    { name: "Q3 Backlog", depth: 2, y: 0, fixed: true, itemStyle: { color: "#808080" } },
+    { name: "Q3 In Progress", depth: 2, y: 1, fixed: true, itemStyle: { color: "#FFA500" } },
+    { name: "Q3 In Review", depth: 2, y: 2, fixed: true, itemStyle: { color: "#FF69B4" } },
+    { name: "Q3 Done", depth: 2, y: 3, fixed: true, itemStyle: { color: "#008000" } },
   
-    { name: "Q4 Backlog", depth: 3, y: 0, itemStyle: { color: "#808080" } },
-    { name: "Q4 In Progress", depth: 3, y: 1, itemStyle: { color: "#FFA500" } },
-    { name: "Q4 In Review", depth: 3, y: 2, itemStyle: { color: "#FF69B4" } },
-    { name: "Q4 Done", depth: 3, y: 3, itemStyle: { color: "#008000" } },
+    { name: "Q4 Backlog", depth: 3, y: 0, fixed: true, itemStyle: { color: "#808080" } },
+    { name: "Q4 In Progress", depth: 3, y: 1, fixed: true, itemStyle: { color: "#FFA500" } },
+    { name: "Q4 In Review", depth: 3, y: 2, fixed: true, itemStyle: { color: "#FF69B4" } },
+    { name: "Q4 Done", depth: 3, y: 3, fixed: true, itemStyle: { color: "#008000" } },
   ];
 
+  
   const links: { source: string; target: string; value: number }[] = [];
 
   // Map the data to the nodes and links
@@ -68,9 +69,9 @@ export const EchartsSankey = () => {
           color: "gradient",
           curveness: 0.5,
         },
-        nodeWidth: 30, // Adjust the width of the nodes
-        nodeGap: 20, // Adjust the gap between nodes
-        layoutIterations: 32, // Adjust the number of iterations for the layout algorithm
+        nodeWidth: 30, 
+        nodeGap: 20, 
+        layoutIterations: 0, 
       },
     ],
   };

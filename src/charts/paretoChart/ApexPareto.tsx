@@ -29,7 +29,6 @@ export const ApexPareto = () => {
     // Find the index where the cumulative percentage reaches or exceeds 80%
     const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
 
-
   const options = {
     chart: {
       type: 'line' as const,
@@ -86,9 +85,9 @@ export const ApexPareto = () => {
   ];
 
   return (
-   <ChartWrapper title={'ApexCharts Pareto'}>
-<Chart options={options} series={series} type="line"></Chart>
-</ChartWrapper>
+  <ChartWrapper title={'ApexCharts Pareto'}>
+    <Chart options={options} series={series} type="line"></Chart>
+  </ChartWrapper>
   );
 };
 

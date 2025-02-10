@@ -27,8 +27,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 3,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -51,8 +51,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 7,
-    status: 3,
-    history: [1, 2, 2, 3],
+    status: 4,
+    history: [1, 2, 2, 4],
     group: "C-Class",
   },
   {
@@ -75,8 +75,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 11,
-    status: 3,
-    history: [1, 2, 2, 3],
+    status: 4,
+    history: [1, 2, 2, 4],
     group: "C-Class",
   },
   {
@@ -99,8 +99,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 15,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -123,8 +123,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 19,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -147,8 +147,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 23,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -171,8 +171,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 27,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -195,8 +195,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 31,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -219,8 +219,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 35,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -243,8 +243,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 39,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -267,8 +267,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 43,
-    status: 3,
-    history: [1, 2, 3, 3],
+    status: 4,
+    history: [1, 2, 3, 4],
     group: "C-Class",
   },
   {
@@ -345,8 +345,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 56,
-    status: 4,
-    history: [4, 4, 4, 4],
+    status: 3,
+    history: [2, 3, 3, 3],
     group: "D-Class",
   },
   {
@@ -453,8 +453,8 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 74,
-    status: 4,
-    history: [null, 1, 2, 4],
+    status: 2,
+    history: [null, 1, 2, 2],
     group: "B-Class",
   },
   {
@@ -609,31 +609,68 @@ export const ParetoData: ParetoDataType[] = [
   },
   {
     ticketId: 100,
-    status: 4,
-    history: [4, 4, 4, 4],
+    status: 3,
+    history: [1, 1, 2, 3],
     group: "D-Class",
   },
+  {
+    ticketId: 101,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 102,
+    status: 3,
+    history: [null, 1, 2, 3],
+    group: "A-Class",
+  },
+  {
+    ticketId: 103,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 104,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 105,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 106,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 107,
+    status: 2,
+    history: [null, 1, 2, 2],
+    group: "A-Class",
+  },
+  {
+    ticketId: 108,
+    status: 3,
+    history: [null, 1, 2, 3],
+    group: "A-Class",
+  },
+  {
+    ticketId: 109,
+    status: 3,
+    history: [null, 1, 2, 3],
+    group: "A-Class",
+  },
+  {
+    ticketId: 110,
+    status: 3,
+    history: [null, 1, 2, 3],
+    group: "A-Class",
+  },
 ];
-/*
-const nodes = 
-[ 
-  {
-    id: "1_Quarter",
-    title: "1.Quarter",
-  },
-  {
-    id: "2_Quarter",
-    title: "2.Quarter",
-  },
-  {
-    id: "3_Quarter",
-    title: "3.Quarter", 
-  },
-  {
-    id: "3_Quarter",
-    title: "3.Quarter",
-  }
-
-
-]
-  */

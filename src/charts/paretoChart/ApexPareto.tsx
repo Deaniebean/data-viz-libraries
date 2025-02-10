@@ -18,6 +18,18 @@ export const ApexPareto = () => {
       ).length
   );
 
+  // Calculate cumulative percentage for the line graph
+  const totalOpenIssues = openIssuesCount.reduce((acc, count) => acc + count, 0);
+  let cumulativeSum = 0;
+  const cumulativePercentage = openIssuesCount.map((count) => {
+    cumulativeSum += count;
+    return Math.floor((cumulativeSum / totalOpenIssues) * 100);
+  });
+
+    // Find the index where the cumulative percentage reaches or exceeds 80%
+    const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
+
+
   const options = {
     chart: {
       type: 'line' as const,
@@ -35,25 +47,41 @@ export const ApexPareto = () => {
     },
     yaxis: [{
       title: {
-        text: 'Income',
+        text: 'Open Tickets',
       }
     }, {
       title: {
-        text: 'Expenses',
+        text: 'Percentage',
       },
-      opposite: true
-    }]
+      opposite: true,
+      max: 100, 
+    }],
+    annotations: {
+      xaxis: [
+        {
+          x: categories[index80],
+          borderColor: '#FF4560',
+          label: {
+            borderColor: '#FF4560',
+            style: {
+              color: '#fff',
+              background: '#FF4560',
+            },
+          }
+        }
+      ]
+    }
   };
   const series = [
     {
-      name: 'Income',
+      name: 'Open Tickets',
       type: 'column',
       data: openIssuesCount,
     },
     {
-      name: 'Expenses',
+      name: 'Percentage',
       type: 'line',
-      data: [20, 30, 25, 40, 45, 55, 65]
+      data: cumulativePercentage
     }
   ];
 

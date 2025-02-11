@@ -1,11 +1,13 @@
+import React, { useEffect, useRef } from "react";
 import ApexSankey from "apexsankey";
-import { useEffect, useRef } from "react";
 
 export const ApexSankeyChart = () => {
-  const chartRef = useRef<HTMLDivElement>(null);
+  const chartRef = useRef(null);
+  const initializedRef = useRef(false); // Prevent duplicate renders becaus of react strict mode
 
   useEffect(() => {
-    if (!chartRef.current) return;
+    if (!chartRef.current || initializedRef.current) return;
+    initializedRef.current = true; // Mark as initialized
 
     const data = {
       nodes: [
@@ -24,7 +26,7 @@ export const ApexSankeyChart = () => {
         { source: "Fossil Fuels", target: "Energy", value: 60, type: "direct" },
         { source: "Electricity", target: "Energy", value: 25, type: "direct" }
       ],
-      options: {
+      options : {
         nodeWidth: 20,
         fontFamily: "Arial, sans-serif",
         fontWeight: 600,
@@ -44,18 +46,11 @@ export const ApexSankeyChart = () => {
         tooltipBGColor: "#fff",
         edgeOpacity: 0.7,
         edgeGradientFill: true
-      }
+      },
     };
-
-    
 
     const sankey = new ApexSankey(chartRef.current, data.options);
     sankey.render(data);
-
-    // Cleanup function to destroy the chart when the component unmounts
-    return () => {
-
-    };
   }, []);
 
   return <div ref={chartRef} style={{ width: "800px", height: "600px", border: "1px solid #ccc" }} />;

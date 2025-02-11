@@ -34,6 +34,7 @@
     "react-dom": "^18.3.1",
     "react-plotly.js": "^2.6.0",
     "react-router-dom": "^7.0.2",
+    "react-sankey-chartjs": "^0.1.1",
     "recharts": "^2.15.0"
   },
   "devDependencies": {

@@ -19,6 +19,7 @@ import { ChartjsPareto } from "./charts/paretoChart/ChartjsPareto";
 import { EchartsPareto } from "./charts/paretoChart/EchartsPareto";
 import { ChartjsSankey } from "./charts/sankeyChart/ChartjsSankey";
 import { EchartsSankey } from "./charts/sankeyChart/EchartsSankey";
+import { EchartsSankey2 } from "./charts/sankeyChart/EchartsSankey2";
 import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
 
 
@@ -65,6 +66,7 @@ function App() {
           <Route path="/chartjs/sankey" element={<ChartjsSankey />} />
           <Route path="/apexcharts/sankey" element={<ApexSankeyChart />} />
           <Route path="/echarts/sankey" element={<EchartsSankey />} />
+          <Route path="/echarts/sankey2" element={<EchartsSankey2 />} />
         </Routes>
       </div>
     </div>

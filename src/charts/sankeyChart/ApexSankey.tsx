@@ -1,15 +1,15 @@
 import { useEffect, useRef } from "react";
 import ApexSankey from "apexsankey";
-import { color } from "chart.js/helpers";
 import { ParetoData } from "../../utils/DataPareto";
+import { ChartWrapper } from "../../common/chartWrapper";
 
 export const ApexSankeyChart = () => {
   const chartRef = useRef(null);
-  const initializedRef = useRef(false); // Prevent duplicate renders becaus of react strict mode
+  const initializedRef = useRef(false); // Prevent duplicate renders because of react strict mode
 
   useEffect(() => {
     if (!chartRef.current || initializedRef.current) return;
-    initializedRef.current = true; // Mark as initialized
+    initializedRef.current = true;
 
 
      const edges: { source: string; target: string; value: number; type: string }[] = [];
@@ -55,28 +55,25 @@ export const ApexSankeyChart = () => {
         { id: "Q4 In Progress", title: "Q3In Progresss", color: "#FFA500" },
         { id: "Q4 In Review", title: "Q3 In Review", color: "#FF69B4" },
         { id: "Q4 Done", title: "Q3 Done", color: "#008000"  },
+        
       ],
       edges: edges,
       options : {
-        nodeWidth: 20,
+        nodeWidth: 30,
         fontFamily: "Arial, sans-serif",
         fontWeight: 600,
         fontSize: "12px",
         fontColor: "#000",
-        height: 600,
-        width: 800,
         canvasStyle: "",
-        spacing: 10,
-        viewPortWidth: 800,
-        viewPortHeight: 600,
-        nodeBorderWidth: 1,
-        nodeBorderColor: "#000",
+        spacing: 5,
+        width: '100%',
+        height: '#100%',
         enableTooltip: true,
         tooltipId: "sankey-tooltip",
         tooltipBorderColor: "#ccc",
         tooltipBGColor: "#fff",
         edgeOpacity: 0.7,
-        edgeGradientFill: true
+        edgeGradientFill: true,
       },
     };
 
@@ -84,7 +81,11 @@ export const ApexSankeyChart = () => {
     sankey.render(data);
   }, []);
 
-  return <div ref={chartRef} style={{ width: "800px", height: "600px", border: "1px solid #ccc" }} />;
+  return(
+    <ChartWrapper title="ApexCharts">
+      <div ref={chartRef}/>;
+    </ChartWrapper>
+  ) 
 };
 
 const getStatusName = (status: number) => {

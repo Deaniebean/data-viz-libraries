@@ -1,3 +1,4 @@
+import { ChartWrapper } from "../../common/chartWrapper";
 import { ParetoData } from "../../utils/DataPareto";
 import ReactECharts from 'echarts-for-react';
 
@@ -72,14 +73,58 @@ export const EchartsSankey = () => {
         nodeWidth: 30, 
         nodeGap: 20, 
         layoutIterations: 0, 
+        
+      },
+      
+    ],
+    graphic: [
+      {
+        type: 'text',
+        left: '5%',
+        top: '95%',
+        style: {
+          text: 'Q1',
+          font: 'bold 14px Arial',
+          fill: '#000',
+        },
+      },
+      {
+        type: 'text',
+        left: '30%',
+        top: '95%',
+        style: {
+          text: 'Q2',
+          font: 'bold 14px Arial',
+          fill: '#000',
+        },
+      },
+      {
+        type: 'text',
+        left: '53.5%',
+        top: '95%',
+        style: {
+          text: 'Q3',
+          font: 'bold 14px Arial',
+          fill: '#000',
+        },
+      },
+      {
+        type: 'text',
+        left: '78%',
+        top: '95%',
+        style: {
+          text: 'Q4',
+          font: 'bold 14px Arial',
+          fill: '#000',
+        },
       },
     ],
   };
 
   return (
-    <div>
-      <ReactECharts option={options} style={{ height: "600px", width: "1000px" }} />
-    </div>
+      <ChartWrapper title="Echarts">
+        <ReactECharts option={options}  />
+      </ChartWrapper>
   );
 };
 

@@ -48,8 +48,8 @@ export const EchartsLineChart = () => {
             x2: 1,
             y2: 0,
             colorStops: colorStops.flatMap((stop) => [
-              { offset: stop.offset, color: stop.color },
-              { offset: stop.offset , color: stop.nextColor },
+              { offset: stop?.offset, color: stop?.color },
+              { offset: stop?.offset , color: stop?.nextColor },
             ]),
             global: false,
           },

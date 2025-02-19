@@ -490,7 +490,7 @@ export const ParetoData: ParetoDataType[] = [
   {
     ticketId: 80,
     status: 4,
-    history: [null, 1, 2, 4],
+    history: [1, 1, 2, 4],
     group: "B-Class",
   },
   {
@@ -508,7 +508,7 @@ export const ParetoData: ParetoDataType[] = [
   {
     ticketId: 83,
     status: 2,
-    history: [null, 1, 2, 2],
+    history: [1, 1, 2, 2],
     group: "B-Class",
   },
   {
@@ -526,7 +526,7 @@ export const ParetoData: ParetoDataType[] = [
   {
     ticketId: 86,
     status: 2,
-    history: [null, 1, 2, 2],
+    history: [1, 1, 2, 2],
     group: "B-Class",
   },
   {
@@ -544,7 +544,7 @@ export const ParetoData: ParetoDataType[] = [
   {
     ticketId: 89,
     status: 2,
-    history: [null, 1, 2, 2],
+    history: [1, 1, 2, 2],
     group: "B-Class",
   },
   {
@@ -616,19 +616,19 @@ export const ParetoData: ParetoDataType[] = [
   {
     ticketId: 101,
     status: 2,
-    history: [null, 1, 2, 2],
+    history: [1, 1, 2, 2],
     group: "A-Class",
   },
   {
     ticketId: 102,
     status: 3,
-    history: [null, 1, 2, 3],
+    history: [1, 1, 2, 3],
     group: "A-Class",
   },
   {
     ticketId: 103,
     status: 2,
-    history: [null, 1, 2, 2],
+    history: [1, 1, 2, 2],
     group: "A-Class",
   },
   {
@@ -658,13 +658,13 @@ export const ParetoData: ParetoDataType[] = [
   {
     ticketId: 108,
     status: 3,
-    history: [null, 1, 2, 3],
+    history: [1, 1, 2, 3],
     group: "A-Class",
   },
   {
     ticketId: 109,
     status: 3,
-    history: [null, 1, 2, 3],
+    history: [1, 1, 2, 3],
     group: "A-Class",
   },
   {

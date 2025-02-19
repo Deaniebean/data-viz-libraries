@@ -22,6 +22,7 @@ import { EchartsSankey } from "./charts/sankeyChart/EchartsSankey";
 import { EchartsSankey2 } from "./charts/sankeyChart/EchartsSankey2";
 import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
 import { EchartsSankey3 } from "./charts/sankeyChart/EchartsSankey3";
+import { EchartsSankeyTest } from "./charts/sankeyChart/EchartsSankeyTest";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
           <Route path="/echarts/sankey" element={<EchartsSankey />} />
           <Route path="/echarts/sankey2" element={<EchartsSankey2 />} />
           <Route path="/echarts/sankey3" element={<EchartsSankey3 />} />
+          <Route path="/echarts/sankey4" element={<EchartsSankeyTest />} />
         </Routes>
       </div>
     </div>

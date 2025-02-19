@@ -112,7 +112,7 @@ const data = {
     ],
   };
 
-export const ChartjsSankey = () => {
+ export const ChartjsSankey = () => {
 
 
     return(

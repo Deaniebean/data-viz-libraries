@@ -1,3 +1,5 @@
+these are the links:
+
 Q2 Backlog -> Q3 Backlog (B-Class): 1
 Q3 Backlog -> Q4 Backlog (B-Class): 14
 Q2 Backlog -> Q3 In Progress (A-Class): 25
@@ -25,6 +27,33 @@ Q3 In Progress -> Q4 In Progress (B-Class): 12
 Q3 In Progress -> Q4 In Review (C-Class): 1
 Q3 In Progress -> Q4 Done (B-Class): 1
 Q1 Backlog -> Q2 Backlog (D-Class): 1
+Q1 Backlog -> Q2 Backlog (A-Class): 3
+Q1 Backlog -> Q2 Backlog (B-Class): 7
 Q2 Backlog -> Q3 In Progress (D-Class): 1
 Q3 In Progress -> Q4 In Review (D-Class): 1
 Q3 In Progress -> Q4 In Review (A-Class): 4
+
+These are the nodes:
+
+
+const nodes = [
+    { name: "1_Backlog", displayName: "Backlog", depth: 0,fixed: true },
+    { name: "1_In Progress", displayName: "In Progress", depth: 0, fixed: true},
+    { name: "1_In Review", displayName: "In Review", depth: 0, fixed: true },
+    { name: "1_Done", displayName: "Done", depth: 0, fixed: true },
+    
+    { name: "2_Backlog", displayName: "Backlog", depth: 1, fixed: true },
+    { name: "2_In Progress", displayName: "In Progress", depth: 1, fixed: true },
+    { name: "2_In Review", displayName: "In Review", depth: 1, fixed: true },
+    { name: "2_Done", displayName: "Done", depth: 1, fixed: true },
+  
+    { name: "3_Backlog", displayName: "Backlog", depth: 2, fixed: true },
+    { name: "3_In Progress", displayName: "In Progress", depth: 2, fixed: true },
+    { name: "3_In Review", displayName: "In Review", depth: 2, fixed: true },
+    { name: "3_Done", displayName: "Done", depth: 2, fixed: true },
+  
+    { name: "4_Backlog", displayName: "Backlog", depth: 3, fixed: true },
+    { name: "4_In Progress", displayName: "In Progress", depth: 3, fixed: true },
+    { name: "4_In Review", displayName: "In Review", depth: 3, fixed: true },
+    { name: "4_Done", displayName: "Done", depth: 3, fixed: true },
+  ];

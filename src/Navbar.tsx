@@ -154,6 +154,10 @@ export const Navbar = () => {
               <li>
                 <NavLink to="/echarts/sankey3">Echarts3</NavLink>
               </li>
+ 
+            <li>
+                <NavLink to="/echarts/sankey4">Echarts4</NavLink>
+              </li>           
             </ul>
           </li>
         </ul>

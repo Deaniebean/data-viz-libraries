@@ -1,0 +1,30 @@
+Q2 Backlog -> Q3 Backlog (B-Class): 1
+Q3 Backlog -> Q4 Backlog (B-Class): 14
+Q2 Backlog -> Q3 In Progress (A-Class): 25
+Q3 In Progress -> Q4 In Progress (A-Class): 21
+Q1 Backlog -> Q2 In Progress (C-Class): 28
+Q2 In Progress -> Q3 In Review (C-Class): 25
+Q3 In Review -> Q4 Done (C-Class): 12
+Q1 Done -> Q2 Done (D-Class): 12
+Q2 Done -> Q3 Done (D-Class): 13
+Q3 Done -> Q4 Done (D-Class): 13
+Q2 In Progress -> Q3 In Progress (C-Class): 3
+Q3 In Progress -> Q4 Done (C-Class): 2
+Q1 In Review -> Q2 Done (D-Class): 1
+Q1 Backlog -> Q2 In Progress (D-Class): 1
+Q2 In Progress -> Q3 In Review (D-Class): 1
+Q3 In Review -> Q4 Done (D-Class): 1
+Q3 In Review -> Q4 In Review (C-Class): 13
+Q1 In Progress -> Q2 In Review (D-Class): 1
+Q2 In Review -> Q3 In Review (D-Class): 1
+Q3 In Review -> Q4 In Review (D-Class): 1
+Q2 Backlog -> Q3 Backlog (A-Class): 1
+Q3 Backlog -> Q4 Backlog (A-Class): 13
+Q2 Backlog -> Q3 In Progress (B-Class): 13
+Q3 In Progress -> Q4 In Progress (B-Class): 12
+Q3 In Progress -> Q4 In Review (C-Class): 1
+Q3 In Progress -> Q4 Done (B-Class): 1
+Q1 Backlog -> Q2 Backlog (D-Class): 1
+Q2 Backlog -> Q3 In Progress (D-Class): 1
+Q3 In Progress -> Q4 In Review (D-Class): 1
+Q3 In Progress -> Q4 In Review (A-Class): 4

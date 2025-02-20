@@ -21,7 +21,7 @@ import { ChartjsSankey } from "./charts/sankeyChart/ChartjsSankey";
 import { EchartsSankey } from "./charts/sankeyChart/EchartsSankey";
 import { EchartsSankey2 } from "./charts/sankeyChart/EchartsSankey2";
 import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
-import { EchartsSankey3 } from "./charts/sankeyChart/EchartsSankey3";
+import { EchartsSankey3 } from "./charts/sankeyChart/sankeyforPareto/EchartsSankey3";
 import { EchartsSankeyTest } from "./charts/sankeyChart/EchartsSankeyTest";
 
 

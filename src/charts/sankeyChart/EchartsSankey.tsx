@@ -81,7 +81,7 @@ export const EchartsSankey = () => {
         left: '5%',
         top: '95%',
         style: {
-          text: 'Q1',
+          text: 'Sprint 1',
           font: 'bold 14px Arial',
           fill: '#000',
         },
@@ -91,7 +91,7 @@ export const EchartsSankey = () => {
         left: '30%',
         top: '95%',
         style: {
-          text: 'Q2',
+          text: 'Sprint 2',
           font: 'bold 14px Arial',
           fill: '#000',
         },
@@ -101,17 +101,17 @@ export const EchartsSankey = () => {
         left: '53.5%',
         top: '95%',
         style: {
-          text: 'Q3',
+          text: 'Sprint 3',
           font: 'bold 14px Arial',
           fill: '#000',
         },
       },
       {
         type: 'text',
-        left: '78%',
+        left: '77%',
         top: '95%',
         style: {
-          text: 'Q4',
+          text: 'Sprint 4',
           font: 'bold 14px Arial',
           fill: '#000',
         },

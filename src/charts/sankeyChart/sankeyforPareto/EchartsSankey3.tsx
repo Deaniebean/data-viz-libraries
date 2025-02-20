@@ -1,5 +1,5 @@
 import ReactECharts from "echarts-for-react";
-import { ChartWrapper } from "../../common/chartWrapper";
+import { ChartWrapper } from "../../../common/chartWrapper";
 
 // Define colors for groups
 const groupColors: Record<string, string> = {
@@ -76,6 +76,7 @@ const links = [
   { source: "3_In Progress", target: "4_In Review", value: 4, group: "A-Class" },
 ];
 
+
 // Apply colors to links
 const styledLinks = links.map((link) => ({
   ...link,
@@ -83,11 +84,11 @@ const styledLinks = links.map((link) => ({
 }));
 
 const options = {
-  title: { text: "ECharts Sankey Diagram" },
   tooltip: { trigger: "item", triggerOn: "mousemove" },
   series: [
     {
       type: "sankey",
+      draggable: true,
       layout: "none",
       data: nodes.map((node) => ({ name: node.name, itemStyle: node.itemStyle })),
       links: styledLinks,
@@ -95,15 +96,32 @@ const options = {
       lineStyle: { curveness: 0.5 },
       nodeWidth: 30,
       nodeGap: 20,
+      layoutIterations: 0,
+      label: {
+        show: true,
+        formatter: function (params) {
+          return params.name.split("_")[1]; // Show only the status name
+        },
+      },
     },
   ],
+};
+
+// MouseUp event handler to log dragged node positions
+const onChartReady = (chartInstance: echarts.ECharts) => {
+  chartInstance.on("mouseup", function (params) {
+    if (params.componentType === "series" && params.seriesType === "sankey") {
+      console.log(
+        params.data ? `Node "${params.data.name}" moved to: x=${params.data.x}, y=${params.data.y}` : 'Node moved'
+      );
+    }
+  });
 };
 
 export const EchartsSankey3 = () => {
   return (
     <ChartWrapper title="Echarts">
-      <ReactECharts option={options} />
+      <ReactECharts option={options} onChartReady={onChartReady} />
     </ChartWrapper>
   );
 };
-

@@ -70,11 +70,14 @@ const links = [
   { source: "3_In Progress", target: "4_In Progress", value: 12, group: "B-Class" },
   { source: "3_In Progress", target: "4_In Review", value: 1, group: "C-Class" },
   { source: "3_In Progress", target: "4_Done", value: 1, group: "B-Class" },
-  { source: "1_Backlog", target: "2_Backlog", value: 1, group: "D-Class" },
-  { source: "2_Backlog", target: "3_In Progress", value: 1, group: "D-Class" },
+  { source: "1_Backlog", target: "2_Backlog", value: 10, group: "D-Class" },
+  { source: "2_Backlog", target: "3_In Progress", value: 10, group: "D-Class" },
+  { source: "3_In Progress", target: "4_In Progress", value: 9, group: "D-Class" },
   { source: "3_In Progress", target: "4_In Review", value: 1, group: "D-Class" },
   { source: "3_In Progress", target: "4_In Review", value: 4, group: "A-Class" },
 ];
+
+//9 stück in D-Classe [0, 0, 1, 1] hinzugefügt
 
 
 // Apply colors to links

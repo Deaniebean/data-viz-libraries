@@ -14,6 +14,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +25,8 @@ ChartJS.register(
   LineController,
   BarController,
   Tooltip,
-  Legend
+  Legend,
+  annotationPlugin // Register annotation plugin
 );
 
 export const ChartjsPareto = () => {
@@ -39,10 +41,18 @@ export const ChartjsPareto = () => {
       ).length
   );
 
+  // Sort categories based on open issue count
+  const sortedData = categories
+    .map((category, index) => ({ category, count: openIssuesCount[index] }))
+    .sort((a, b) => b.count - a.count);
+
+  const sortedCategories = sortedData.map((item) => item.category);
+  const openIssuesCountSorted = sortedData.map((item) => item.count);
+
   // Calculate cumulative percentage for the line graph
-  const totalOpenIssues = openIssuesCount.reduce((acc, count) => acc + count, 0);
+  const totalOpenIssues = openIssuesCountSorted.reduce((acc, count) => acc + count, 0);
   let cumulativeSum = 0;
-  const cumulativePercentage = openIssuesCount.map((count) => {
+  const cumulativePercentage = openIssuesCountSorted.map((count) => {
     cumulativeSum += count;
     return Math.floor((cumulativeSum / totalOpenIssues) * 100);
   });
@@ -52,12 +62,12 @@ export const ChartjsPareto = () => {
   console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
 
   const data = {
-    labels: categories,
+    labels: sortedCategories,
     datasets: [
       {
         type: 'bar' as const,
         label: 'Open Tickets',
-        data: openIssuesCount,
+        data: openIssuesCountSorted,
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
@@ -68,8 +78,10 @@ export const ChartjsPareto = () => {
         data: cumulativePercentage,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1,
-        yAxisID: 'y-axis-2',
+        borderWidth: 2,
+        pointRadius: 3,
+        fill: false,
+        yAxisID: 'y2',
       },
     ],
   };
@@ -80,35 +92,53 @@ export const ChartjsPareto = () => {
         beginAtZero: true,
         title: {
           display: true,
-          text: 'Open Tickets',
+          text: 'Open Tickets [-]',
         },
+        max: 40,
       },
-      'y-axis-2': {
+      y2: {
         beginAtZero: true,
         position: 'right' as const,
         title: {
           display: true,
-          text: 'Percentage',
+          text: 'Percentage [%]',
         },
         max: 100,
+        grid: {
+          display: false,
+        },
       },
     },
     plugins: {
       annotation: {
         annotations: {
-          line1: {
+          verticalLine: {
             type: 'line',
-            yMin: 0,
-            yMax: 100,
-            xMin: index80 + 0.5,
-            xMax: index80 + 0.5,
+            value: index80 + 0.5,
+            scaleID: 'x',
             borderColor: '#FF4560',
             borderWidth: 2,
+            borderDash: [6, 6],
             label: {
               content: '80% Threshold',
               enabled: true,
-              position: 'center',
+              position: 'top',
               backgroundColor: '#FF4560',
+              color: '#fff',
+            },
+          },
+          horizontalLine: {
+            type: 'line',
+            scaleID: 'y2', // ✅ Corrected spelling (lowercase "s")
+            value: 80,
+            borderColor: 'rgb(255, 99, 132)',
+            borderWidth: 2,
+            borderDash: [6, 6], // Optional for visibility
+            label: {
+              content: '80% Line',
+              enabled: true,
+              position: 'left',
+              backgroundColor: 'rgb(255, 99, 132)',
               color: '#fff',
             },
           },
@@ -116,6 +146,7 @@ export const ChartjsPareto = () => {
       },
     },
   };
+  
 
   return (
     <ChartWrapper title={'Chart.js Pareto'}>

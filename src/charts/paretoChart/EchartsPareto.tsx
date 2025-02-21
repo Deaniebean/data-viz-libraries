@@ -14,6 +14,7 @@ export const EchartsPareto = () => {
         (data) => data.group === category && data.status !== 4
       ).length
   );
+  openIssuesCount.sort((a,b) => b-a)
 
   // Calculate cumulative percentage for the line graph
   const totalOpenIssues = openIssuesCount.reduce((acc, count) => acc + count, 0);

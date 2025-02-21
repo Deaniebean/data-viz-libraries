@@ -18,6 +18,7 @@ export const ApexPareto = () => {
       ).length
   );
 
+  const openIssuesCountSorted = openIssuesCount.sort((a, b) => b - a);
   // Calculate cumulative percentage for the line graph
   const totalOpenIssues = openIssuesCount.reduce((acc, count) => acc + count, 0);
   let cumulativeSum = 0;
@@ -46,14 +47,15 @@ export const ApexPareto = () => {
     },
     yaxis: [{
       title: {
-        text: 'Open Tickets',
+        text: 'Open Tickets [-]',
       }
     }, {
       title: {
-        text: 'Percentage',
+        text: 'Percentage [%]',
       },
       opposite: true,
       max: 100, 
+      min: 0
     }],
     annotations: {
       xaxis: [
@@ -68,6 +70,22 @@ export const ApexPareto = () => {
             },
           }
         }
+      ],
+      yaxis: [
+        {
+          y: 80,
+          yAxisIndex: 1, 
+          borderColor: '#00E396',
+          strokeDashArray: 4,
+          label: {
+            borderColor: '#00E396',
+            style: {
+              color: '#fff',
+              background: '#00E396',
+            },
+
+          }
+        }
       ]
     }
   };
@@ -75,7 +93,7 @@ export const ApexPareto = () => {
     {
       name: 'Open Tickets',
       type: 'column',
-      data: openIssuesCount,
+      data: openIssuesCountSorted,
     },
     {
       name: 'Percentage',

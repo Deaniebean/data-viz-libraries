@@ -45,11 +45,11 @@ export const EchartsPareto = () => {
     yAxis: [
       {
         type: 'value',
-        name: 'Open Tickets',
+        name: 'Open Tickets [-]',
       },
       {
         type: 'value',
-        name: 'Percentage',
+        name: 'Percentage [%]',
         max: 100,
         position: 'right',
       },

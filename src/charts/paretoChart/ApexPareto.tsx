@@ -62,6 +62,7 @@ export const ApexPareto = () => {
         {
           x: categories[index80],
           borderColor: '#FF4560',
+          borderWidth: 3, 
           label: {
             borderColor: '#FF4560',
             style: {
@@ -75,15 +76,17 @@ export const ApexPareto = () => {
         {
           y: 80,
           yAxisIndex: 1, 
-          borderColor: '#00E396',
+          borderColor: '#FF4560',
           strokeDashArray: 4,
+          offsetX: -150,
+          borderWidth: 2, 
+          width: '155%',
           label: {
             borderColor: '#00E396',
             style: {
               color: '#fff',
               background: '#00E396',
             },
-
           }
         }
       ]
@@ -92,13 +95,15 @@ export const ApexPareto = () => {
   const series = [
     {
       name: 'Open Tickets',
-      type: 'column',
+      type: 'bar',
       data: openIssuesCountSorted,
+      color: '#4BC0C0',
     },
     {
       name: 'Percentage',
       type: 'line',
-      data: cumulativePercentage
+      data: cumulativePercentage,
+      color: '#FF6384'
     }
   ];
 

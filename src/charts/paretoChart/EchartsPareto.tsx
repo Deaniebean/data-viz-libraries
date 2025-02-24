@@ -14,7 +14,7 @@ export const EchartsPareto = () => {
         (data) => data.group === category && data.status !== 4
       ).length
   );
-  openIssuesCount.sort((a,b) => b-a)
+  openIssuesCount.sort((a, b) => b - a);
 
   // Calculate cumulative percentage for the line graph
   const totalOpenIssues = openIssuesCount.reduce((acc, count) => acc + count, 0);
@@ -29,14 +29,14 @@ export const EchartsPareto = () => {
   console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
 
   const options = {
-    title: {
-      text: 'Pareto Chart',
-    },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'cross',
       },
+    },
+    legend: {
+      top: 'bottom',
     },
     xAxis: {
       type: 'category',
@@ -52,6 +52,9 @@ export const EchartsPareto = () => {
         name: 'Percentage [%]',
         max: 100,
         position: 'right',
+        splitLine: {
+          show: false,
+        },
       },
     ],
     series: [
@@ -62,6 +65,28 @@ export const EchartsPareto = () => {
         yAxisIndex: 0,
         itemStyle: {
           color: 'rgba(75, 192, 192, 0.8)',
+        },
+        label: {
+          show: true,
+          position: 'top',
+          formatter: '{c}', // '{c}' represents the data value
+          color: '#000000', // Customize the label color if needed
+        },
+        markLine: {
+          symbol: 'none',
+          data: [
+            {
+              xAxis: categories[index80],
+              lineStyle: {
+                color: '#FF4560',
+                width: 2,
+                type: 'dashed',
+              },
+            },
+          ],
+          label: {
+            show: false,
+          },
         },
       },
       {
@@ -75,25 +100,25 @@ export const EchartsPareto = () => {
         lineStyle: {
           width: 2,
         },
-      },
-    ],
-    markLine: {
-      data: [
-        {
-          xAxis: index80 + 0.5,
-          lineStyle: {
-            color: '#FF4560',
-            width: 2,
-          },
+        markLine: {
+          symbol: 'none',
+          data: [
+            {
+              yAxis: 80,
+              yAxisIndex: 1,
+              lineStyle: {
+                color: '#FF4560',
+                width: 2,
+                type: 'dashed',
+              },
+            },
+          ],
           label: {
-            show: true,
-            position: 'end',
-            formatter: '80% Threshold',
-            color: '#FF4560',
+            show: false,
           },
         },
-      ],
-    },
+      },
+    ],
   };
 
   return (

@@ -121,7 +121,7 @@ const onChartReady = (chartInstance: echarts.ECharts) => {
   });
 };
 
-export const EchartsSankey3 = () => {
+export const EchartsSankey2 = () => {
   return (
     <ChartWrapper title="Echarts">
       <ReactECharts option={options} onChartReady={onChartReady} />

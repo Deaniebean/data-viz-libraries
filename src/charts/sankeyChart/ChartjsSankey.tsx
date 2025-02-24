@@ -64,7 +64,9 @@ const data = {
       {
         label: "Sankey Example",
         data: links,
-
+        datalabels: {
+          display: false, // 👈 Prevents labels from appearing on the Sankey chart
+        },
         colorFrom: (c: { dataset: { data: { [x: string]: { from: string; }; }; }; dataIndex: string | number; })  => {
             const fromStatus = extractStatus(c.dataset.data[c.dataIndex].from);
             console.log("Extracted fromStatus:", fromStatus);

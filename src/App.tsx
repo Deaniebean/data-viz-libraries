@@ -68,9 +68,8 @@ function App() {
           <Route path="/chartjs/sankey" element={<ChartjsSankey />} />
           <Route path="/apexcharts/sankey" element={<ApexSankeyChart />} />
           <Route path="/echarts/sankey" element={<EchartsSankey />} />
-          <Route path="/echarts/sankey2" element={<EchartsSankey2 />} />
-          <Route path="/echarts/sankey3" element={<EchartsSankey3 />} />
-          <Route path="/echarts/sankey4" element={<EchartsSankeyTest />} />
+          <Route path="/echarts/sankey2" element={<EchartsSankey3 />} />
+          <Route path="/echarts/sankey3" element={<EchartsSankeyTest />} />
         </Routes>
       </div>
     </div>

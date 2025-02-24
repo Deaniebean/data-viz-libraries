@@ -55,6 +55,9 @@ export const ApexChartsCustom2 = () => {
       animations: {
         enabled: false,
       },
+      toolbar: {
+        show: false
+      }
     },
     fill: {
       type: ["gradient", "solid"],

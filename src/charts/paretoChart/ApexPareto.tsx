@@ -34,6 +34,9 @@ export const ApexPareto = () => {
     chart: {
       type: 'line' as const,
       height: 350,
+      toolbar: {
+        show: false
+      }
     },
     stroke: {
       width: [4, 4],

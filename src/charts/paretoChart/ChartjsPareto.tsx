@@ -15,6 +15,7 @@ import {
   Legend,
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(
   CategoryScale,
@@ -24,6 +25,7 @@ ChartJS.register(
   PointElement,
   LineController,
   BarController,
+  ChartDataLabels,
   Tooltip,
   Legend,
   annotationPlugin // Register annotation plugin
@@ -80,13 +82,22 @@ export const ChartjsPareto = () => {
         type: 'bar' as const,
         label: 'Open Tickets',
         data: openIssuesCountSorted,
-        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+        backgroundColor: 'rgba(75, 192, 192, 1)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
+        datalabels: {
+          display: 'auto',
+          color: '#000000',
+          anchor: 'end',
+          align: 'top',
+          font: {
+            weight: 'bold',
+          },
+          formatter: Math.round,
+        },
       },
     ],
   };
-
   const options = {
     scales: {
       y: {
@@ -99,21 +110,23 @@ export const ChartjsPareto = () => {
       },
       y2: {
         beginAtZero: true,
-        position: 'right' as const,
+        position: 'right',
         title: {
           display: true,
           text: 'Percentage [%]',
         },
         max: 100,
         grid: {
-          display: false,
+          drawOnChartArea: false,
         },
       },
       x: {
-        grid: {
-            display: false 
-        }
-    }
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Categories',
+        },
+      },
     },
     plugins: {
       annotation: {
@@ -135,11 +148,11 @@ export const ChartjsPareto = () => {
           },
           horizontalLine: {
             type: 'line',
-            scaleID: 'y2', // ✅ Corrected spelling (lowercase "s")
+            scaleID: 'y2',
             value: 80,
             borderColor: 'rgb(255, 99, 132)',
             borderWidth: 2,
-            borderDash: [6, 6], // Optional for visibility
+            borderDash: [6, 6],
             label: {
               content: '80% Line',
               enabled: true,

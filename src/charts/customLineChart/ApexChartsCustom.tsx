@@ -34,6 +34,9 @@ export const ApexChartsCustom = () => {
       animations: {
         enabled: false
       },
+      toolbar: {
+        show: false
+      }
     },
     colors: chartData.map((data) =>
       data.actual > data.target ? "#14b425" : "#ff0000"

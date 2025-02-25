@@ -121,10 +121,46 @@ const onChartReady = (chartInstance: echarts.ECharts) => {
   });
 };
 
+
+  // Custom Legend Component with grouped classes
+  const Legend = () => (
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+      {/* Group A-Class and B-Class */}
+      <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
+        <span
+          style={{
+            width: '20px',
+            height: '20px',
+            backgroundColor: "rgba(255, 0, 0, 0.3)", // Red for A-Class
+            borderRadius: '50%',
+            marginRight: '5px',
+          }}
+        />
+        <span>A-Class & B-Class</span>
+      </div>
+
+      {/* Group C-Class and D-Class */}
+      <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
+        <span
+          style={{
+            width: '20px',
+            height: '20px',
+            backgroundColor: "rgba(128, 128, 128, 0.3)", // Grey for C-Class
+            borderRadius: '50%',
+            marginRight: '5px',
+          }}
+        />
+        <span>C-Class & D-Class</span>
+      </div>
+    </div>
+  );
+
+
 export const EchartsSankey2 = () => {
   return (
     <ChartWrapper title="Echarts">
       <ReactECharts option={options} onChartReady={onChartReady} />
+      <Legend/>
     </ChartWrapper>
   );
 };

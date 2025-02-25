@@ -23,7 +23,6 @@ import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
 import { EchartsSankey2 } from "./charts/sankeyChart/sankeyforPareto/EchartsSankey2";
 import { EchartsSankey3 } from "./charts/sankeyChart/EchartsSankey3";
 
-
 function App() {
   return (
     <div className="app-container">

@@ -32,10 +32,9 @@ export const RechartCustom = () => {
 
   return (
     <ChartWrapper title="Recharts Custom">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer>
         <LineChart
           data={chartData}
-          margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
         >
           <defs>
             <linearGradient id="gradient" x1="0" y1="0" x2="100%" y2="0">

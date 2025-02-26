@@ -13,15 +13,26 @@ export const ApexChartsCustom2 = () => {
   const allMonths: string[] = chartData.map((data) => data.month);
   console.log("All months:", allMonths);
 
-  // Create a series where each point fills non-active values with null
+  // Create a series where each point includes fillColor for markers
   const series = [
     {
       name: "Actual",
-      data: chartData.map((data) => data.actual),
+      data: chartData.map((data) => ({
+        x: data.month,
+        y: data.actual,
+        fillColor: data.actual >= data.target ? "#14b425" : "#ff0000",
+      })),
     },
     {
       name: "Target",
-      data: chartData.map((data) => data.target),
+      data: chartData.map((data) => ({
+        x: data.month,
+        y: data.target,
+      })),
+      type: "line",
+      stroke: {
+        curve: "stepline",
+      },
     },
   ];
 
@@ -56,8 +67,8 @@ export const ApexChartsCustom2 = () => {
         enabled: false,
       },
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
     fill: {
       type: ["gradient", "solid"],
@@ -78,6 +89,7 @@ export const ApexChartsCustom2 = () => {
       },
     },
     stroke: {
+      curve: ["straight", "stepline"],
       dashArray: [0, 5],
     },
     xaxis: {
@@ -91,6 +103,7 @@ export const ApexChartsCustom2 = () => {
     },
     markers: {
       size: 4,
+      colors: undefined, // Use fillColor from data points
     },
   };
 
@@ -98,13 +111,7 @@ export const ApexChartsCustom2 = () => {
 
   return (
     <ChartWrapper title="ApexCharts Custom">
-      <Chart
-        type="line"
-        options={chartOptions}
-        series={series}
-        width="100%"
-        height="100%"
-      />
+      <Chart type="line" options={chartOptions} series={series} />
     </ChartWrapper>
   );
 };

@@ -116,10 +116,6 @@ export const Navbar = () => {
               <li>
                 <NavLink to="/echarts/line-chart-custom">Echarts</NavLink>
               </li>
-              <li>
-                <NavLink to="/rechart/line-chart-custom">Recharts</NavLink>
-              </li>
-              
             </ul>
           </li>
           <li className="title">

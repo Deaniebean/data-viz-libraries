@@ -34,6 +34,11 @@ export const EchartsLineChart = () => {
       type: "value",
       axisLine: { show: true },
     },
+    legend: {
+      orient: "horizontal",
+      left: "center",
+      top: "top",
+    },
     series: [
       {
         name: "Actual",
@@ -49,20 +54,34 @@ export const EchartsLineChart = () => {
             y2: 0,
             colorStops: colorStops.flatMap((stop) => [
               { offset: stop?.offset, color: stop?.color },
-              { offset: stop?.offset , color: stop?.nextColor },
+              { offset: stop?.offset, color: stop?.nextColor },
             ]),
             global: false,
           },
         },
+        itemStyle: {
+          color: (params) => {
+            const index = params.dataIndex;
+            return chartData[index].actual >= chartData[index].target
+              ? "#14b425" 
+              : "#ff0000"; 
+          },
+        },
+        symbol: "circle", 
+        symbolSize: 8, 
       },
       {
         name: "Target",
         data: chartData.map((data) => data.target),
         type: "line",
+        step: "end",
         lineStyle: {
           width: 3,
           color: "black",
           type: "dashed",
+        },
+        itemStyle: {
+          color: "black",
         },
       },
     ],

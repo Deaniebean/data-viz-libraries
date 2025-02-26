@@ -69,8 +69,8 @@ export const EchartsPareto = () => {
         label: {
           show: true,
           position: 'top',
-          formatter: '{c}', // '{c}' represents the data value
-          color: '#000000', // Customize the label color if needed
+          formatter: '{c}', 
+          color: '#000000', 
         },
         markLine: {
           symbol: 'none',

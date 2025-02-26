@@ -10,8 +10,6 @@ import { Rechart } from "./charts/basicCharts/Rechart";
 import { ApexCharts } from "./charts/basicCharts/ApexCharts";
 import { D3 } from "./charts/basicCharts/D3";
 import { Chartjs } from "./charts/basicCharts/Chartjs";
-import { RechartCustom } from "./charts/customLineChart/RechartCustom";
-import { ChartjsCustom } from "./charts/customLineChart/Chartjs";
 import { ApexChartsCustom2 } from "./charts/customLineChart/ApexChartsCustom2";
 import { EchartsLineChart } from "./charts/customLineChart/EchartsLineChart";
 import { ApexPareto } from "./charts/paretoChart/ApexPareto";
@@ -22,6 +20,7 @@ import { EchartsSankey } from "./charts/sankeyChart/EchartsSankey";
 import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
 import { EchartsSankey2 } from "./charts/sankeyChart/sankeyforPareto/EchartsSankey2";
 import { EchartsSankey3 } from "./charts/sankeyChart/EchartsSankey3";
+import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
 
 function App() {
   return (
@@ -40,10 +39,6 @@ function App() {
           <Route path="/Plotly/line-chart" element={<PlotlyChart />} />
           <Route path="/rechart/line-chart" element={<Rechart />} />
           <Route path="/d3/line-chart" element={<D3 />} />
-          <Route
-            path="/rechart/line-chart-custom"
-            element={<RechartCustom />}
-          />
           <Route path="/apexcharts/line-chart" element={<ApexCharts />} />
           <Route
             path="/apexcharts/line-chart-custom"

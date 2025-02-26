@@ -61,8 +61,6 @@ export const ApexChartsCustom = () => {
         type="line"
         options={chartOptions}
         series={series}
-        width="100%"
-        height="100%"
       />
     </ChartWrapper>
   );

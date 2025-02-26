@@ -77,7 +77,7 @@ export const ApexChartsCustom2 = () => {
         shade: "dark",
         type: "horizontal",
         shadeIntensity: 0.5,
-        gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+        gradientToColors: undefined,
         inverseColors: true,
         opacityFrom: 1,
         opacityTo: 1,

@@ -70,6 +70,13 @@ export const ChartjsCustom = () => {
       },
     },
     scales: {
+      y: {
+        title:{
+        display: true,
+        text: "Number of tickets [-]",
+      },
+      min: 0,
+    },
       x: {
         grid: {
           display: false,

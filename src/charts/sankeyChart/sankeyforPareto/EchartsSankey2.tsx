@@ -4,9 +4,9 @@ import { ChartWrapper } from "../../../common/chartWrapper";
 // Define colors for groups
 const groupColors: Record<string, string> = {
   "A-Class": "#FF0000", // Red
-  "B-Class": "#FF0000", // Blue
+  "B-Class": "#FF0000", //Red
   "C-Class": "#808080", // Grey
-  "D-Class": "#808080", // Magenta
+  "D-Class": "#808080", // Grey
 };
 
 // Define colors for statuses
@@ -68,8 +68,8 @@ const links = [
   { source: "3_Backlog", target: "4_Backlog", value: 13, group: "A-Class" },
   { source: "2_Backlog", target: "3_In Progress", value: 13, group: "B-Class" },
   { source: "3_In Progress", target: "4_In Progress", value: 12, group: "B-Class" },
-  { source: "3_In Progress", target: "4_In Review", value: 1, group: "C-Class" },
-  { source: "3_In Progress", target: "4_Done", value: 1, group: "B-Class" },
+  { source: "3_In Progress", target: "4_In Review", value: 5, group: "C-Class" },
+  { source: "3_In Progress", target: "4_Done", value: 10, group: "B-Class" },
   { source: "1_Backlog", target: "2_Backlog", value: 10, group: "D-Class" },
   { source: "2_Backlog", target: "3_In Progress", value: 10, group: "D-Class" },
   { source: "3_In Progress", target: "4_In Progress", value: 9, group: "D-Class" },
@@ -83,11 +83,17 @@ const links = [
 // Apply colors to links
 const styledLinks = links.map((link) => ({
   ...link,
-  lineStyle: { color: groupColors[link.group] || "#CCCCCC" },
+  lineStyle: {
+    color: groupColors[link.group] || "#CCCCCC",
+    opacity: groupColors[link.group] === "#808080" ? 0.2 : 0.7,
+  },
 }));
 
 const options = {
   tooltip: { trigger: "item", triggerOn: "mousemove" },
+  textStyle: {
+    fontFamily: 'Arial, sans-serif'
+},
   series: [
     {
       type: "sankey",
@@ -131,12 +137,12 @@ const onChartReady = (chartInstance: echarts.ECharts) => {
           style={{
             width: '20px',
             height: '20px',
-            backgroundColor: "rgba(255, 0, 0, 0.3)", // Red for A-Class
+            backgroundColor: "rgba(255, 0, 0, 0.7)", // Red for A-Class
             borderRadius: '50%',
             marginRight: '5px',
           }}
         />
-        <span>A-Class & B-Class</span>
+        <span  style={{fontFamily: 'Arial, sans-serif'}}>A-Class & B-Class</span>
       </div>
 
       {/* Group C-Class and D-Class */}
@@ -145,12 +151,12 @@ const onChartReady = (chartInstance: echarts.ECharts) => {
           style={{
             width: '20px',
             height: '20px',
-            backgroundColor: "rgba(128, 128, 128, 0.3)", // Grey for C-Class
+            backgroundColor: "rgba(128, 128, 128, 0.3)",
             borderRadius: '50%',
             marginRight: '5px',
           }}
         />
-        <span>C-Class & D-Class</span>
+        <span style={{fontFamily: 'Arial, sans-serif'}}>C-Class & D-Class</span>
       </div>
     </div>
   );

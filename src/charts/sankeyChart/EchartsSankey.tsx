@@ -48,9 +48,6 @@ export const EchartsSankey = () => {
   });
 
   const options = {
-    title: {
-      text: "Sankey Diagram",
-    },
     tooltip: {
       trigger: "item",
       triggerOn: "mousemove",

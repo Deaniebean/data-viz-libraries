@@ -69,7 +69,8 @@ export const ApexChartsCustom2 = () => {
       toolbar: {
         show: false,
       },
-    },
+     
+    }, 
     fill: {
       type: ["gradient", "solid"],
       colors: ["#000000"],
@@ -99,7 +100,16 @@ export const ApexChartsCustom2 = () => {
       },
     },
     yaxis: {
+      title: {
+        text: "Number of Tickets [-]"
+      },
       min: 0,
+      axisBorder: {
+        show: true,
+      },
+      axisTicks: {
+        show: true,
+      }
     },
     markers: {
       size: 4,

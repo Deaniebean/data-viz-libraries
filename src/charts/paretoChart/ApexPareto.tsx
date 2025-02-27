@@ -51,6 +51,12 @@ export const ApexPareto = () => {
     yaxis: [{
       title: {
         text: 'Open Tickets [-]',
+      },
+      axisBorder: {
+        show: true,
+      },
+      axisTicks: {
+        show: true,
       }
     }, {
       title: {
@@ -58,7 +64,13 @@ export const ApexPareto = () => {
       },
       opposite: true,
       max: 100, 
-      min: 0
+      min: 0,
+      axisBorder: {
+        show: true,
+      },
+      axisTicks: {
+        show: true,
+      }
     }],
     annotations: {
       xaxis: [

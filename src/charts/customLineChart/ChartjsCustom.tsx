@@ -13,6 +13,7 @@ import {
 import { ChartWrapper } from "../../common/chartWrapper";
 import { useEffect, useRef, useState } from "react";
 import { Data } from "../../utils/DataLineChart";
+import { formatMonths } from "../../utils/Months";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -30,10 +31,14 @@ export const ChartjsCustom = () => {
       };
     }, []);
 
+  const allMonths: string[] = formatMonths(chartData.map((data) => data.month));
+  console.log("All months:", allMonths);
+
   const data = {
-    labels: chartData.map((data) => data.month),
+    labels: allMonths,
     datasets: [
       {
+        
         label: "Value",
         data: chartData.map((data) => data.actual),
         borderWidth: 2,
@@ -49,6 +54,9 @@ export const ChartjsCustom = () => {
               : "rgb(255, 0, 0)"; 
           },
         },
+        datalabels: {
+          display: false, 
+        },
       },
       {
         label: "Threshold",
@@ -58,6 +66,9 @@ export const ChartjsCustom = () => {
         borderDash: [5, 5], 
         pointRadius: 0, 
         stepped:true,
+        datalabels: {
+          display: false, 
+        },
       },
     ],
   };
@@ -79,7 +90,11 @@ export const ChartjsCustom = () => {
     },
       x: {
         grid: {
-          display: false,
+          drawOnChartArea: false,
+          },
+        ticks: {
+          display: true,
+        
         },
       },
     },

@@ -24,10 +24,10 @@ const getStatusName = (status: number) => {
   };
 
   const colors = {
-    "Backlog": "#808080",
-    "In Progress": "#FFA500",
-    "In Review": "#FF69B4" ,
-    "Done": "#008000",
+    "Backlog": "#80808050",
+    "In Progress": "#FFA50050",
+    "In Review": "#FF69B450" ,
+    "Done": "#00800050",
   };
   
   const getHover = (key: keyof typeof colors) => colors[key];
@@ -65,7 +65,7 @@ const data = {
         label: "Sankey Example",
         data: links,
         datalabels: {
-          display: false, // 👈 Prevents labels from appearing on the Sankey chart
+          display: false, 
         },
         colorFrom: (c: { dataset: { data: { [x: string]: { from: string; }; }; }; dataIndex: string | number; })  => {
             const fromStatus = extractStatus(c.dataset.data[c.dataIndex].from);

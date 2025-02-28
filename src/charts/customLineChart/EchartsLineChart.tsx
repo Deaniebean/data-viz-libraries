@@ -2,10 +2,12 @@ import ReactECharts from "echarts-for-react";
 import { Data } from "../../utils/DataLineChart";
 import { useState } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
+import { formatMonths } from "../../utils/Months";
 
 export const EchartsLineChart = () => {
   const [chartData] = useState(Data);
-
+  const allMonths: string[] = formatMonths(chartData.map((data) => data.month));
+  
   // Generate dynamic gradient stops based on actual vs target
   const colorStops = chartData
     .map((data, index) => {
@@ -27,11 +29,14 @@ export const EchartsLineChart = () => {
     grid: { top: 20, right: 20, bottom: 20, left: 30 },
     xAxis: {
       type: "category",
-      data: chartData.map((data) => data.month),
+      data: allMonths,
       boundaryGap: false,
     },
     yAxis: {
       type: "value",
+      title: {
+        text: "Number of tickets [-]",
+      },
       axisLine: { show: true },
     },
     legend: {

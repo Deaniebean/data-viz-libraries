@@ -2,6 +2,7 @@ import Chart from "react-apexcharts";
 import { Data } from "../../utils/DataLineChart";
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
+import { formatMonths } from "../../utils/Months"; // Import the function
 
 export const ApexChartsCustom2 = () => {
   const [chartData] = useState(Data);
@@ -10,15 +11,16 @@ export const ApexChartsCustom2 = () => {
     console.log("Initial chartData:", chartData);
   }, [chartData]);
 
-  const allMonths: string[] = chartData.map((data) => data.month);
-  console.log("All months:", allMonths);
+
+  const allMonths: string[] = formatMonths(chartData.map((data) => data.month));
+
 
   // Create a series where each point includes fillColor for markers
   const series = [
     {
       name: "Actual",
       data: chartData.map((data) => ({
-        x: data.month,
+        x: formatMonths([data.month])[0], // Convert individual month
         y: data.actual,
         fillColor: data.actual >= data.target ? "#14b425" : "#ff0000",
       })),
@@ -26,7 +28,7 @@ export const ApexChartsCustom2 = () => {
     {
       name: "Target",
       data: chartData.map((data) => ({
-        x: data.month,
+        x: formatMonths([data.month])[0], // Convert individual month
         y: data.target,
       })),
       type: "line",
@@ -69,8 +71,7 @@ export const ApexChartsCustom2 = () => {
       toolbar: {
         show: false,
       },
-     
-    }, 
+    },
     fill: {
       type: ["gradient", "solid"],
       colors: ["#000000"],
@@ -101,7 +102,7 @@ export const ApexChartsCustom2 = () => {
     },
     yaxis: {
       title: {
-        text: "Number of Tickets [-]"
+        text: "Number of Tickets [-]",
       },
       min: 0,
       axisBorder: {
@@ -109,7 +110,7 @@ export const ApexChartsCustom2 = () => {
       },
       axisTicks: {
         show: true,
-      }
+      },
     },
     markers: {
       size: 4,

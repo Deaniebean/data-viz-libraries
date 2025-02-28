@@ -43,9 +43,13 @@ export const EchartsPareto = () => {
       data: categories,
     },
     yAxis: [
-      {
+      { 
+        axisTick: {
+          show: true,
+        },
         type: 'value',
         name: 'Open Tickets [-]',
+        axisLine: { show: true },
       },
       {
         type: 'value',
@@ -55,7 +59,14 @@ export const EchartsPareto = () => {
         splitLine: {
           show: false,
         },
+        axisLine: { 
+          show: true
+         },
+        axisTick: {
+          show: true,
+        },
       },
+      
     ],
     series: [
       {

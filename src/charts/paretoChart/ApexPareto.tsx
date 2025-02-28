@@ -93,9 +93,8 @@ export const ApexPareto = () => {
           yAxisIndex: 1, 
           borderColor: '#FF4560',
           strokeDashArray: 4,
-          offsetX: -150,
           borderWidth: 2, 
-          width: '155%',
+          width: '120%',
           label: {
             borderColor: '#00E396',
             style: {

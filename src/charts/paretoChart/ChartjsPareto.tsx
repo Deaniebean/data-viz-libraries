@@ -66,8 +66,10 @@ export const ChartjsPareto = () => {
   const data = {
     labels: sortedCategories,
     datasets: [
-     
       {
+        datalabels: {
+        display: false, 
+      },
         type: 'line' as const,
         label: 'Percentage',
         data: cumulativePercentage,
@@ -107,6 +109,7 @@ export const ChartjsPareto = () => {
           text: 'Open Tickets [-]',
         },
         max: 40,
+          axisLine: { show: true },
       },
       y2: {
         beginAtZero: true,
@@ -126,6 +129,9 @@ export const ChartjsPareto = () => {
           display: true,
           text: 'Categories',
         },
+        grid: {
+          display: false,
+        }
       },
     },
     plugins: {

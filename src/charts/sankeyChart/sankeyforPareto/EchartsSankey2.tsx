@@ -42,7 +42,7 @@ const nodes = [
 
 // Define links
 const links = [
-  { source: "2_Backlog", target: "3_Backlog", value: 1, group: "B-Class" },
+  { source: "2_Backlog", target: "3_Backlog", value: 3, group: "B-Class" },
   { source: "3_Backlog", target: "4_Backlog", value: 14, group: "B-Class" },
   { source: "2_Backlog", target: "3_In Progress", value: 25, group: "A-Class" },
   { source: "3_In Progress", target: "4_In Progress", value: 21, group: "A-Class" },
@@ -56,13 +56,13 @@ const links = [
   { source: "3_Done", target: "4_Done", value: 13, group: "D-Class" },
   { source: "2_In Progress", target: "3_In Progress", value: 3, group: "C-Class" },
   { source: "3_In Progress", target: "4_Done", value: 2, group: "C-Class" },
-  { source: "1_In Review", target: "2_Done", value: 1, group: "D-Class" },
+  { source: "1_In Review", target: "2_Done", value: 5, group: "D-Class" },
   { source: "1_Backlog", target: "2_In Progress", value: 1, group: "D-Class" },
   { source: "2_In Progress", target: "3_In Review", value: 1, group: "D-Class" },
   { source: "3_In Review", target: "4_Done", value: 1, group: "D-Class" },
   { source: "3_In Review", target: "4_In Review", value: 13, group: "C-Class" },
-  { source: "1_In Progress", target: "2_In Review", value: 1, group: "D-Class" },
-  { source: "2_In Review", target: "3_In Review", value: 1, group: "D-Class" },
+  { source: "1_In Progress", target: "2_In Review", value: 5, group: "D-Class" },
+  { source: "2_In Review", target: "3_In Review", value: 3, group: "D-Class" },
   { source: "3_In Review", target: "4_In Review", value: 1, group: "D-Class" },
   { source: "2_Backlog", target: "3_Backlog", value: 1, group: "A-Class" },
   { source: "3_Backlog", target: "4_Backlog", value: 13, group: "A-Class" },
@@ -74,7 +74,7 @@ const links = [
   { source: "2_Backlog", target: "3_In Progress", value: 10, group: "D-Class" },
   { source: "3_In Progress", target: "4_In Progress", value: 9, group: "D-Class" },
   { source: "3_In Progress", target: "4_In Review", value: 1, group: "D-Class" },
-  { source: "3_In Progress", target: "4_In Review", value: 4, group: "A-Class" },
+  { source: "3_In Progress", target: "4_In Review", value: 8, group: "A-Class" },
 ];
 
 //9 stück in D-Classe [0, 0, 1, 1] hinzugefügt
@@ -85,7 +85,7 @@ const styledLinks = links.map((link) => ({
   ...link,
   lineStyle: {
     color: groupColors[link.group] || "#CCCCCC",
-    opacity: groupColors[link.group] === "#808080" ? 0.2 : 0.7,
+    opacity: groupColors[link.group] === "#808080" ? 0.2 : 0.5,
   },
 }));
 
@@ -137,7 +137,7 @@ const onChartReady = (chartInstance: echarts.ECharts) => {
           style={{
             width: '20px',
             height: '20px',
-            backgroundColor: "rgba(255, 0, 0, 0.7)", // Red for A-Class
+            backgroundColor: "rgba(255, 0, 0, 0.5)", // Red for A-Class
             borderRadius: '50%',
             marginRight: '5px',
           }}

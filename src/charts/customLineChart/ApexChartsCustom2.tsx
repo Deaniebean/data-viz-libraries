@@ -91,7 +91,7 @@ export const ApexChartsCustom2 = () => {
       },
     },
     stroke: {
-      curve: ["straight", "stepline"],
+      curve: ["straight" as const, "stepline" as const],
       dashArray: [0, 5],
     },
     xaxis: {

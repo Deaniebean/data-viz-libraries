@@ -65,7 +65,7 @@ export const EchartsLineChart = () => {
           },
         },
         itemStyle: {
-          color: (params) => {
+          color: (params: { dataIndex: number }) => {
             const index = params.dataIndex;
             return chartData[index].actual >= chartData[index].target
               ? "#14b425" 

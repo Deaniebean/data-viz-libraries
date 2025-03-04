@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
   ChartOptions,
+  ScriptableLineSegmentContext,
 } from "chart.js";
 import { ChartWrapper } from "../../common/chartWrapper";
 import { useEffect, useRef, useState } from "react";
@@ -47,11 +48,11 @@ export const ChartjsCustom = () => {
             data.actual >= data.target ? "rgb(20, 180, 37)" : "rgb(255, 0, 0)"
           ),
         segment: {
-          borderColor: (ctx) => {
+          borderColor: (ctx: ScriptableLineSegmentContext) => {
             const index = ctx.p1DataIndex;
             return chartData[index].actual >= chartData[index].target
-              ? "rgb(20, 180, 37)" 
-              : "rgb(255, 0, 0)"; 
+              ? "rgb(20, 180, 37)"
+              : "rgb(255, 0, 0)";
           },
         },
         datalabels: {

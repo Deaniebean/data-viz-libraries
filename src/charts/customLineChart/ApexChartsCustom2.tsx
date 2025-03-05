@@ -116,6 +116,19 @@ export const ApexChartsCustom2 = () => {
       size: 4,
       colors: undefined, // Use fillColor from data points
     },
+    legend: {
+      show: true,
+      markers: {
+          fillColors: ["#14b425" , '#000000']
+      }
+  },
+  tooltip: {
+    enabled: true,
+    marker: {
+      show: false,
+    }
+  }
+  
   };
 
   console.log("Chart options:", chartOptions);

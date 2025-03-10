@@ -30,7 +30,7 @@ export const ApexPareto = () => {
     // Find the index where the cumulative percentage reaches or exceeds 80%
     const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
     const barColors = openIssuesCountSorted.map((_, i) =>
-      i <= index80 ? "#FF0000" : "#0000FF"
+      i <= index80 ? "#c1121c" : "#2E5894"
     );
     
     const options = {
@@ -89,7 +89,7 @@ export const ApexPareto = () => {
         xaxis: [
           {
             x: categories[index80],
-            borderColor: '#1F51FF',
+            borderColor: '#2E5894',
             borderWidth: 3, 
             label: {
               borderColor: '#FF4560',
@@ -104,7 +104,7 @@ export const ApexPareto = () => {
           {
             y: 80,
             yAxisIndex: 1, 
-            borderColor: '#1F51FF',
+            borderColor: '#2E5894',
             strokeDashArray: 4,
             borderWidth: 2, 
             width: '120%',

@@ -28,7 +28,7 @@ export const EchartsPareto = () => {
   const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
   console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
   const barColors = openIssuesCount.map((_, i) =>
-    i <= index80 ? "#FF0000" : "#0000FF"
+    i <= index80 ? "#c1121c" : "#2E5894"
   );
   
   const options = {
@@ -91,7 +91,7 @@ export const EchartsPareto = () => {
             {
               xAxis: categories[index80],
               lineStyle: {
-                color: "#1F51FF",
+                color: "#2E5894",
                 width: 2,
                 type: "dashed",
               },

@@ -64,7 +64,7 @@ export const ChartjsPareto = () => {
   console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
 
   const barColors = openIssuesCountSorted.map((_, i) =>
-    i <= index80 ? "#FF0000" : "#0000FF"
+    i <= index80 ? "#c1121c" : "#2E5894"
   );
   
   const data = {
@@ -145,14 +145,14 @@ export const ChartjsPareto = () => {
             type: 'line',
             value: index80 + 0.5,
             scaleID: 'x',
-            borderColor: 'rgb(31,81,255)',
+            borderColor: '#2E5894',
             borderWidth: 2,
             borderDash: [6, 6],
             label: {
               content: '80% Threshold',
               enabled: true,
               position: 'top',
-              backgroundColor: 'rgb(31,81,255)',
+              backgroundColor: '#2E5894',
               color: '#fff',
             },
           },
@@ -160,14 +160,14 @@ export const ChartjsPareto = () => {
             type: 'line',
             scaleID: 'y2',
             value: 80,
-            borderColor: '	rgb(31,81,255)',
+            borderColor: '#2E5894',
             borderWidth: 2,
             borderDash: [6, 6],
             label: {
               content: '80% Line',
               enabled: true,
               position: 'left',
-              backgroundColor: 'rgb(31,81,255)',
+              backgroundColor: '#2E5894',
               color: '#fff',
             },
           },

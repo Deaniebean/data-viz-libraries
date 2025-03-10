@@ -63,6 +63,10 @@ export const ChartjsPareto = () => {
   const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
   console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
 
+  const barColors = openIssuesCountSorted.map((_, i) =>
+    i <= index80 ? "#FF0000" : "#0000FF"
+  );
+  
   const data = {
     labels: sortedCategories,
     datasets: [
@@ -73,8 +77,8 @@ export const ChartjsPareto = () => {
         type: 'line' as const,
         label: 'Percentage',
         data: cumulativePercentage,
-        backgroundColor: 'rgba(255, 99, 132, 1)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: '#4CBB17',
+        borderColor: '#4CBB17',
         borderWidth: 2,
         pointRadius: 3,
         fill: false,
@@ -84,8 +88,8 @@ export const ChartjsPareto = () => {
         type: 'bar' as const,
         label: 'Open Tickets',
         data: openIssuesCountSorted,
-        backgroundColor: 'rgba(75, 192, 192, 1)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: barColors, 
+        borderColor: barColors,
         borderWidth: 1,
         datalabels: {
           display: 'auto',
@@ -141,14 +145,14 @@ export const ChartjsPareto = () => {
             type: 'line',
             value: index80 + 0.5,
             scaleID: 'x',
-            borderColor: '#FF4560',
+            borderColor: 'rgb(31,81,255)',
             borderWidth: 2,
             borderDash: [6, 6],
             label: {
               content: '80% Threshold',
               enabled: true,
               position: 'top',
-              backgroundColor: '#FF4560',
+              backgroundColor: 'rgb(31,81,255)',
               color: '#fff',
             },
           },
@@ -156,14 +160,14 @@ export const ChartjsPareto = () => {
             type: 'line',
             scaleID: 'y2',
             value: 80,
-            borderColor: 'rgb(255, 99, 132)',
+            borderColor: '	rgb(31,81,255)',
             borderWidth: 2,
             borderDash: [6, 6],
             label: {
               content: '80% Line',
               enabled: true,
               position: 'left',
-              backgroundColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgb(31,81,255)',
               color: '#fff',
             },
           },

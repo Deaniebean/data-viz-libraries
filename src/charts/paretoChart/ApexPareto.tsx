@@ -29,98 +29,115 @@ export const ApexPareto = () => {
 
     // Find the index where the cumulative percentage reaches or exceeds 80%
     const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
-
-  const options = {
-    chart: {
-      type: 'line' as const,
-      height: 350,
-      toolbar: {
-        show: false
-      }
-    },
-    stroke: {
-      width: [4, 4],
-      curve: 'smooth' as const,
-    },
-    dataLabels: {
-      enabled: true,
-    },
-    xaxis: {
-      categories: categories,
-    },
-    yaxis: [{
-      title: {
-        text: 'Open Tickets [-]',
+    const barColors = openIssuesCountSorted.map((_, i) =>
+      i <= index80 ? "#FF0000" : "#0000FF"
+    );
+    
+    const options = {
+      chart: {
+        type: 'bar' as const,
+        height: 350,
+        toolbar: {
+          show: false
+        }
       },
-      axisBorder: {
-        show: true,
+      plotOptions: {
+        bar: {
+          distributed: false, // Prevents ApexCharts from overriding colors
+        }
       },
-      axisTicks: {
-        show: true,
-      }
-    }, {
-      title: {
-        text: 'Percentage [%]',
+      dataLabels: {
+        enabled: false,
       },
-      opposite: true,
-      max: 100, 
-      min: 0,
-      axisBorder: {
-        show: true,
+      xaxis: {
+        categories: categories,
       },
-      axisTicks: {
-        show: true,
-      }
-    }],
-    annotations: {
-      xaxis: [
+      yaxis: [
         {
-          x: categories[index80],
-          borderColor: '#FF4560',
-          borderWidth: 3, 
-          label: {
-            borderColor: '#FF4560',
-            style: {
-              color: '#fff',
-              background: '#FF4560',
-            },
+          title: {
+            text: 'Open Tickets [-]',
+          },
+          axisBorder: {
+            show: true,
+          },
+          axisTicks: {
+            show: true,
+          }
+        },
+        {
+          title: {
+            text: 'Percentage [%]',
+          },
+          opposite: true,
+          max: 100, 
+          min: 0,
+          axisBorder: {
+            show: true,
+          },
+          axisTicks: {
+            show: true,
           }
         }
       ],
-      yaxis: [
-        {
-          y: 80,
-          yAxisIndex: 1, 
-          borderColor: '#FF4560',
-          strokeDashArray: 4,
-          borderWidth: 2, 
-          width: '120%',
-          label: {
-            borderColor: '#00E396',
-            style: {
-              color: '#fff',
-              background: '#00E396',
-            },
+      stroke: {
+         width: [0, 3] 
+      },
+      fill: {
+        opacity: 1, // Ensure solid colors
+      },
+      annotations: {
+        xaxis: [
+          {
+            x: categories[index80],
+            borderColor: '#1F51FF',
+            borderWidth: 3, 
+            label: {
+              borderColor: '#FF4560',
+              style: {
+                color: '#fff',
+                background: '#FF4560',
+              },
+            }
           }
-        }
-      ]
-    }
-  };
-  const series = [
-    {
-      name: 'Open Tickets',
-      type: 'bar',
-      data: openIssuesCountSorted,
-      color: '#4BC0C0',
-    },
-    {
-      name: 'Percentage',
-      type: 'line',
-      data: cumulativePercentage,
-      color: '#FF6384'
-    }
-  ];
-
+        ],
+        yaxis: [
+          {
+            y: 80,
+            yAxisIndex: 1, 
+            borderColor: '#1F51FF',
+            strokeDashArray: 4,
+            borderWidth: 2, 
+            width: '120%',
+            label: {
+              borderColor: '#00E396',
+              style: {
+                color: '#fff',
+                background: '#00E396',
+              },
+            }
+          }
+        ]
+      }
+    };
+    
+    const series = [
+      {
+        name: 'Open Tickets',
+        type: 'bar',
+        data: openIssuesCountSorted,
+        color: ({ dataPointIndex }: { dataPointIndex: number }) => barColors[dataPointIndex], // Ensures correct color mapping
+      },
+      {
+        name: 'Percentage',
+        type: 'line',
+        data: cumulativePercentage,
+        color: '#4CBB17'
+      }
+    ];
+   
+    
+    
+    
   return (
   <ChartWrapper title={'ApexCharts Pareto'}>
     <Chart options={options} series={series} type="line"></Chart>

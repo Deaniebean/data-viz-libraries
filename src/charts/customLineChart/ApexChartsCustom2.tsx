@@ -2,7 +2,7 @@ import Chart from "react-apexcharts";
 import { Data } from "../../utils/DataLineChart";
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
-import { formatMonths } from "../../utils/Months"; // Import the function
+import { formatMonths } from "../../utils/Months"; 
 
 export const ApexChartsCustom2 = () => {
   const [chartData] = useState(Data);
@@ -20,7 +20,7 @@ export const ApexChartsCustom2 = () => {
     {
       name: "Actual",
       data: chartData.map((data) => ({
-        x: formatMonths([data.month])[0], // Convert individual month
+        x: formatMonths([data.month])[0], 
         y: data.actual,
         fillColor: data.actual >= data.target ? "#14b425" : "#ff0000",
       })),
@@ -28,7 +28,7 @@ export const ApexChartsCustom2 = () => {
     {
       name: "Target",
       data: chartData.map((data) => ({
-        x: formatMonths([data.month])[0], // Convert individual month
+        x: formatMonths([data.month])[0],
         y: data.target,
       })),
       type: "line",

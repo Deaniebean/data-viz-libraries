@@ -27,71 +27,73 @@ export const EchartsPareto = () => {
   // Find the index where the cumulative percentage reaches or exceeds 80%
   const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
   console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
-
+  const barColors = openIssuesCount.map((_, i) =>
+    i <= index80 ? "#FF0000" : "#0000FF"
+  );
+  
   const options = {
     tooltip: {
-      trigger: 'axis',
+      trigger: "axis",
       axisPointer: {
-        type: 'cross',
+        type: "cross",
       },
     },
     legend: {
-      top: 'bottom',
+      top: "bottom",
     },
     xAxis: {
-      type: 'category',
+      type: "category",
       data: categories,
     },
     yAxis: [
-      { 
+      {
         axisTick: {
           show: true,
         },
-        type: 'value',
-        name: 'Open Tickets [-]',
+        type: "value",
+        name: "Open Tickets [-]",
         axisLine: { show: true },
       },
       {
-        type: 'value',
-        name: 'Percentage [%]',
+        type: "value",
+        name: "Percentage [%]",
         max: 100,
-        position: 'right',
+        position: "right",
         splitLine: {
           show: false,
         },
-        axisLine: { 
-          show: true
-         },
+        axisLine: {
+          show: true,
+        },
         axisTick: {
           show: true,
         },
       },
-      
     ],
     series: [
       {
-        name: 'Open Tickets',
-        type: 'bar',
-        data: openIssuesCount,
+        name: "Open Tickets",
+        type: "bar",
+        data: openIssuesCount.map((value, i) => ({
+          value,
+          itemStyle: { color: barColors[i] }, // Assigning color dynamically
+        })),
         yAxisIndex: 0,
-        itemStyle: {
-          color: 'rgba(75, 192, 192, 0.8)',
-        },
         label: {
           show: true,
-          position: 'top',
-          formatter: '{c}', 
-          color: '#000000', 
+          position: "top",
+          formatter: "{c}",
+          color: "#000000",
         },
         markLine: {
-          symbol: 'none',
+          symbol: "none",
           data: [
             {
               xAxis: categories[index80],
               lineStyle: {
-                color: '#FF4560',
+                color: "#1F51FF",
                 width: 2,
-                type: 'dashed',
+                type: "dashed",
               },
             },
           ],
@@ -101,26 +103,26 @@ export const EchartsPareto = () => {
         },
       },
       {
-        name: 'Percentage',
-        type: 'line',
+        name: "Percentage",
+        type: "line",
         data: cumulativePercentage,
         yAxisIndex: 1,
         itemStyle: {
-          color: 'rgba(255, 99, 132, 0.8)',
+          color: "#4CBB17",
         },
         lineStyle: {
           width: 2,
         },
         markLine: {
-          symbol: 'none',
+          symbol: "none",
           data: [
             {
               yAxis: 80,
               yAxisIndex: 1,
               lineStyle: {
-                color: '#FF4560',
+                color: "#1F51FF",
                 width: 2,
-                type: 'dashed',
+                type: "dashed",
               },
             },
           ],
@@ -131,6 +133,7 @@ export const EchartsPareto = () => {
       },
     ],
   };
+  
 
   return (
     <ChartWrapper title={'ECharts Pareto'}>

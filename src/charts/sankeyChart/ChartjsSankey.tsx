@@ -114,12 +114,70 @@ const data = {
     ],
   };
 
+    // Custom Legend Component
+    const Legend = () => (
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+  
+        <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
+          <span
+            style={{
+              width: '20px',
+              height: '20px',
+              backgroundColor: "#808080", // Grey Backlog
+              borderRadius: '50%',
+              marginRight: '5px',
+            }}
+          />
+          <span  style={{fontFamily: 'Arial, sans-serif'}}>Backlog</span>
+        </div>
+  
+        <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
+          <span
+            style={{
+              width: '20px',
+              height: '20px',
+              backgroundColor: "#FFA500" , // Yellow in Progress
+              borderRadius: '50%',
+              marginRight: '5px',
+            }}
+          />
+          <span  style={{fontFamily: 'Arial, sans-serif'}}>In Progress</span>
+        </div>
+  
+        <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
+          <span
+            style={{
+              width: '20px',
+              height: '20px',
+              backgroundColor: "#FF69B4" , // Pink in Review
+              borderRadius: '50%',
+              marginRight: '5px',
+            }}
+          />
+          <span  style={{fontFamily: 'Arial, sans-serif'}}>In Review</span>
+        </div>
+  
+        <div style={{ margin: '0 10px', display: 'flex', alignItems: 'center' }}>
+          <span
+            style={{
+              width: '20px',
+              height: '20px',
+              backgroundColor: "#008000",
+              borderRadius: '50%',
+              marginRight: '5px',
+            }}
+          />
+          <span style={{fontFamily: 'Arial, sans-serif'}}>Done</span>
+        </div>
+      </div>
+    );
  export const ChartjsSankey = () => {
 
 
     return(
         <ChartWrapper title="chartjs">
           <SankeyChart data={data} />
+          <Legend/>
         </ChartWrapper>
     )
 }

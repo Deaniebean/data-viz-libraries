@@ -22,7 +22,6 @@
     "apexcharts": "^4.3.0",
     "apexsankey": "github:apexcharts/apexsankey#1766fe2968fb2b326a1db494add5d1d7ecdfefba",
     "chart.js": "^4.4.7",
-    "chartjs-chart-sankey": "^0.14.0",
     "chartjs-plugin-annotation": "^3.1.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "d3": "^7.9.0",
@@ -36,7 +35,7 @@
     "react-dom": "^18.3.1",
     "react-plotly.js": "^2.6.0",
     "react-router-dom": "^7.0.2",
-    "react-sankey-chartjs": "^0.1.1",
+    "react-sankey-chartjs": "^0.1.2",
     "recharts": "^2.15.0"
   },
   "devDependencies": {

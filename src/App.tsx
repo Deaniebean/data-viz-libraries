@@ -20,6 +20,7 @@ import { EchartsSankey } from "./charts/sankeyChart/EchartsSankey";
 import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
 import { EchartsSankey2 } from "./charts/sankeyChart/sankeyforPareto/EchartsSankey2";
 import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
+import PyodideChart from "./charts/basicCharts/PyodideChart";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/rechart/line-chart" element={<Rechart />} />
           <Route path="/d3/line-chart" element={<D3 />} />
           <Route path="/apexcharts/line-chart" element={<ApexCharts />} />
+          <Route path="/matplotlib/line-chart" element={<PyodideChart />} />
           <Route
             path="/apexcharts/line-chart-custom"
             element={<ApexChartsCustom />}

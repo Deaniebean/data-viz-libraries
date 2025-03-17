@@ -20,8 +20,8 @@ export const D3 = () => {
   // Draws chart
   useEffect(() => {
     const svg = select(svgRef.current)
-      .attr("width", 500) // Set width
-      .attr("height", 300); // Set height
+      .attr("width", 500) 
+      .attr("height", 300); 
 
     // Scales
     const xScale = scaleBand()
@@ -34,12 +34,13 @@ export const D3 = () => {
     // Axes
     const xAxis = axisBottom(xScale);
     svg.select<SVGGElement>(".x-axis")
-      .attr("transform", "translate(50, 250)") // Adjust position
+      .attr("transform", "translate(50, 250)") 
+      
       .call(xAxis);
 
     const yAxis = axisLeft(yScale);
     svg.select<SVGGElement>(".y-axis")
-      .attr("transform", "translate(50, 50)") // Adjust position
+      .attr("transform", "translate(50, 50)") 
       .call(yAxis);
 
     // Line generator for actual
@@ -63,7 +64,7 @@ export const D3 = () => {
       .attr("d", actualLine)
       .attr("fill", "none")
       .attr("stroke", "#00bfa6")
-      .attr("transform", "translate(50, 50)"); // Adjust position
+      .attr("transform", "translate(50, 50)"); 
 
     // Drawing the target line
     svg
@@ -74,7 +75,7 @@ export const D3 = () => {
       .attr("d", targetLine)
       .attr("fill", "none")
       .attr("stroke", "#ff0000")
-      .attr("transform", "translate(50, 50)"); // Adjust position
+      .attr("transform", "translate(50, 50)"); 
   }, [chartData]);
 
   return (

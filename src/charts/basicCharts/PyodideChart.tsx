@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePyodide } from "../../hooks/usePyodide";
 
 export default function PyodideChart() {
@@ -6,10 +6,11 @@ export default function PyodideChart() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  async function generateChart() {
-    if (!pyodide) return;
+  useEffect(() => {
+    async function generateChart() {
+      if (!pyodide) return;
 
-    const code = `
+      const code = `
 import matplotlib.pyplot as plt
 import numpy as np
 import io
@@ -35,14 +36,17 @@ encoded = base64.b64encode(buf.read()).decode("utf-8")
 encoded
 `;
 
-    try {
-      const result = pyodide.runPython(code);
-      setImageSrc(`data:image/png;base64,${result}`);
-    } catch (error) {
-      console.error("Python error:", error);
-      setImageSrc(null);
+      try {
+        const result = pyodide.runPython(code);
+        setImageSrc(`data:image/png;base64,${result}`);
+      } catch (error) {
+        console.error("Python error:", error);
+        setImageSrc(null);
+      }
     }
-  }
+
+    generateChart();
+  }, [pyodide]);
 
   return (
     <div>
@@ -50,10 +54,7 @@ encoded
       {loading ? (
         <p>Loading Pyodide...</p>
       ) : (
-        <>
-          <button onClick={generateChart}>Generate Chart</button>
-          {imageSrc && <img src={imageSrc} alt="Generated Matplotlib Chart" />}
-        </>
+        imageSrc && <img src={imageSrc} alt="Generated Matplotlib Chart" />
       )}
     </div>
   );

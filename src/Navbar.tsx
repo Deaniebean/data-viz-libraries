@@ -44,6 +44,17 @@ export const Navbar = () => {
                 </ul>
               </li>
               <li>
+                <p>matplotlib + pyodide</p>
+                <ul className="sub-dropdown">
+                  <li>
+                    <NavLink to="/matplotlib/line-chart">Line Chart</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/plotly/custom-line-chart">Bar Chart</NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li>
                 <p>Echarts</p>
                 <ul className="sub-dropdown">
                   <li>

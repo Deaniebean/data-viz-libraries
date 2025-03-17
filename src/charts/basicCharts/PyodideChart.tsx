@@ -50,7 +50,7 @@ encoded
 
   return (
     <div>
-      <h2>Matplotlib in Pyodide (React)</h2>
+      <h2>Matplotlib in Pyodide</h2>
       {loading ? (
         <p>Loading Pyodide...</p>
       ) : (

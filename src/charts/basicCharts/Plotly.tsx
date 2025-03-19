@@ -24,8 +24,9 @@ export const PlotlyChart = () => {
             marker: { color: "green" },
           },
         ]}
+        useResizeHandler={true}
         layout={{ title: "KPI tracker" }}
-        config={{ responsive: true }}
+        style={{ resize:"both" , width: "100%", height: "100%" }}
       />
     </ChartWrapper>
   );

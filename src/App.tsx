@@ -21,6 +21,7 @@ import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
 import { EchartsSankey2 } from "./charts/sankeyChart/sankeyforPareto/EchartsSankey2";
 import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
 import PyodideChart from "./charts/basicCharts/PyodideChart";
+import { ChartjsTry } from "./charts/basicCharts/ChartjsTry";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/mui/line-chart" element={<LineChartMui />} />
           <Route path="/chartjs/line-chart" element={<Chartjs />} />
+          <Route path="/chartjs/line-chart-try" element={<ChartjsTry />} />
           <Route
             path="/chartjs/line-chart-custom"
             element={<ChartjsCustom />}

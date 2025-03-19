@@ -19,7 +19,6 @@ const chartOptions = {
     height: 350,
 
   },
-  colors: ["#00E396"],
   xaxis: {
     type: "category" as const,
     categories: chartData.map((data) => data.month as string),

@@ -74,7 +74,7 @@ export const ChartjsCustom = () => {
               label: "Actual",
               data: actualData,
               borderWidth: 2,
-              borderColor: "rgb(20, 180, 37)", // Default green color for the line
+              borderColor: "rgb(20, 180, 37)", 
               pointBorderWidth:0,
               pointRadius: (ctx: ScriptableContext<"line">) => {
                 const raw = ctx.raw as ScatterDataPoint;
@@ -105,13 +105,12 @@ export const ChartjsCustom = () => {
               },
             },
             {
-              // Invisible dataset for "Actual (Below Target)" in the legend
               label: "Actual",
-              data: [], // No data points
-              borderColor: "rgb(255, 0, 0)", // Red color for the legend
-              borderWidth: 0, // Invisible line
-              pointRadius: 0, // No points
-              hoverRadius: 0, // No hover interaction
+              data: [], 
+              borderColor: "rgb(255, 0, 0)"
+              borderWidth: 0, 
+              pointRadius: 0, 
+              hoverRadius: 0,
               datalabels: { display: false },
             },
           ],

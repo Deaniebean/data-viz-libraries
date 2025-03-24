@@ -1,102 +1,121 @@
 import ReactECharts from "echarts-for-react";
-import { Data } from "../../utils/DataLineChart";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
-import { formatMonths } from "../../utils/Months";
+import dataJson from "../../utils/DataLineChart.json"; // Import the JSON data
+
+// Function to find intersection points
+const calculateIntersections = (data: { id: number; actual: number; target: number }[]): { actualData: [number, number][]; targetData: [number, number][] } => {
+  const actualData: [number, number][] = data.map((d) => [d.id, d.actual] as [number, number]);
+  const targetData: [number, number][] = data.map((d) => [d.id, d.target] as [number, number]);
+
+  for (let i = 0; i < data.length - 1; i++) {
+    const curr = data[i];
+    const next = data[i + 1];
+
+    if ((curr.actual < curr.target && next.actual > next.target) ||
+        (curr.actual > curr.target && next.actual < next.target)) {
+
+      // Estimate intersection (linear interpolation)
+      const xIntersect = curr.id + 
+        Math.abs((curr.target - curr.actual) / ((next.actual - curr.actual) - (next.target - curr.target)));
+      const yIntersect = curr.target + ((next.target - curr.target) * (xIntersect - curr.id));
+
+      actualData.push([xIntersect as number, yIntersect as number]);
+    }
+  }
+
+  // Sort data after adding intersections
+  actualData.sort((a, b) => a[0] - b[0]);
+
+  return { actualData, targetData };
+};
 
 export const EchartsLineChart = () => {
-  const [chartData] = useState(Data);
-  const allMonths: string[] = formatMonths(chartData.map((data) => data.month));
-  
-  // Generate dynamic gradient stops based on actual vs target
-  const colorStops = chartData
-    .map((data, index) => {
-      const nextData = chartData[index + 1];
-      if (!nextData) return null;
+  const [processedData, setProcessedData] = useState<{ actualData: [number, number][]; targetData: [number, number][] }>({ actualData: [], targetData: [] });
 
-      const isAboveTarget = data.actual >= data.target;
-      const nextIsAboveTarget = nextData.actual >= nextData.target;
+  useEffect(() => {
+    const result = calculateIntersections(dataJson); // Use dataJson instead of rawData
+    setProcessedData(result);
+  }, []); // No dependencies since dataJson is static
 
-      return {
-        offset: index / (chartData.length - 1),
-        color: isAboveTarget ? "#14b425" : "#ff0000",
-        nextColor: nextIsAboveTarget ? "#14b425" : "#ff0000",
-      };
-    })
-    .filter(Boolean);
+  // Generate dynamic gradient stops based on actual vs target values
+  const colorStops: { offset: number; color: string }[] = [];
+
+  for (let i = 0; i < processedData.actualData.length - 1; i++) {
+    const currPoint = processedData.actualData[i];
+    const nextPoint = processedData.actualData[i + 1];
+
+    if (!currPoint || !nextPoint) continue;
+
+    const xMin = processedData.actualData[0][0];
+    const xMax = processedData.actualData[processedData.actualData.length - 1][0];
+
+    const offset = (currPoint[0] - xMin) / (xMax - xMin);
+    const nextOffset = (nextPoint[0] - xMin) / (xMax - xMin);
+
+    // Interpolating target value for each segment
+    const targetY1 = processedData.targetData.find((t) => t[0] === currPoint[0])?.[1] ?? 0;
+    const targetY2 = processedData.targetData.find((t) => t[0] === nextPoint[0])?.[1] ?? 0;
+
+    const color = (currPoint[1] >= targetY1 && nextPoint[1] >= targetY2) ? "#14b425" : "#ff0000"; // Green if above, Red if below
+
+    colorStops.push({ offset, color });
+    colorStops.push({ offset: nextOffset, color });
+  }
 
   const options = {
     grid: { top: 20, right: 20, bottom: 20, left: 30 },
     xAxis: {
-      type: "category",
-      data: allMonths,
-      boundaryGap: false,
+      type: "value",
+      min: 1,
+      max: 12,
+      interval: 1,
+      axisLabel: { formatter: (value: number) => Math.round(value) },
     },
     yAxis: {
       type: "value",
-      title: {
-        text: "Number of tickets [-]",
-      },
       axisLine: { show: true },
     },
-    legend: {
-      orient: "horizontal",
-      left: "center",
-      top: "top",
-    },
+    legend: { orient: "horizontal", left: "center", top: "top" },
     series: [
       {
         name: "Actual",
-        data: chartData.map((data) => data.actual),
+        data: processedData.actualData,
         type: "line",
         lineStyle: {
           width: 3,
           color: {
             type: "linear",
-            x: 0,
-            y: 0,
-            x2: 1,
-            y2: 0,
-            colorStops: colorStops.flatMap((stop) => [
-              { offset: stop?.offset, color: stop?.color },
-              { offset: stop?.offset, color: stop?.nextColor },
-            ]),
+            x: 0, y: 0, x2: 1, y2: 0,
+            colorStops: colorStops,
             global: false,
           },
         },
+        symbol: "circle",
+        symbolSize: 8,
         itemStyle: {
           color: (params: { dataIndex: number }) => {
-            const index = params.dataIndex;
-            return chartData[index].actual >= chartData[index].target
-              ? "#14b425" 
-              : "#ff0000"; 
+            const point = processedData.actualData[params.dataIndex];
+            if (!point) return "#000"; // Default color fallback
+            const y_actual = point[1];
+            const y_target = processedData.targetData.find((t) => t[0] === point[0])?.[1] ?? 0;
+            return y_actual >= y_target ? "#14b425" : "#ff0000"; // Green if above, red if below
           },
         },
-        symbol: "circle", 
-        symbolSize: 8, 
       },
       {
         name: "Target",
-        data: chartData.map((data) => data.target),
+        data: processedData.targetData,
         type: "line",
-        step: "end",
-        lineStyle: {
-          width: 3,
-          color: "black",
-          type: "dashed",
-        },
-        itemStyle: {
-          color: "black",
-        },
+        lineStyle: { width: 3, color: "black", type: "dashed" },
+        itemStyle: { color: "black" },
       },
     ],
-    tooltip: {
-      trigger: "axis",
-    },
+    tooltip: { trigger: "axis" },
   };
 
   return (
-    <ChartWrapper title="Echarts">
+    <ChartWrapper title="ECharts">
       <ReactECharts option={options} />
     </ChartWrapper>
   );

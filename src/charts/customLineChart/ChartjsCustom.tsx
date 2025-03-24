@@ -1,109 +1,142 @@
-import { Line } from "react-chartjs-2";
+import Chart from "chart.js/auto";
+import { useState, useEffect } from "react";
+import { ChartData, ScatterDataPoint } from "chart.js";
 import {
-  Chart as ChartJS,
-  CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  Title,
-  Tooltip,
-  Legend,
   ChartOptions,
-  ScriptableLineSegmentContext,
+  ScriptableContext
 } from "chart.js";
-import { ChartWrapper } from "../../common/chartWrapper";
-import { useEffect, useRef, useState } from "react";
-import { Data } from "../../utils/DataLineChart";
-import { formatMonths } from "../../utils/Months";
+import dataJson from "../../utils/DataLineChart.json"; // Stelle sicher, dass dieser Import korrekt ist
+import { Line } from "react-chartjs-2"; // Import für React-Komponente
+import { ChartWrapper } from "../../common/chartWrapper"; // Falls du eine Wrapper-Komponente hast
+import { formatMonths } from "../../utils/Months"; // Ensure formatMonths is an array of strings
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+Chart.register(LinearScale, PointElement, LineElement);
+
+interface DataPoint {
+  id: number;
+  target: number;
+  actual: number;
+}
+
+const calculateIntersections = (data: DataPoint[]) => {
+  const targetData: ScatterDataPoint[] = [];
+  const actualData: ScatterDataPoint[] = [];
+
+  for (let i = 0; i < data.length - 1; i++) {
+    const curr = data[i];
+    const next = data[i + 1];
+
+    targetData.push({ x: curr.id, y: curr.target });
+    actualData.push({ x: curr.id, y: curr.actual });
+
+    // Check if there's an intersection between current and next points
+    if ((curr.actual < curr.target && next.actual > next.target) ||
+        (curr.actual > curr.target && next.actual < next.target)) {
+
+      // Estimate intersection using linear interpolation
+      const xIntersect = curr.id + 
+        Math.abs((curr.target - curr.actual) / ((next.actual - curr.actual) - (next.target - curr.target)));
+      const yIntersect = curr.target + ((next.target - curr.target) * (xIntersect - curr.id));
+
+      actualData.push({ x: xIntersect, y: yIntersect });
+    }
+  }
+
+  // Add last point for both datasets
+  targetData.push({ x: data[data.length - 1].id, y: data[data.length - 1].target });
+  actualData.push({ x: data[data.length - 1].id, y: data[data.length - 1].actual });
+  console.log("actualData:", actualData);
+  return { targetData, actualData };
+};
 
 export const ChartjsCustom = () => {
+  const [chartData, setChartData] = useState<ChartData<"line">>({ datasets: [] });
 
-  const [chartData] = useState(Data);
-   const chartRef = useRef<ChartJS<"line"> | null>(null);
-  
-    useEffect(() => {
-      return () => {
-        if (chartRef.current) {
-          chartRef.current.destroy();
-          chartRef.current = null;
-        }
-      };
-    }, []);
+  useEffect(() => {
+    const { targetData, actualData } = calculateIntersections(dataJson as DataPoint[]);
 
-  const allMonths: string[] = formatMonths(chartData.map((data) => data.month));
-  console.log("All months:", allMonths);
+    setChartData({
+      datasets: [
+        {
+          label: "Target",
+          data: targetData,
+          backgroundColor: "#000000",
+          borderColor: "#000000",
+          borderDash: [5, 5],
+          borderWidth: 2,
+          pointRadius: 0,
+          datalabels: { display: false },
+        },
+        {
+          label: "Actual",
+          data: actualData,
 
-  const data = {
-    labels: allMonths,
-    datasets: [
-      {
-        
-        label: "Value",
-        data: chartData.map((data) => data.actual),
-        borderWidth: 2,
-        pointRadius: 5,
-        pointBackgroundColor: chartData.map((data) =>
-            data.actual >= data.target ? "rgb(20, 180, 37)" : "rgb(255, 0, 0)"
-          ),
-        segment: {
-          borderColor: (ctx: ScriptableLineSegmentContext) => {
-            const index = ctx.p1DataIndex;
-            return chartData[index].actual >= chartData[index].target
-              ? "rgb(20, 180, 37)"
-              : "rgb(255, 0, 0)";
+          borderWidth: 2,
+          pointRadius: (ctx: ScriptableContext<"line">) => {
+            const raw = ctx.raw as ScatterDataPoint;
+            return Number.isInteger(raw.x) ? 5 : 0;
+          },
+          pointBackgroundColor: (ctx: ScriptableContext<"line">) => {
+            const raw = ctx.raw as ScatterDataPoint;
+            const targetValue = targetData.find((d) => d.x === raw.x)?.y ?? 0;
+            return raw.y >= targetValue ? "rgb(20, 180, 37)" : "rgb(255, 0, 0)";
+          },
+          datalabels: { display: false },
+          segment: {
+            borderColor: (ctx) => {
+              if (!ctx.p0 || !ctx.p1) return "rgba(75,192,192,1)";
+
+              const x0 = ctx.p0.parsed.x as number;
+              const x1 = ctx.p1.parsed.x as number;
+              const y0_actual = ctx.p0.parsed.y as number;
+              const y1_actual = ctx.p1.parsed.y as number;
+
+              const y0_target = targetData.find((d) => d.x === x0)?.y ?? 0;
+              const y1_target = targetData.find((d) => d.x === x1)?.y ?? 0;
+
+              return y0_actual >= y0_target && y1_actual >= y1_target
+                ? "rgb(20, 180, 37)"
+                : "rgb(255, 0, 0)";
+            },
           },
         },
-        datalabels: {
-          display: false, 
-        },
-      },
-      {
-        label: "Threshold",
-        data: chartData.map((data) => data.target),
-        borderWidth: 2,
-        borderColor: "rgba(0, 0, 0, 0.7)", 
-        borderDash: [5, 5], 
-        pointRadius: 0, 
-        stepped:true,
-        datalabels: {
-          display: false, 
-        },
-      },
-    ],
-  };
+      ],
+    });
+  }, []);
 
-  const options: ChartOptions<"line"> = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",        
-      },
-    },
-    scales: {
-      y: {
-        title:{
-        display: true,
-        text: "Number of tickets [-]",
-      },
-      min: 0,
-    },
-      x: {
-        grid: {
-          drawOnChartArea: false,
-          },
-        ticks: {
-          display: true,
-        
-        },
-      },
-    },
-  };
+  const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
 
   return (
     <ChartWrapper title="Chart.js">
-      <Line data={data} options={options} />
+      <Line
+        data={chartData}
+        options={{
+          scales: {
+            x: {
+              type: "linear",
+              position: "bottom",
+              ticks: {
+                callback: (value) =>
+                  allMonths[(value as number) - 1] || value.toString(),
+                stepSize: 1,
+              },
+              grid: { drawOnChartArea: false },
+            },
+            y: {
+              ticks: { stepSize: 1 },
+              min: 0,
+            },
+          },
+          plugins: {
+            legend: {
+              position: "bottom",        
+            },
+          },
+        } as ChartOptions<"line">}
+      />
     </ChartWrapper>
   );
 };

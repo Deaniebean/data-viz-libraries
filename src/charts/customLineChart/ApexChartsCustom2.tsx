@@ -1,75 +1,131 @@
 import Chart from "react-apexcharts";
-import { Data } from "../../utils/DataLineChart";
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
-import { formatMonths } from "../../utils/Months"; 
+import dataJson from "../../utils/DataLineChart.json"; // Ensure this import is correct
+
+interface DataPoint {
+  id: number;
+  target: number;
+  actual: number;
+}
+
+const calculateIntersections = (data: DataPoint[]) => {
+  const targetData = data.map(d => ({ x: d.id, y: d.target }));
+  const actualData = data.map(d => ({ x: d.id, y: d.actual }));
+
+  for (let i = 0; i < data.length - 1; i++) {
+    const curr = data[i];
+    const next = data[i + 1];
+
+    // Check if there's an intersection between current and next points
+    if ((curr.actual < curr.target && next.actual > next.target) ||
+        (curr.actual > curr.target && next.actual < next.target)) {
+
+      // Estimate intersection using linear interpolation
+      const xIntersect = curr.id +
+        Math.abs((curr.target - curr.actual) / ((next.actual - curr.actual) - (next.target - curr.target)));
+      const yIntersect = curr.target + ((next.target - curr.target) * (xIntersect - curr.id));
+
+      actualData.push({ x: xIntersect, y: yIntersect });
+    }
+  }
+
+  // Sort actualData by x value to maintain correct order
+  actualData.sort((a, b) => a.x - b.x);
+
+  return { targetData, actualData };
+};
 
 export const ApexChartsCustom2 = () => {
-  const [chartData] = useState(Data);
+  const [chartData, setChartData] = useState<{ targetData: { x: number; y: number }[]; actualData: { x: number; y: number }[] }>({ targetData: [], actualData: [] });
 
   useEffect(() => {
-    console.log("Initial chartData:", chartData);
-  }, [chartData]);
+    const { targetData, actualData } = calculateIntersections(dataJson as DataPoint[]);
+    setChartData({ targetData, actualData });
+  }, []);
 
+  const coloredData = chartData.actualData.map((point) => {
+    // Find the target values surrounding the current point
+    const targetCurr = chartData.targetData.find((t) => t.x === point.x);
+    let targetNext = chartData.targetData.find((t) => t.x > point.x);
+    if (!targetNext) targetNext = chartData.targetData[chartData.targetData.length - 1];
 
-  const allMonths: string[] = formatMonths(chartData.map((data) => data.month));
+    // Interpolate target value if necessary (in case the x is not an exact match)
+    const interpolatedTargetY = targetCurr
+      ? targetCurr.y + (targetNext.y - targetCurr.y) * (point.x - targetCurr.x) / (targetNext.x - targetCurr.x)
+      : targetNext.y; // Fallback to targetNext.y if targetCurr is undefined
 
+    // Determine the color based on whether the actual value is above or below the target
+    const color = point.y >= interpolatedTargetY ? "#14b425" : "#ff0000"; // Green if above target, red if below
 
-  // Create a series where each point includes fillColor for markers
-  const series = [
-    {
-      name: "Actual",
-      data: chartData.map((data) => ({
-        x: formatMonths([data.month])[0], 
-        y: data.actual,
-        fillColor: data.actual >= data.target ? "#14b425" : "#ff0000",
-      })),
-    },
-    {
-      name: "Target",
-      data: chartData.map((data) => ({
-        x: formatMonths([data.month])[0],
-        y: data.target,
-      })),
-      type: "line",
-      stroke: {
-        curve: "stepline",
-      },
-    },
-  ];
+    return {
+      x: point.x,
+      y: point.y,
+      color: color, // This decides the color
+    };
+  });
 
-  console.log("Series data:", series);
+  const colorStops = coloredData.map((dataPoint, index) => {
+    const nextDataPoint = coloredData[index + 1];
+    if (!nextDataPoint) return null;
 
-  const colorStops = chartData
-    .map((data, index) => {
-      const nextData = chartData[index + 1];
-      if (!nextData) return null;
+    // Get the range of x values in the data
+    const firstPointX = coloredData[0].x;
+    const lastPointX = coloredData[coloredData.length - 1].x;
 
-      const isAboveTarget = data.actual >= data.target;
-      const nextIsAboveTarget = nextData.actual >= nextData.target;
+    // Calculate offset based on the current x and last x values
+    const offset = ((dataPoint.x - firstPointX) / (lastPointX - firstPointX)) * 100.0;
+    const nextOffset = ((nextDataPoint.x - firstPointX) / (lastPointX - firstPointX)) * 100.0;
 
-      const colorStop = {
-        offset: (index / (chartData.length - 1)) * 100,
-        color: isAboveTarget ? "#14b425" : "#ff0000",
-        nextColor: nextIsAboveTarget ? "#14b425" : "#ff0000",
-      };
+    // Determine the segment color based on the comparison with target data
+    const y0_actual = dataPoint.y;
+    const y1_actual = nextDataPoint.y;
+    const y0_target = chartData.targetData.find((d) => d.x === dataPoint.x)?.y ?? 0;
+    const y1_target = chartData.targetData.find((d) => d.x === nextDataPoint.x)?.y ?? 0;
 
-      console.log(`Color stop for month ${data.month}:`, colorStop);
+    const sectionColor = y0_actual >= y0_target && y1_actual >= y1_target
+      ? "#14b425" // Green if both points are above or on the target
+      : "#ff0000"; // Red if any point is below the target
 
-      return colorStop;
-    })
-    .filter((colorStop) => colorStop !== null);
-
-  console.log("Color stops:", colorStops);
+    return {
+      offset: offset,
+      nextOffset: nextOffset,
+      color: sectionColor,
+      nextColor: sectionColor,
+    };
+  }).filter(stop => stop !== null);
 
   const chartOptions = {
-    chart: {
-      id: "dynamic-threshold",
-      animations: {
-        enabled: false,
+    series: [
+      {
+        name: "Actual",
+        data: coloredData.map((data) => ({
+          x: data.x,
+          y: data.y,
+          fillColor: data.color
+        })),
       },
-      toolbar: {
-        show: false,
+      {
+        name: "Target",
+        data: chartData.targetData,
+        type: "line",
+      },
+    ],
+    chart: { height: 350 },
+    xaxis: {
+      type: "numeric" as const,
+      title: { text: "Months" },
+      max: 12, // Ensure it ends at 12
+      tickAmount: 12, // Adjust tick amount accordingly
+      labels: {
+        formatter: (value: string) => Math.round(Number(value)).toString(), // Ensure whole numbers
+      },
+    },
+    yaxis: {
+      title: { text: "Values" },
+      min: 0, // Ensure y-axis starts at 0
+      labels: {
+        formatter: (value: number) => Math.round(value).toString(), // Show only whole numbers
       },
     },
     fill: {
@@ -79,63 +135,33 @@ export const ApexChartsCustom2 = () => {
         shade: "dark",
         type: "horizontal",
         shadeIntensity: 0.5,
-        gradientToColors: undefined,
         inverseColors: true,
         opacityFrom: 1,
         opacityTo: 1,
-        stops: [0, 50, 100],
         colorStops: colorStops.flatMap((stop) => [
           { offset: stop.offset, color: stop.color, opacity: 1 },
-          { offset: stop.offset + 0.1, color: stop.nextColor, opacity: 1 },
+          { offset: stop.nextOffset, color: stop.nextColor, opacity: 1 },
         ]),
       },
     },
     stroke: {
-      curve: ["straight" as const, "stepline" as const],
+      curve: ["straight" as const, "straight" as const],
       dashArray: [0, 5],
     },
-    xaxis: {
-      categories: allMonths,
-      tooltip: {
-        enabled: false,
-      },
+    markers: { size: 5 },
+    tooltip: {
+      x: { format: "MMM" },
     },
-    yaxis: {
-      title: {
-        text: "Number of Tickets [-]",
-      },
-      min: 0,
-      axisBorder: {
-        show: true,
-      },
-      axisTicks: {
-        show: true,
-      },
-    },
-    markers: {
-      size: 4,
-      colors: undefined, // Use fillColor from data points
-    },
-    legend: {
-      show: true,
-      markers: {
-          fillColors: ["#14b425" , '#000000']
-      }
-  },
-  tooltip: {
-    enabled: true,
-    marker: {
-      show: false,
-    }
-  }
-  
   };
 
-  console.log("Chart options:", chartOptions);
-
   return (
-    <ChartWrapper title="ApexCharts Custom">
-      <Chart type="line" options={chartOptions} series={series} />
+    <ChartWrapper title="ApexCharts">
+      <Chart
+        type="line"
+        options={chartOptions}
+        series={chartOptions.series}
+        width="100%"
+      />
     </ChartWrapper>
   );
 };

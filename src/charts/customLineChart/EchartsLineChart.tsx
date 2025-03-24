@@ -107,19 +107,19 @@ yAxis: {
     data: [
         {
             name: "Actual",
-            icon: "circle", // Shape of the legend marker
-            itemStyle: { color: "#14b425" }, // Green for "Actual"
+            icon: "circle", 
+            itemStyle: { color: "#14b425" }, 
           },
           {
             name: "Actual ",
-            icon: "circle", // Shape of the legend marker
-            itemStyle: { color: "#ff0000" }, // Red for "Actual (Below Target)"
+            icon: "circle",
+            itemStyle: { color: "#ff0000" },
           },
           {
             name: "Target",
-            icon: "circle", // Shape of the legend marker
-            itemStyle: { color: "black" }, // Black for "Target"
-          },
+            icon: "circle", 
+            itemStyle: { color: "black" }, 
+          }
          ] },
     series: [
       {
@@ -140,7 +140,7 @@ yAxis: {
         itemStyle: {
           color: (params: { dataIndex: number }) => {
             const point = processedData.actualData[params.dataIndex];
-            if (!point) return "#00000"; // Default color fallback
+            if (!point) return "#00000"; 
             const y_actual = point[1];
             const y_target = processedData.targetData.find((t) => t[0] === point[0])?.[1] ?? 0;
             return y_actual >= y_target ? "#14b425" : "#ff0000"; // Green if above, red if below
@@ -155,13 +155,13 @@ yAxis: {
         itemStyle: { color: "black" },
       },
       {
-        name: "Actual ", // Third series for red legend
-        data: [], // No data points
+        name: "Actual ", 
+        data: [],
         type: "line",
-        lineStyle: { width: 0 }, // No visible line
-        symbol: "none", // No symbols
-        itemStyle: { color: "#ff0000" }, // Red color for the legend
-        emphasis: { disabled: true }, // Disable hover events
+        lineStyle: { width: 0 }, 
+        symbol: "none",
+        itemStyle: { color: "#ff0000" }, 
+        emphasis: { disabled: true }, 
       },
     ],
     tooltip: { trigger: "axis" },

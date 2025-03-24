@@ -84,8 +84,8 @@ export const ApexChartsCustom2 = () => {
     const y1_target = chartData.targetData.find((d) => d.x === nextDataPoint.x)?.y ?? 0;
 
     const sectionColor = y0_actual >= y0_target && y1_actual >= y1_target
-      ? "#14b425" // Green if both points are above or on the target
-      : "#ff0000"; // Red if any point is below the target
+      ? "#14b425" // Green
+      : "#ff0000"; // Red 
 
   
 
@@ -117,13 +117,13 @@ export const ApexChartsCustom2 = () => {
         data: [],
         type: "line",
         stroke: {
-          width: 0, // Make this line invisible
+          width: 0,
         },
         markers: {
-          size: 0, // No markers
+          size: 0, 
         },
         legendLabels: {
-          // This label will match the "Actual" title
+          
           show: true,
           name: "Actual",
         },
@@ -134,8 +134,8 @@ export const ApexChartsCustom2 = () => {
       type: "numeric" as const,
       title: { text: "Months" },
       min: 1,
-      max: dataJson.length, // Ensure it ends at the last month
-      tickAmount: dataJson.length, // Ensure every month has a tick
+      max: dataJson.length, 
+      tickAmount: dataJson.length, 
       tickPlacement: "on", // Aligns ticks to data points
       labels: {
         formatter: (value: number) => {
@@ -146,7 +146,7 @@ export const ApexChartsCustom2 = () => {
     },
     yaxis: {
       title: { text: "Values" },
-      min: 0, // Ensure y-axis starts at 0
+      min: 0, 
       labels: {
         formatter: (value: number) => Math.round(value).toString(), // Show only whole numbers
       },

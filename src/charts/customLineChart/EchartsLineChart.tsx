@@ -101,7 +101,26 @@ yAxis: {
     margin: 10,  
   },
 },
-    legend: { orient: "horizontal", left: "center", bottom: 0 },
+    legend: { orient: "horizontal", 
+        left: "center", 
+        bottom: 0,
+    data: [
+        {
+            name: "Actual",
+            icon: "circle", // Shape of the legend marker
+            itemStyle: { color: "#14b425" }, // Green for "Actual"
+          },
+          {
+            name: "Actual ",
+            icon: "circle", // Shape of the legend marker
+            itemStyle: { color: "#ff0000" }, // Red for "Actual (Below Target)"
+          },
+          {
+            name: "Target",
+            icon: "circle", // Shape of the legend marker
+            itemStyle: { color: "black" }, // Black for "Target"
+          },
+         ] },
     series: [
       {
         name: "Actual",
@@ -121,7 +140,7 @@ yAxis: {
         itemStyle: {
           color: (params: { dataIndex: number }) => {
             const point = processedData.actualData[params.dataIndex];
-            if (!point) return "#000"; // Default color fallback
+            if (!point) return "#00000"; // Default color fallback
             const y_actual = point[1];
             const y_target = processedData.targetData.find((t) => t[0] === point[0])?.[1] ?? 0;
             return y_actual >= y_target ? "#14b425" : "#ff0000"; // Green if above, red if below
@@ -134,6 +153,15 @@ yAxis: {
         type: "line",
         lineStyle: { width: 3, color: "black", type: "dashed" },
         itemStyle: { color: "black" },
+      },
+      {
+        name: "Actual ", // Third series for red legend
+        data: [], // No data points
+        type: "line",
+        lineStyle: { width: 0 }, // No visible line
+        symbol: "none", // No symbols
+        itemStyle: { color: "#ff0000" }, // Red color for the legend
+        emphasis: { disabled: true }, // Disable hover events
       },
     ],
     tooltip: { trigger: "axis" },

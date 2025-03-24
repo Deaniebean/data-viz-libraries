@@ -24,7 +24,7 @@ export const ChartWrapper: React.FC<ChartWrapperProps> = ({
         return { width: "600px", height: "400px" };
       case "large":
       default:
-        return { width: "1000px", height: "1500px" };
+        return { width: "1000px", height: "2000px" };
     }
   };
 

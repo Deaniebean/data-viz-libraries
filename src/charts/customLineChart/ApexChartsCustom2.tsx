@@ -2,7 +2,7 @@ import Chart from "react-apexcharts";
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
 import dataJson from "../../utils/DataLineChart.json"; // Ensure this import is correct
-
+import { formatMonths } from "../../utils/Months"; 
 interface DataPoint {
   id: number;
   target: number;
@@ -87,6 +87,8 @@ export const ApexChartsCustom2 = () => {
       ? "#14b425" // Green if both points are above or on the target
       : "#ff0000"; // Red if any point is below the target
 
+  
+
     return {
       offset: offset,
       nextOffset: nextOffset,
@@ -110,15 +112,36 @@ export const ApexChartsCustom2 = () => {
         data: chartData.targetData,
         type: "line",
       },
+      {
+        name: "Actual",
+        data: [],
+        type: "line",
+        stroke: {
+          width: 0, // Make this line invisible
+        },
+        markers: {
+          size: 0, // No markers
+        },
+        legendLabels: {
+          // This label will match the "Actual" title
+          show: true,
+          name: "Actual",
+        },
+      },
     ],
     chart: { height: 350 },
     xaxis: {
       type: "numeric" as const,
       title: { text: "Months" },
-      max: 12, // Ensure it ends at 12
-      tickAmount: 12, // Adjust tick amount accordingly
+      min: 1,
+      max: dataJson.length, // Ensure it ends at the last month
+      tickAmount: dataJson.length, // Ensure every month has a tick
+      tickPlacement: "on", // Aligns ticks to data points
       labels: {
-        formatter: (value: string) => Math.round(Number(value)).toString(), // Ensure whole numbers
+        formatter: (value: number) => {
+          const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
+          return allMonths[Math.round(value) - 1] || value.toString();
+        },
       },
     },
     yaxis: {
@@ -128,6 +151,7 @@ export const ApexChartsCustom2 = () => {
         formatter: (value: number) => Math.round(value).toString(), // Show only whole numbers
       },
     },
+  
     fill: {
       type: ["gradient", "solid"],
       colors: ["#000000"],
@@ -152,7 +176,13 @@ export const ApexChartsCustom2 = () => {
     tooltip: {
       x: { format: "MMM" },
     },
-  };
+    legend: {
+      show: true,
+      markers: {
+        fillColors: ["#14b425", "#000000", "#ff0000"],
+      },
+  }
+};
 
   return (
     <ChartWrapper title="ApexCharts">

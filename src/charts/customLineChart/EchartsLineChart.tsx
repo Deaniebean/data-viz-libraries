@@ -2,6 +2,7 @@ import ReactECharts from "echarts-for-react";
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
 import dataJson from "../../utils/DataLineChart.json"; // Import the JSON data
+import { formatMonths } from "../../utils/Months";
 
 // Function to find intersection points
 const calculateIntersections = (data: { id: number; actual: number; target: number }[]): { actualData: [number, number][]; targetData: [number, number][] } => {
@@ -64,19 +65,43 @@ export const EchartsLineChart = () => {
   }
 
   const options = {
-    grid: { top: 20, right: 20, bottom: 20, left: 30 },
+   
     xAxis: {
-      type: "value",
-      min: 1,
-      max: 12,
-      interval: 1,
-      axisLabel: { formatter: (value: number) => Math.round(value) },
+  type: "value",
+  min: 1,
+  max: 12,
+  interval: 1,
+  axisLabel: {
+    formatter: (value: number) => {
+      const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
+      return allMonths[Math.round(value) - 1] || value.toString();
     },
-    yAxis: {
-      type: "value",
-      axisLine: { show: true },
-    },
-    legend: { orient: "horizontal", left: "center", top: "top" },
+    show: true, 
+    margin: 10, 
+  },
+  title: {
+    text: "Months",
+    left: "center", 
+    top: "middle", 
+  },
+  splitLine: {
+    show: false,
+  },
+},
+yAxis: {
+  type: "value",
+  title: {
+    text: "Number of tickets [-]",
+    left: "middle", 
+    top: "middle",  
+  },
+  axisLine: { show: true },
+  axisLabel: {
+    show: true, 
+    margin: 10,  
+  },
+},
+    legend: { orient: "horizontal", left: "center", bottom: 0 },
     series: [
       {
         name: "Actual",

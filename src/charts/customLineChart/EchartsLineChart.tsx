@@ -65,42 +65,35 @@ export const EchartsLineChart = () => {
   }
 
   const options = {
-   
     xAxis: {
-  type: "value",
-  min: 1,
-  max: 12,
-  interval: 1,
-  axisLabel: {
-    formatter: (value: number) => {
-      const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
-      return allMonths[Math.round(value) - 1] || value.toString();
+      type: "value",
+      min: 1,
+      max: 12,
+      interval: 1,
+      axisLabel: {
+        formatter: (value: number) => {
+          const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
+          return allMonths[Math.round(value) - 1] || value.toString();
+        },
+        show: true, 
+        margin: 10, 
+      },
+      name: "Months", 
+      nameLocation: "middle",
+      nameGap: 30, 
+      splitLine: { show: false },
     },
-    show: true, 
-    margin: 10, 
-  },
-  title: {
-    text: "Months",
-    left: "center", 
-    top: "middle", 
-  },
-  splitLine: {
-    show: false,
-  },
-},
-yAxis: {
-  type: "value",
-  title: {
-    text: "Number of tickets [-]",
-    left: "middle", 
-    top: "middle",  
-  },
-  axisLine: { show: true },
-  axisLabel: {
-    show: true, 
-    margin: 10,  
-  },
-},
+    yAxis: {
+      type: "value",
+      name: "Number of Tickets [-]", 
+      nameLocation: "middle",
+      nameGap: 50, 
+      axisLine: { show: true },
+      axisLabel: {
+        show: true, 
+        margin: 10,  
+      },
+    },
     legend: { orient: "horizontal", 
         left: "center", 
         bottom: 0,

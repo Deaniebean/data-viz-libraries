@@ -21,7 +21,7 @@ import PyodideChart from "./charts/basicCharts/PyodideChart";
 import { ApexChartsCustom } from "./charts/experimental/ApexChartsCustom";
 import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
 import { EchartsLineChart } from "./charts/customLineChart/EchartsLineChart";
-import { ChartjsSimple } from "./ThesisCode/ChartjsSimple";
+import { ChartjsSimple } from "./thesisCode/ChartjsSimple";
 
 function App() {
   return (

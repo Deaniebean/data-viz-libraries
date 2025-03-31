@@ -1,19 +1,24 @@
-import Chart from "chart.js/auto";
-import { useState, useEffect } from "react";
-import { ChartData, ScatterDataPoint } from "chart.js";
 import {
+  Chart as ChartJS,
   LinearScale,
   PointElement,
   LineElement,
+  CategoryScale,
+  Title,
+  Tooltip,
+  Legend,
   ChartOptions,
   ScriptableContext,
+  ScatterDataPoint,
 } from "chart.js";
-import dataJson from "../../utils/DataLineChart.json"; // Ensure this import is correct
-import { Line } from "react-chartjs-2"; // Import for React component
-import { ChartWrapper } from "../../common/chartWrapper"; // If you have a wrapper component
-import { formatMonths } from "../../utils/Months"; // Ensure formatMonths is an array of strings
+import { Line } from "react-chartjs-2";
+import { useState, useEffect } from "react";
+import dataJson from "../../utils/DataLineChart.json"; 
+import { ChartWrapper } from "../../common/chartWrapper"; 
+import { formatMonths } from "../../utils/Months"; 
 
-Chart.register(LinearScale, PointElement, LineElement);
+// Register only the required components
+ChartJS.register(LinearScale, PointElement, LineElement, CategoryScale, Title, Tooltip, Legend);
 
 interface DataPoint {
   id: number;
@@ -118,8 +123,8 @@ export const ChartjsCustom = () => {
                 targetData.find((d) => d.x === x1)?.y ?? 0;
 
               return y0_actual >= y0_target && y1_actual >= y1_target
-                ? "rgb(20, 180, 37)" // Green if above target
-                : "rgb(255, 0, 0)"; // Red if below target
+                ? "rgb(20, 180, 37)" 
+                : "rgb(255, 0, 0)"; 
             },
           },
         },

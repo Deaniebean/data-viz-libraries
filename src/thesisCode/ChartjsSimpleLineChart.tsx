@@ -15,18 +15,18 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 export const ChartjsSimple = () => {
   const [chartData] = useState({
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [
       {
         label: "Target",
-        data: [2, 2, 2, 2, 3, 3],
+        data: [3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4],
         backgroundColor: "rgba(75,192,192,0.4)",
         borderColor: "rgba(75,192,192,1)",
         borderWidth: 1,
       },
       {
         label: "Actual",
-        data: [1, 1, 2, 2, 2, 3],
+        data: [2, 3, 4, 2, 5, 4, 5, 5, 6, 5, 4, 3],
         backgroundColor: "rgba(255,99,132,0.4)",
         borderColor: "rgba(255,99,132,1)",
         borderWidth: 1,

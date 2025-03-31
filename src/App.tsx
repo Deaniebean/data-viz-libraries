@@ -21,7 +21,8 @@ import PyodideChart from "./charts/basicCharts/PyodideChart";
 import { ApexChartsCustom } from "./charts/experimental/ApexChartsCustom";
 import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
 import { EchartsLineChart } from "./charts/customLineChart/EchartsLineChart";
-import { ChartjsSimple } from "./thesisCode/ChartjsSimple";
+import { ChartjsSimple } from "./thesisCode/ChartjsSimpleLineChart";
+import { EChartsSimple } from "./thesisCode/EchartsSimpleLineChart";
 
 function App() {
   return (
@@ -56,7 +57,8 @@ function App() {
           <Route path="/echarts/sankey" element={<EchartsSankey />} />
           <Route path="/echarts/sankey2" element={<EchartsSankey2 />} />
         
-          <Route path="/thesis/chartjs" element={<ChartjsSimple />} />
+          <Route path="/thesis/chartjsLine" element={<ChartjsSimple />} />
+          <Route path="/thesis/echartsLine" element={<EChartsSimple />} />
         </Routes>
 
 

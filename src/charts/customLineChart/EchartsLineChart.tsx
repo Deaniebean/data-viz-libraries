@@ -1,4 +1,12 @@
-import ReactECharts from "echarts-for-react";
+import ReactEChartsCore from "echarts-for-react/lib/core";
+import * as echarts from "echarts/core";
+
+import { LineChart } from "echarts/charts";
+import { GridComponent, TooltipComponent, LegendComponent, TitleComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
+
+echarts.use([LineChart, GridComponent, TooltipComponent, LegendComponent, TitleComponent, CanvasRenderer]);
+
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
 import dataJson from "../../utils/DataLineChart.json"; // Import the JSON data
@@ -162,7 +170,7 @@ export const EchartsLineChart = () => {
 
   return (
     <ChartWrapper title="ECharts">
-      <ReactECharts option={options} />
+      <ReactEChartsCore option={options} />
     </ChartWrapper>
   );
 };

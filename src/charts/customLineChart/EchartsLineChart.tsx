@@ -170,7 +170,7 @@ export const EchartsLineChart = () => {
 
   return (
     <ChartWrapper title="ECharts">
-      <ReactEChartsCore option={options} />
+      <ReactEChartsCore echarts={echarts} option={options} />
     </ChartWrapper>
   );
 };

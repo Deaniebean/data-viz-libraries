@@ -9,13 +9,12 @@ echarts.use([LineChart, GridComponent, TooltipComponent, LegendComponent, TitleC
 
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
-import dataJson from "../../utils/DataLineChart.json"; // Import the JSON data
+import dataJson from "../../utils/DataLineChart.json"; 
 import { formatMonths } from "../../utils/Months";
 
-// Function to find intersection points
 const calculateIntersections = (data: { id: number; actual: number; target: number }[]): { actualData: [number, number][]; targetData: [number, number][] } => {
-  const actualData: [number, number][] = data.map((d) => [d.id, d.actual] as [number, number]);
-  const targetData: [number, number][] = data.map((d) => [d.id, d.target] as [number, number]);
+  const actualData: [number, number][] = data.map((d) => [d.id, d.actual]);
+  const targetData: [number, number][] = data.map((d) => [d.id, d.target]);
 
   for (let i = 0; i < data.length - 1; i++) {
     const curr = data[i];
@@ -24,7 +23,7 @@ const calculateIntersections = (data: { id: number; actual: number; target: numb
     if ((curr.actual < curr.target && next.actual > next.target) ||
         (curr.actual > curr.target && next.actual < next.target)) {
 
-      // Estimate intersection (linear interpolation)
+      // linear interpolation
       const xIntersect = curr.id + 
         Math.abs((curr.target - curr.actual) / ((next.actual - curr.actual) - (next.target - curr.target)));
       const yIntersect = curr.target + ((next.target - curr.target) * (xIntersect - curr.id));
@@ -43,9 +42,16 @@ export const EchartsLineChart = () => {
   const [processedData, setProcessedData] = useState<{ actualData: [number, number][]; targetData: [number, number][] }>({ actualData: [], targetData: [] });
 
   useEffect(() => {
-    const result = calculateIntersections(dataJson); // Use dataJson instead of rawData
-    setProcessedData(result);
-  }, []); // No dependencies since dataJson is static
+    console.log("dataJson", dataJson); // Debugging: Log dataJson to check for unexpected changes
+
+    setProcessedData((prev) => {
+      const newResult = calculateIntersections(dataJson);
+
+      // Prevent unnecessary updates (only update if data has changed)
+      if (JSON.stringify(prev) === JSON.stringify(newResult)) return prev;
+      return newResult;
+    });
+  }, []); 
 
   // Generate dynamic gradient stops based on actual vs target values
   const colorStops: { offset: number; color: string }[] = [];
@@ -102,26 +108,16 @@ export const EchartsLineChart = () => {
         margin: 10,  
       },
     },
-    legend: { orient: "horizontal", 
-        left: "center", 
-        bottom: 0,
-    data: [
-        {
-            name: "Actual",
-            icon: "circle", 
-            itemStyle: { color: "#14b425" }, 
-          },
-          {
-            name: "Actual ",
-            icon: "circle",
-            itemStyle: { color: "#ff0000" },
-          },
-          {
-            name: "Target",
-            icon: "circle", 
-            itemStyle: { color: "black" }, 
-          }
-         ] },
+    legend: { 
+      orient: "horizontal", 
+      left: "center", 
+      bottom: 0,
+      data: [
+        { name: "Actual", icon: "circle", itemStyle: { color: "#14b425" } },
+        { name: "Actual ", icon: "circle", itemStyle: { color: "#ff0000" } },
+        { name: "Target", icon: "circle", itemStyle: { color: "black" } }
+      ] 
+    },
     series: [
       {
         name: "Actual",
@@ -143,7 +139,7 @@ export const EchartsLineChart = () => {
         itemStyle: {
           color: (params: { dataIndex: number }) => {
             const point = processedData.actualData[params.dataIndex];
-            if (!point) return "#00000"; 
+            if (!point) return "#000000"; 
             const y_actual = point[1];
             const y_target = processedData.targetData.find((t) => t[0] === point[0])?.[1] ?? 0;
             return y_actual >= y_target ? "#14b425" : "#ff0000"; 

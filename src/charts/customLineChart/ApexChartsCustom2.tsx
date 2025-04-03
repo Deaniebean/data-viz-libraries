@@ -148,7 +148,7 @@ export const ApexChartsCustom2 = () => {
       title: { text: "Values" },
       min: 0, 
       labels: {
-        formatter: (value: number) => Math.round(value).toString(), // Show only whole numbers
+        formatter: (value: number) => Math.round(value).toString(), 
       },
     },
   

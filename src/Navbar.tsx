@@ -108,27 +108,44 @@ export const Navbar = () => {
             </ul>
           </li>
           <li className="title">
-            Use Case 1: Line Chart
-            <ul className="dropdown">
-              <li>
+          Use Case 1: Line Chart
+          <ul className="dropdown">
+            <li>
               <p>ApexCharts</p>
-                <ul className="sub-dropdown">
-                  <li>
-                  <NavLink to="/apexcharts/line-chart-custom">Apexcharts</NavLink>
-                  </li>
-                  <li>
-                  <NavLink to="/apexcharts/line-chart-custom-2">Apexcharts2</NavLink>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <NavLink to="/chartjs/line-chart-custom">Chart.js</NavLink>
-              </li>
-              <li>
-                <NavLink to="/echarts/line-chart-custom">Echarts</NavLink>
-              </li>
-            </ul>
-          </li>
+              <ul className="sub-dropdown">
+                <li>
+                  <NavLink to="/apexcharts/apex-line-simple">Apexcharts Simple</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/apexcharts/line-chart-custom-2">Apexcharts Custom</NavLink>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>chart.js</p>
+              <ul className="sub-dropdown">
+                <li>
+                  <NavLink to="/chartjs/chartjs-line-simple">Chart.js Simple</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/chartjs/line-chart-custom">Chart.js Custom</NavLink>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <p>Echarts</p>
+              <ul className="sub-dropdown">
+                <li>
+                  <NavLink to="/echarts/echarts-line-simple">Chart.js Simple</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/echarts/line-chart-custom">Echarts Custom</NavLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
           <li className="title">
             Use Case 2: Pareto Chart
             <ul className="dropdown">

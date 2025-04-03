@@ -137,14 +137,16 @@ export const EchartsLineChart = () => {
           },
         },
         symbol: "circle",
-        symbolSize: 8,
+        symbolSize: (value: [number, number]) => {
+          return Number.isInteger(value[0]) ? 8 : 0; // Show marker only for whole x values
+        },
         itemStyle: {
           color: (params: { dataIndex: number }) => {
             const point = processedData.actualData[params.dataIndex];
             if (!point) return "#00000"; 
             const y_actual = point[1];
             const y_target = processedData.targetData.find((t) => t[0] === point[0])?.[1] ?? 0;
-            return y_actual >= y_target ? "#14b425" : "#ff0000"; // Green if above, red if below
+            return y_actual >= y_target ? "#14b425" : "#ff0000"; 
           },
         },
       },

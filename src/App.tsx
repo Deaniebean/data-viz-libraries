@@ -58,8 +58,8 @@ function App() {
           <Route path="/echarts/sankey" element={<EchartsSankey />} />
           <Route path="/echarts/sankey2" element={<EchartsSankey2 />} />
         
-          <Route path="/thesis/chartjsLine" element={<ChartjsSimple />} />
-          <Route path="/thesis/echartsLine" element={<EChartsSimple />} />
+          <Route path="/chartjs/chartjs-line-simple" element={<ChartjsSimple />} />
+          <Route path="/echarts/echarts-line-simple" element={<EChartsSimple />} />
           <Route path="/apexcharts/apex-line-simple" element={<ApexSimple/>} />
         </Routes>
 

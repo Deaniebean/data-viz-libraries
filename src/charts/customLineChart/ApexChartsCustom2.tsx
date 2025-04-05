@@ -1,7 +1,7 @@
 import Chart from "react-apexcharts";
 import { useState, useEffect } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
-import dataJson from "../../utils/DataLineChart.json"; // Ensure this import is correct
+import dataJson from "../../utils/DataLineChart.json"; 
 import { formatMonths } from "../../utils/Months"; 
 interface DataPoint {
   id: number;
@@ -56,12 +56,12 @@ export const ApexChartsCustom2 = () => {
       : targetNext.y; // Fallback to targetNext.y if targetCurr is undefined
 
     // Determine the color based on whether the actual value is above or below the target
-    const color = point.y >= interpolatedTargetY ? "#14b425" : "#ff0000"; // Green if above target, red if below
+    const color = point.y >= interpolatedTargetY ? "#14b425" : "#ff0000"; 
 
     return {
       x: point.x,
       y: point.y,
-      color: color, // This decides the color
+      color: color,
     };
   });
 
@@ -84,8 +84,8 @@ export const ApexChartsCustom2 = () => {
     const y1_target = chartData.targetData.find((d) => d.x === nextDataPoint.x)?.y ?? 0;
 
     const sectionColor = y0_actual >= y0_target && y1_actual >= y1_target
-      ? "#14b425" // Green
-      : "#ff0000"; // Red 
+      ? "#14b425" 
+      : "#ff0000"; 
 
   
 
@@ -119,9 +119,7 @@ export const ApexChartsCustom2 = () => {
         stroke: {
           width: 0,
         },
-        markers: {
-          size: 0, 
-        },
+              
         legendLabels: {
           
           show: true,
@@ -133,10 +131,7 @@ export const ApexChartsCustom2 = () => {
     xaxis: {
       type: "numeric" as const,
       title: { text: "Months" },
-      min: 1,
-      max: dataJson.length, 
-      tickAmount: dataJson.length, 
-      tickPlacement: "on", // Aligns ticks to data points
+      tickAmount: dataJson.length-1, 
       labels: {
         formatter: (value: number) => {
           const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
@@ -156,15 +151,10 @@ export const ApexChartsCustom2 = () => {
       type: ["gradient", "solid"],
       colors: ["#000000"],
       gradient: {
-        shade: "dark",
         type: "horizontal",
-        shadeIntensity: 0.5,
-        inverseColors: true,
-        opacityFrom: 1,
-        opacityTo: 1,
         colorStops: colorStops.flatMap((stop) => [
-          { offset: stop.offset, color: stop.color, opacity: 1 },
-          { offset: stop.nextOffset, color: stop.nextColor, opacity: 1 },
+          { offset: stop.offset, color: stop.color },
+          { offset: stop.nextOffset, color: stop.nextColor},
         ]),
       },
     },
@@ -172,7 +162,16 @@ export const ApexChartsCustom2 = () => {
       curve: ["straight" as const, "straight" as const],
       dashArray: [0, 5],
     },
-    markers: { size: 5 },
+    markers: {
+      size: [0, 0],
+      discrete: coloredData
+        .map((point, index) => ({
+          seriesIndex: 0, 
+          dataPointIndex: index,
+          size: Number.isInteger(point.x) ? 5 : 0,
+        })) .filter((d) => d.size > 0), 
+
+    },
     tooltip: {
       x: { format: "MMM" },
     },

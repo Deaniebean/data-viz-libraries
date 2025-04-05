@@ -133,9 +133,10 @@ export const ApexChartsCustom2 = () => {
       title: { text: "Months" },
       tickAmount: dataJson.length-1, 
       labels: {
-        formatter: (value: number) => {
+        formatter: (value: string) => {
+          const numericValue = parseFloat(value);
           const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
-          return allMonths[Math.round(value) - 1] || value.toString();
+          return allMonths[Math.round(numericValue) - 1] || value;
         },
       },
     },
@@ -153,8 +154,8 @@ export const ApexChartsCustom2 = () => {
       gradient: {
         type: "horizontal",
         colorStops: colorStops.flatMap((stop) => [
-          { offset: stop.offset, color: stop.color },
-          { offset: stop.nextOffset, color: stop.nextColor},
+          { offset: stop.offset, color: stop.color, opacity: 1 },
+          { offset: stop.nextOffset, color: stop.nextColor, opacity: 1 },
         ]),
       },
     },

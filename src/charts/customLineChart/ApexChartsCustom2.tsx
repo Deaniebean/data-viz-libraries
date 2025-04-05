@@ -141,6 +141,9 @@ export const ApexChartsCustom2 = () => {
       },
     },
     yaxis: {
+      axisBorder: {
+        show: true,
+      },
       title: { text: "Values" },
       min: 0, 
       labels: {

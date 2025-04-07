@@ -1,8 +1,9 @@
 import Chart from "react-apexcharts";
-import { ChartWrapper } from "../common/chartWrapper";
-
 export const ApexSimple = () => {
-  const chartData = {
+  const chartData: {
+    series: { name: string; data: number[] }[];
+    options: ApexCharts.ApexOptions;
+  } = {
     series: [
       {
         name: "Actual",
@@ -16,7 +17,7 @@ export const ApexSimple = () => {
     options: {
       chart: {
         type: "line",
-        height: 350,
+
       },
       xaxis: {
         categories: [
@@ -41,13 +42,13 @@ export const ApexSimple = () => {
   };
 
   return (
-    <ChartWrapper title="Simple Chart ApexCharts">
+
       <Chart
         options={chartData.options}
         series={chartData.series}
         type="line"
-        height={350}
+        style={{ width: "60%", height: "600px" }} 
+        
       />
-    </ChartWrapper>
   );
 };

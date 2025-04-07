@@ -162,7 +162,7 @@ export const EchartsLineChart = () => {
         itemStyle: { color: "#ff0000" }, 
         emphasis: { disabled: true }, 
       },
-    ],
+    ], width: "80%", 
     tooltip: { trigger: "axis" },
   };
 

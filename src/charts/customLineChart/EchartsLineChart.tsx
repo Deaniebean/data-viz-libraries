@@ -168,7 +168,13 @@ export const EchartsLineChart = () => {
 
   return (
     <ChartWrapper title="ECharts">
-      <ReactEChartsCore echarts={echarts} option={options} />
+      {({ width, height }) => (
+        <ReactEChartsCore
+          echarts={echarts}
+          option={options}
+          style={{ width, height }}
+        />
+      )}
     </ChartWrapper>
   );
 };

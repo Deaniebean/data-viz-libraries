@@ -32,28 +32,29 @@ export const RechartCustom = () => {
 
   return (
     <ChartWrapper title="Recharts Custom">
-      <ResponsiveContainer>
-        <LineChart
-          data={chartData}
-        >
-          <defs>
-            <linearGradient id="gradient" x1="0" y1="0" x2="100%" y2="0">
-              {gradientStops.map((stop, index) => (
-                <React.Fragment key={index}>
-                  {stop && <stop offset={`${stop.offset}%`} stopColor={stop.color} />}
-                  {stop && <stop offset={`${stop.offset + 0.1}%`} stopColor={stop.nextColor} />}
-                </React.Fragment>
-              ))}
-            </linearGradient>
-          </defs>
-          <Line type="monotone" dataKey="actual" stroke="url(#gradient)" dot={false} />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <CartesianGrid stroke="#f5f5f5" />
-          
-        </LineChart>
-      </ResponsiveContainer>
+      {() => (
+        <ResponsiveContainer>
+          <LineChart
+            data={chartData}
+          >
+            <defs>
+              <linearGradient id="gradient" x1="0" y1="0" x2="100%" y2="0">
+                {gradientStops.map((stop, index) => (
+                  <React.Fragment key={index}>
+                    {stop && <stop offset={`${stop.offset}%`} stopColor={stop.color} />}
+                    {stop && <stop offset={`${stop.offset + 0.1}%`} stopColor={stop.nextColor} />}
+                  </React.Fragment>
+                ))}
+              </linearGradient>
+            </defs>
+            <Line type="monotone" dataKey="actual" stroke="url(#gradient)" dot={false} />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <CartesianGrid stroke="#f5f5f5" />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
     </ChartWrapper>
   );
 };

@@ -3,19 +3,16 @@ import { useState } from "react";
 
 interface ChartWrapperProps {
   title: string;
-  children: React.ReactNode;
+  children: (size: { width: string; height: string }) => React.ReactNode;
 }
 
-export const ChartWrapper: React.FC<ChartWrapperProps> = ({
-  title,
-  children,
-}) => {
-  const [screenSize, setScreenSize] = useState("large");
+export const ChartWrapper: React.FC<ChartWrapperProps> = ({ title, children }) => {
+  const [screenSize, setScreenSize] = useState<"small" | "large">("large");
 
   const handleScreenSizeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setScreenSize(event.target.value);
+    setScreenSize(event.target.value as "small" | "large");
   };
 
   const getChartDimensions = () => {
@@ -24,19 +21,17 @@ export const ChartWrapper: React.FC<ChartWrapperProps> = ({
         return { width: "600px", height: "400px" };
       case "large":
       default:
-        return { width: "1000px", height: "2000px" };
+        return { width: "1000px", height: "600px" };
     }
   };
 
   const { width, height } = getChartDimensions();
 
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h1>{title}</h1>
-      <div>
-        <label>
+      <div style={{ marginBottom: "1rem" }}>
+        <label style={{ marginRight: "1rem" }}>
           <input
             type="radio"
             value="small"
@@ -55,7 +50,9 @@ export const ChartWrapper: React.FC<ChartWrapperProps> = ({
           Large
         </label>
       </div>
-      <div style={{ width, height }}>{children}</div>
+      <div style={{ width, height }}>
+        {children({ width, height })}
+      </div>
     </div>
   );
 };

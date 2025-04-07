@@ -10,6 +10,7 @@ import {
   ChartOptions,
   ScriptableContext,
   ScatterDataPoint,
+  ChartData,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useState, useEffect } from "react";
@@ -65,6 +66,7 @@ const calculateIntersections = (data: DataPoint[]) => {
     x: data[data.length - 1].id,
     y: data[data.length - 1].actual,
   });
+
   console.log("actualData:", actualData);
   return { targetData, actualData };
 };
@@ -187,7 +189,9 @@ export const ChartjsCustom = () => {
 
   return (
     <ChartWrapper title="Chart.js">
-      <Line data={chartData} options={options} />
+      {({ width, height }) => (
+        <Line data={chartData} options={options} style={{ width, height }} />
+      )}
     </ChartWrapper>
   );
 };

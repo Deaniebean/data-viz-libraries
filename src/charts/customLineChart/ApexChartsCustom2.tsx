@@ -1,8 +1,9 @@
 import Chart from "react-apexcharts";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChartWrapper } from "../../common/chartWrapper";
 import dataJson from "../../utils/DataLineChart.json"; 
 import { formatMonths } from "../../utils/Months"; 
+
 interface DataPoint {
   id: number;
   target: number;
@@ -38,32 +39,41 @@ const calculateIntersections = (data: DataPoint[]) => {
 
 export const ApexChartsCustom2 = () => {
   const [chartData, setChartData] = useState<{ targetData: { x: number; y: number }[]; actualData: { x: number; y: number }[] }>({ targetData: [], actualData: [] });
+  const [coloredData, setColoredData] = useState<{ x: number; y: number; color: string }[]>([]);
+  const [containerDimensions, setContainerDimensions] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
+
+  const chartContainerRef = useRef<HTMLDivElement | null>(null); // Ref for the container
 
   useEffect(() => {
     const { targetData, actualData } = calculateIntersections(dataJson as DataPoint[]);
     setChartData({ targetData, actualData });
-  }, []);
 
-  const coloredData = chartData.actualData.map((point) => {
-    // Find the target values surrounding the current point
-    const targetCurr = chartData.targetData.find((t) => t.x === point.x);
-    let targetNext = chartData.targetData.find((t) => t.x > point.x);
-    if (!targetNext) targetNext = chartData.targetData[chartData.targetData.length - 1];
+    // Log the chart data after it has been set
+    console.log("Chart Data", { targetData, actualData });
 
-    // Interpolate target value if necessary (in case the x is not an exact match)
-    const interpolatedTargetY = targetCurr
-      ? targetCurr.y + (targetNext.y - targetCurr.y) * (point.x - targetCurr.x) / (targetNext.x - targetCurr.x)
-      : targetNext.y; // Fallback to targetNext.y if targetCurr is undefined
+    const colored = actualData.map((point) => {
+      // Find the target values surrounding the current point
+      const targetCurr = targetData.find((t) => t.x === point.x);
+      let targetNext = targetData.find((t) => t.x > point.x);
+      if (!targetNext) targetNext = targetData[targetData.length - 1];
 
-    // Determine the color based on whether the actual value is above or below the target
-    const color = point.y >= interpolatedTargetY ? "#14b425" : "#ff0000"; 
+      // Interpolate target value if necessary (in case the x is not an exact match)
+      const interpolatedTargetY = targetCurr
+        ? targetCurr.y + (targetNext.y - targetCurr.y) * (point.x - targetCurr.x) / (targetNext.x - targetCurr.x)
+        : targetNext.y; // Fallback to targetNext.y if targetCurr is undefined
 
-    return {
-      x: point.x,
-      y: point.y,
-      color: color,
-    };
-  });
+      // Determine the color based on whether the actual value is above or below the target
+      const color = point.y >= interpolatedTargetY ? "#14b425" : "#ff0000"; 
+
+      return {
+        x: point.x,
+        y: point.y,
+        color: color,
+      };
+    });
+
+    setColoredData(colored); // Update the coloredData state
+  }, [dataJson]); // Add dataJson as a dependency to re-run if it changes
 
   const colorStops = coloredData.map((dataPoint, index) => {
     const nextDataPoint = coloredData[index + 1];
@@ -86,8 +96,6 @@ export const ApexChartsCustom2 = () => {
     const sectionColor = y0_actual >= y0_target && y1_actual >= y1_target
       ? "#14b425" 
       : "#ff0000"; 
-
-  
 
     return {
       offset: offset,
@@ -119,15 +127,17 @@ export const ApexChartsCustom2 = () => {
         stroke: {
           width: 0,
         },
-              
         legendLabels: {
-          
           show: true,
           name: "Actual",
         },
       },
     ],
-    chart: { height: 350 },
+    chart: { 
+      type: "line" as const, 
+      height: "100%",
+      width: "100%", 
+    },
     xaxis: {
       type: "numeric" as const,
       title: { text: "Months" },
@@ -150,7 +160,6 @@ export const ApexChartsCustom2 = () => {
         formatter: (value: number) => Math.round(value).toString(), 
       },
     },
-  
     fill: {
       type: ["gradient", "solid"],
       colors: ["#000000"],
@@ -174,7 +183,6 @@ export const ApexChartsCustom2 = () => {
           dataPointIndex: index,
           size: Number.isInteger(point.x) ? 5 : 0,
         })) .filter((d) => d.size > 0), 
-
     },
     tooltip: {
       x: { format: "MMM" },
@@ -184,17 +192,43 @@ export const ApexChartsCustom2 = () => {
       markers: {
         fillColors: ["#14b425", "#000000", "#ff0000"],
       },
-  }
-};
+    },
+  };
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      if (chartContainerRef.current) {
+        setContainerDimensions({
+          width: chartContainerRef.current.offsetWidth,
+          height: chartContainerRef.current.offsetHeight,
+        });
+      }
+    });
+
+    if (chartContainerRef.current) {
+      resizeObserver.observe(chartContainerRef.current);
+    }
+
+    return () => {
+      if (chartContainerRef.current) {
+        resizeObserver.unobserve(chartContainerRef.current);
+      }
+    };
+  }, []); // Run only once on mount
 
   return (
     <ChartWrapper title="ApexCharts">
-      <Chart
-        type="line"
-        options={chartOptions}
-        series={chartOptions.series}
-        width="100%"
-      />
+      {() => (
+        <div ref={chartContainerRef} style={{ width: "100%", height: "100%" }}>
+          <Chart
+            options={chartOptions}
+            series={chartOptions.series}
+            type="line"
+            width={containerDimensions.width} 
+            height={containerDimensions.height} 
+          />
+        </div>
+      )}
     </ChartWrapper>
   );
 };

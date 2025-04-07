@@ -53,5 +53,5 @@ export const EChartsSimple = () => {
     ],
   };
 
-  return <ReactEChartsCore echarts={echarts} option={options} style={{ width: "100%", height: "400px" }} />;
+  return <ReactEChartsCore echarts={echarts} option={options} style={{ width: "100%", height: "600px" }} />;
 };

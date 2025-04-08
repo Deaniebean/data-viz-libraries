@@ -7,6 +7,7 @@ export const PlotlyChart = () => {
 
   return (
     <ChartWrapper title="Plotly Chart">
+      {({ width, height }) => (
       <Plot
         data={[
           {
@@ -26,8 +27,9 @@ export const PlotlyChart = () => {
         ]}
         useResizeHandler={true}
         layout={{ title: "KPI tracker" }}
-        style={{ resize:"both" , width: "100%", height: "100%" }}
+        style={{ resize:"both" , width, height}}
       />
+      )}
     </ChartWrapper>
   );
 };

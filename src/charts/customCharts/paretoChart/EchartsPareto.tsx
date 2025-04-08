@@ -1,7 +1,7 @@
 import ReactECharts from 'echarts-for-react';
-import { ChartWrapper } from '../../common/chartWrapper';
+import { ChartWrapper } from '../../../common/chartWrapper';
 import { useState } from 'react';
-import { ParetoData } from '../../utils/DataPareto';
+import { ParetoData } from '../../../utils/DataPareto';
 
 export const EchartsPareto = () => {
   const [chartData] = useState(ParetoData);
@@ -137,7 +137,9 @@ export const EchartsPareto = () => {
 
   return (
     <ChartWrapper title={'ECharts Pareto'}>
-      <ReactECharts option={options} style={{ height: '600px', width: '100%' }} />
+       {({ width, height }) => (
+      <ReactECharts option={options} style={{ width, height}} />
+        )}
     </ChartWrapper>
   );
 };

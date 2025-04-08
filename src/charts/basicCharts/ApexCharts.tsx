@@ -26,11 +26,14 @@ const chartOptions = {
 };
   return (
     <ChartWrapper title={"ApexCharts"}>
-    <Chart
-    type="line"
-    options={chartOptions}
-    series={chartOptions.series}
-    width="100%"
-  /></ChartWrapper>
+    {({ width, height }) => (
+      <Chart
+      type="line"
+      options={chartOptions}
+      series={chartOptions.series}
+      style={{width, height}}
+      />
+    )}
+    </ChartWrapper>
   );
 };

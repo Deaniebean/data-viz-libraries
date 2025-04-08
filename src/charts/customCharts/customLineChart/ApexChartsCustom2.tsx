@@ -1,8 +1,8 @@
 import Chart from "react-apexcharts";
 import { useState, useEffect, useRef } from "react";
-import { ChartWrapper } from "../../common/chartWrapper";
-import dataJson from "../../utils/DataLineChart.json"; 
-import { formatMonths } from "../../utils/Months"; 
+import { ChartWrapper } from "../../../common/chartWrapper";
+import dataJson from "../../../utils/DataLineChart.json"; 
+import { formatMonths } from "../../../utils/Months"; 
 
 interface DataPoint {
   id: number;
@@ -48,9 +48,6 @@ export const ApexChartsCustom2 = () => {
     const { targetData, actualData } = calculateIntersections(dataJson as DataPoint[]);
     setChartData({ targetData, actualData });
 
-    // Log the chart data after it has been set
-    console.log("Chart Data", { targetData, actualData });
-
     const colored = actualData.map((point) => {
       // Find the target values surrounding the current point
       const targetCurr = targetData.find((t) => t.x === point.x);
@@ -72,18 +69,16 @@ export const ApexChartsCustom2 = () => {
       };
     });
 
-    setColoredData(colored); // Update the coloredData state
-  }, [dataJson]); // Add dataJson as a dependency to re-run if it changes
+    setColoredData(colored); 
+  }, [dataJson]);
 
   const colorStops = coloredData.map((dataPoint, index) => {
     const nextDataPoint = coloredData[index + 1];
     if (!nextDataPoint) return null;
 
-    // Get the range of x values in the data
     const firstPointX = coloredData[0].x;
     const lastPointX = coloredData[coloredData.length - 1].x;
 
-    // Calculate offset based on the current x and last x values
     const offset = ((dataPoint.x - firstPointX) / (lastPointX - firstPointX)) * 100.0;
     const nextOffset = ((nextDataPoint.x - firstPointX) / (lastPointX - firstPointX)) * 100.0;
 
@@ -214,7 +209,7 @@ export const ApexChartsCustom2 = () => {
         resizeObserver.unobserve(chartContainerRef.current);
       }
     };
-  }, []); // Run only once on mount
+  }, []);
 
   return (
     <ChartWrapper title="ApexCharts">

@@ -8,19 +8,23 @@ export const LineChartMui = () => {
 
   return (
     <ChartWrapper title="Line Chart Mui">
-      <LineChart
-        xAxis={[
-          {
-            scaleType: "point",
-            dataKey: "month",
-          },
-        ]}
-        series={[
-          { dataKey: "actual", label: "Actual", color: "#82ca9d" },
-          { dataKey: "target", label: "Target", color: "#8884d8" },
-        ]}
-        dataset={chartData}
-      />
+      {({ width, height }) => (
+      <div style={{ width, height }}>
+        <LineChart
+          xAxis={[
+            {
+              scaleType: "point",
+              dataKey: "month",
+            },
+          ]}
+          series={[
+            { dataKey: "actual", label: "Actual", color: "#82ca9d" },
+            { dataKey: "target", label: "Target", color: "#8884d8" },
+          ]}
+          dataset={chartData}
+        />
+      </div>
+      )}
     </ChartWrapper>
   );
 };

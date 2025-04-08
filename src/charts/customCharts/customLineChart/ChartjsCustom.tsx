@@ -14,9 +14,9 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useState, useEffect } from "react";
-import dataJson from "../../utils/DataLineChart.json"; 
-import { ChartWrapper } from "../../common/chartWrapper"; 
-import { formatMonths } from "../../utils/Months"; 
+import dataJson from "../../../utils/DataLineChart.json"; 
+import { ChartWrapper } from "../../../common/chartWrapper"; 
+import { formatMonths } from "../../../utils/Months"; 
 
 // Register only the required components
 ChartJS.register(LinearScale, PointElement, LineElement, CategoryScale, Title, Tooltip, Legend);

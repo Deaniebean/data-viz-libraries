@@ -1,8 +1,8 @@
 import SankeyChart from "react-sankey-chartjs"
 import { Chart, LinearScale, CategoryScale } from 'chart.js';
 import { SankeyController} from "chartjs-chart-sankey";
-import { ParetoData } from "../../utils/DataPareto";
-import { ChartWrapper } from "../../common/chartWrapper";
+import { ParetoData } from "../../../utils/DataPareto";
+import { ChartWrapper } from "../../../common/chartWrapper";
 
 Chart.register(LinearScale, CategoryScale, SankeyController);
 
@@ -176,8 +176,13 @@ const data = {
 
     return(
         <ChartWrapper title="chartjs">
-          <SankeyChart data={data} />
-          <Legend/>
+           {({ width, height }) => (
+          <div style={{ width, height }}>
+            <SankeyChart data={data} />
+         
+          <Legend/> 
+          </div>
+           )}
         </ChartWrapper>
     )
 }

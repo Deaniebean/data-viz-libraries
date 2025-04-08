@@ -1,5 +1,5 @@
 import ReactECharts from "echarts-for-react";
-import { ChartWrapper } from "../../common/chartWrapper";
+import { ChartWrapper } from "../../../common/chartWrapper";
 
 // Define colors for statuses
 const statusColors = {
@@ -124,7 +124,9 @@ const onChartReady = (chartInstance) => {
 export const EchartsSankey3 = () => {
   return (
     <ChartWrapper title="Echarts">
-      <ReactECharts option={options} onChartReady={onChartReady} />
+       {({ width, height }) => (
+      <ReactECharts option={options} onChartReady={onChartReady} style={{width, height}}/>
+       )}
     </ChartWrapper>
   );
 };

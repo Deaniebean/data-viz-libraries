@@ -8,9 +8,9 @@ import { CanvasRenderer } from "echarts/renderers";
 echarts.use([LineChart, GridComponent, TooltipComponent, LegendComponent, TitleComponent, CanvasRenderer]);
 
 import { useState, useEffect } from "react";
-import { ChartWrapper } from "../../common/chartWrapper";
-import dataJson from "../../utils/DataLineChart.json"; 
-import { formatMonths } from "../../utils/Months";
+import { ChartWrapper } from "../../../common/chartWrapper";
+import dataJson from "../../../utils/DataLineChart.json"; 
+import { formatMonths } from "../../../utils/Months";
 
 const calculateIntersections = (data: { id: number; actual: number; target: number }[]): { actualData: [number, number][]; targetData: [number, number][] } => {
   const actualData: [number, number][] = data.map((d) => [d.id, d.actual]);

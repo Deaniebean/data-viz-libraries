@@ -19,11 +19,15 @@ export const Nivo = () => {
 
   return (
     <ChartWrapper title="Nivo">
-      <ResponsiveLine
-        data={chartData}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-        xScale={{ type: "point" }}
-      />
+      {({ width, height }) => (
+        <div style={{ width, height }}>
+          <ResponsiveLine
+            data={chartData}
+            margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+            xScale={{ type: "point" }}
+          />
+        </div>
+      )}
     </ChartWrapper>
   );
 };

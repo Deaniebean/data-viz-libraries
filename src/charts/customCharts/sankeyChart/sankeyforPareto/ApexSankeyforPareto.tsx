@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import ApexSankey from "apexsankey";
-import { ChartWrapper } from "../../../common/chartWrapper";
+import { ChartWrapper } from "../../../../common/chartWrapper";
 
 export const ApexSankeyChart = () => {
   const chartRef = useRef(null);

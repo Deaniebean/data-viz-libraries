@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import ApexSankey from "apexsankey";
-import { ParetoData } from "../../utils/DataPareto";
-import { ChartWrapper } from "../../common/chartWrapper";
+import { ParetoData } from "../../../utils/DataPareto";
+import { ChartWrapper } from "../../../common/chartWrapper";
 
 export const ApexSankeyChart = () => {
   const chartRef = useRef(null);
@@ -146,8 +146,12 @@ export const ApexSankeyChart = () => {
 
   return(
     <ChartWrapper title="ApexCharts">
-      <div ref={chartRef}/>;
-      <Legend/>
+       {({ width, height }) => (
+         <>
+           <div ref={chartRef} style={{ width, height }} />
+           <Legend />
+         </>
+       )}
     </ChartWrapper>
   ) 
 };

@@ -1,5 +1,5 @@
-import { ChartWrapper } from "../../common/chartWrapper";
-import { ParetoData } from "../../utils/DataPareto";
+import { ChartWrapper } from "../../../common/chartWrapper";
+import { ParetoData } from "../../../utils/DataPareto";
 import ReactECharts from 'echarts-for-react';
 
 export const EchartsSankey = () => {
@@ -181,8 +181,12 @@ export const EchartsSankey = () => {
 
   return (
       <ChartWrapper title="Echarts">
-        <ReactECharts option={options}  />
-        <Legend/>
+         {({ width, height }) => (
+          <div style={{ width, height }}>
+            <ReactECharts option={options}  />
+            <Legend/>
+          </div>
+          )}        
       </ChartWrapper>
   );
 };

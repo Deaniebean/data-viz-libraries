@@ -42,6 +42,7 @@ export const Chartjs = () => {
 
   return (
     <ChartWrapper title="Chartjs">
+        {({ width, height }) => (
       <Line
         data={chartData}
         options={{
@@ -52,7 +53,9 @@ export const Chartjs = () => {
             },
           },
         }}
+        style={{ width, height }}
       />
+        )}
     </ChartWrapper>
   );
 };

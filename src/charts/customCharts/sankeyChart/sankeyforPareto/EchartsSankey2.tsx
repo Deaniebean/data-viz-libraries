@@ -1,5 +1,5 @@
 import ReactECharts from "echarts-for-react";
-import { ChartWrapper } from "../../../common/chartWrapper";
+import { ChartWrapper } from "../../../../common/chartWrapper";
 
 // Define colors for groups
 const groupColors: Record<string, string> = {
@@ -165,8 +165,12 @@ const onChartReady = (chartInstance: echarts.ECharts) => {
 export const EchartsSankey2 = () => {
   return (
     <ChartWrapper title="Echarts">
-      <ReactECharts option={options} onChartReady={onChartReady} />
-      <Legend/>
+       {({ width, height }) => (
+         <div>
+           <ReactECharts option={options} onChartReady={onChartReady} style={{width, height}}/>
+           <Legend/>
+         </div>
+       )}
     </ChartWrapper>
   );
 };

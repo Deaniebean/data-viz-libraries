@@ -1,7 +1,7 @@
 import { Chart } from 'react-chartjs-2';
-import { ChartWrapper } from '../../common/chartWrapper';
+import { ChartWrapper } from '../../../common/chartWrapper';
 import { useState } from 'react';
-import { ParetoData } from '../../utils/DataPareto';
+import { ParetoData } from '../../../utils/DataPareto';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -179,7 +179,9 @@ export const ChartjsPareto = () => {
 
   return (
     <ChartWrapper title={'Chart.js Pareto'}>
-      <Chart type='bar' data={data} options={options} />
+        {({ width, height }) => (
+      <Chart type='bar' data={data} options={options} style={{width, height}}/>
+        )}
     </ChartWrapper>
   );
 };

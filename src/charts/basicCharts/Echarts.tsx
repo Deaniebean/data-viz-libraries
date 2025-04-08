@@ -35,7 +35,9 @@ export const Echarts = () => {
   };
   return (
     <ChartWrapper title="Echarts">
-      <ReactECharts option={options} />
+      {({ width, height }) => (
+        <ReactECharts option={options} style={{width, height}}/>
+      )}
     </ChartWrapper>
   );
 };

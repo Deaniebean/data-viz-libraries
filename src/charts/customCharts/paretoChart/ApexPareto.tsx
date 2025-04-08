@@ -1,7 +1,7 @@
 import Chart from 'react-apexcharts';
-import { ChartWrapper } from '../../common/chartWrapper';
+import { ChartWrapper } from '../../../common/chartWrapper';
 import { useState } from 'react';
-import { ParetoData } from '../../utils/DataPareto';
+import { ParetoData } from '../../../utils/DataPareto';
 
 // data preparation: I want the bar chart to show all open issues (which means any status apart from done) for each group as category
 
@@ -140,7 +140,9 @@ export const ApexPareto = () => {
     
   return (
   <ChartWrapper title={'ApexCharts Pareto'}>
-    <Chart options={options} series={series} type="line"></Chart>
+     {({ width, height }) => (
+    <Chart options={options} series={series} type="line" style={{width,height}}></Chart>
+     )}
   </ChartWrapper>
   );
 };

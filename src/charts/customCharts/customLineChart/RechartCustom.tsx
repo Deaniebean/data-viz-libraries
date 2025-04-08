@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Data } from "../../utils/DataLineChart";
+import { Data } from "../../../utils/DataLineChart";
 import {
   CartesianGrid,
   Line,
@@ -9,7 +9,7 @@ import {
   YAxis,
   ResponsiveContainer,
 } from "recharts";
-import { ChartWrapper } from "../../common/chartWrapper";
+import { ChartWrapper } from "../../../common/chartWrapper";
 import React from "react";
 
 export const RechartCustom = () => {

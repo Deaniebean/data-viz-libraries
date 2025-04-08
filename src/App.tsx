@@ -9,21 +9,21 @@ import { Rechart } from "./charts/basicCharts/Rechart";
 import { ApexCharts } from "./charts/basicCharts/ApexCharts";
 import { D3 } from "./charts/basicCharts/D3";
 import { Chartjs } from "./charts/basicCharts/Chartjs";
-import { ApexChartsCustom2 } from "./charts/customLineChart/ApexChartsCustom2";
-import { ApexPareto } from "./charts/paretoChart/ApexPareto";
-import { ChartjsPareto } from "./charts/paretoChart/ChartjsPareto";
-import { EchartsPareto } from "./charts/paretoChart/EchartsPareto";
-import { ChartjsSankey } from "./charts/sankeyChart/ChartjsSankey";
-import { EchartsSankey } from "./charts/sankeyChart/EchartsSankey";
-import { ApexSankeyChart } from "./charts/sankeyChart/ApexSankey";
-import { EchartsSankey2 } from "./charts/sankeyChart/sankeyforPareto/EchartsSankey2";
+import { ApexChartsCustom2 } from "./charts/customCharts/customLineChart/ApexChartsCustom2";
+import { ApexPareto } from "./charts/customCharts/paretoChart/ApexPareto";
+import { ChartjsPareto } from "./charts/customCharts/paretoChart/ChartjsPareto";
+import { EchartsPareto } from "./charts/customCharts/paretoChart/EchartsPareto";
+import { ChartjsSankey } from "./charts/customCharts/sankeyChart/ChartjsSankey";
+import { EchartsSankey } from "./charts/customCharts/sankeyChart/EchartsSankey";
+import { ApexSankeyChart } from "./charts/customCharts/sankeyChart/ApexSankey";
+import { EchartsSankey2 } from "./charts/customCharts/sankeyChart/sankeyforPareto/EchartsSankey2";
 import PyodideChart from "./charts/basicCharts/PyodideChart";
 import { ApexChartsCustom } from "./charts/experimental/ApexChartsCustom";
-import { ChartjsCustom } from "./charts/customLineChart/ChartjsCustom";
-import { EchartsLineChart } from "./charts/customLineChart/EchartsLineChart";
-import { ChartjsSimple } from "./simpleLine/ChartjsSimpleLineChart";
-import { EChartsSimple } from "./simpleLine/EchartsSimpleLineChart";
-import { ApexSimple } from "./simpleLine/ApexSimpleLine";
+import { ChartjsCustom } from "./charts/customCharts/customLineChart/ChartjsCustom";
+import { EchartsLineChart } from "./charts/customCharts/customLineChart/EchartsLineChart";
+import { ChartjsSimple } from "./charts/simpleCharts/simpleLine/ChartjsSimpleLineChart";
+import { ApexSimple } from "./charts/simpleCharts/simpleLine/ApexSimpleLine";
+import { EChartsSimple } from "./charts/simpleCharts/simpleLine/EchartsSimpleLineChart";
 
 function App() {
   return (

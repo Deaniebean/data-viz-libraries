@@ -44,8 +44,14 @@ export const EchartsPareto = () => {
     xAxis: {
       type: "value",
       min: 0,
-      max: openIssuesCount.length+1,
+      max: openIssuesCount.length + 1,
       interval: 1,
+      axisLabel: {
+        formatter: (value) => {
+          // Convert value (1, 2, 3, ...) to category names
+          return categories[value - 1] ?? '';
+        },
+      },
     },
     yAxis: [
       {
@@ -91,7 +97,7 @@ export const EchartsPareto = () => {
           symbol: "none",
           data: [
             {
-              xAxis: index80 + 1.5, // since the categories start at x Value 1 not 0 like the index we have to add +1.5
+              xAxis: index80 + 1.5, // Position of the marker line between bars
               lineStyle: {
                 color: "#2E5894",
                 width: 2,

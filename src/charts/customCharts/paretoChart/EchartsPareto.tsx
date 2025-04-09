@@ -30,7 +30,7 @@ export const EchartsPareto = () => {
   const barColors = openIssuesCount.map((_, i) =>
     i <= index80 ? "#c1121c" : "#2E5894"
   );
-  
+
   const options = {
     tooltip: {
       trigger: "axis",
@@ -42,8 +42,10 @@ export const EchartsPareto = () => {
       top: "bottom",
     },
     xAxis: {
-      type: "category",
-      data: categories,
+      type: "value",
+      min: 0,
+      max: openIssuesCount.length+1,
+      interval: 1,
     },
     yAxis: [
       {
@@ -74,10 +76,7 @@ export const EchartsPareto = () => {
       {
         name: "Open Tickets",
         type: "bar",
-        data: openIssuesCount.map((value, i) => ({
-          value,
-          itemStyle: { color: barColors[i] }, // Assigning color dynamically
-        })),
+        data: openIssuesCount.map((value, i) => [i + 1, value]),
         yAxisIndex: 0,
         label: {
           show: true,
@@ -85,27 +84,32 @@ export const EchartsPareto = () => {
           formatter: "{c}",
           color: "#000000",
         },
+        itemStyle: {
+          color: (params) => barColors[params.dataIndex],
+        },
         markLine: {
           symbol: "none",
           data: [
             {
-              xAxis: categories[index80],
+              xAxis: index80 + 1.5, // since the categories start at x Value 1 not 0 like the index we have to add +1.5
               lineStyle: {
                 color: "#2E5894",
                 width: 2,
                 type: "dashed",
               },
+              label: {
+                show: true,
+                position: "end",
+                formatter: "80% Threshold",
+              },
             },
           ],
-          label: {
-            show: false,
-          },
         },
       },
       {
         name: "Percentage",
         type: "line",
-        data: cumulativePercentage,
+        data: cumulativePercentage.map((value, i) => [i + 1, value]),
         yAxisIndex: 1,
         itemStyle: {
           color: "#4CBB17",
@@ -124,22 +128,23 @@ export const EchartsPareto = () => {
                 width: 2,
                 type: "dashed",
               },
+              label: {
+                show: true,
+                position: "end",
+                formatter: "80%",
+              },
             },
           ],
-          label: {
-            show: false,
-          },
         },
       },
     ],
   };
-  
 
   return (
     <ChartWrapper title={'ECharts Pareto'}>
-       {({ width, height }) => (
-      <ReactECharts option={options} style={{ width, height}} />
-        )}
+      {({ width, height }) => (
+        <ReactECharts option={options} style={{ width, height }} />
+      )}
     </ChartWrapper>
   );
 };

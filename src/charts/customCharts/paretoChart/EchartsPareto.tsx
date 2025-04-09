@@ -97,7 +97,7 @@ export const EchartsPareto = () => {
           symbol: "none",
           data: [
             {
-              xAxis: index80 + 1.5, // Position of the marker line between bars
+              xAxis: index80 + 1.5, // Position of the marker line between bars has to be 1.5 since the first item is at x-value 1 but the index is 0
               lineStyle: {
                 color: "#2E5894",
                 width: 2,

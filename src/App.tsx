@@ -24,6 +24,7 @@ import { EchartsLineChart } from "./charts/customCharts/customLineChart/EchartsL
 import { ChartjsSimple } from "./charts/simpleCharts/simpleLine/ChartjsSimpleLineChart";
 import { ApexSimple } from "./charts/simpleCharts/simpleLine/ApexSimpleLine";
 import { EChartsSimple } from "./charts/simpleCharts/simpleLine/EchartsSimpleLineChart";
+import { ChartjsParetoSimple } from "./charts/simpleCharts/simplePareto/ChartjsParetoSimple";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="/chartjs/pareto" element={<ChartjsPareto />} />
           <Route path="/echarts/pareto" element={<EchartsPareto />} />
 
+          <Route path="/chartjs/pareto/simple" element={<ChartjsParetoSimple />} />
 
           <Route path="/chartjs/sankey" element={<ChartjsSankey />} />
           <Route path="/apexcharts/sankey" element={<ApexSankeyChart />} />

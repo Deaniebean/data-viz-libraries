@@ -61,7 +61,7 @@ export const ChartjsPareto = () => {
 
   // Find the index where the cumulative percentage reaches or exceeds 80%
   const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
-  console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
+
 
   const barColors = openIssuesCountSorted.map((_, i) =>
     i <= index80 ? "#c1121c" : "#2E5894"
@@ -107,7 +107,6 @@ export const ChartjsPareto = () => {
   const options = {
     scales: {
       y: {
-        beginAtZero: true,
         title: {
           display: true,
           text: 'Open Tickets [-]',
@@ -116,7 +115,7 @@ export const ChartjsPareto = () => {
           axisLine: { show: true },
       },
       y2: {
-        beginAtZero: true,
+        
         position: 'right',
         title: {
           display: true,
@@ -128,7 +127,6 @@ export const ChartjsPareto = () => {
         },
       },
       x: {
-        beginAtZero: true,
         title: {
           display: true,
           text: 'Categories',

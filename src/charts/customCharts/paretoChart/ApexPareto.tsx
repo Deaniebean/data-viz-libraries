@@ -34,19 +34,11 @@ export const ApexPareto = () => {
   const options = {
     chart: {
       type: 'bar' as const,
-      height: 350,
       toolbar: {
         show: false
       }
     },
-    plotOptions: {
-      bar: {
-        distributed: false, // Prevents ApexCharts from overriding colors
-      }
-    },
-    dataLabels: {
-      enabled: false,
-    },
+
     xaxis: {
       type: 'numeric',
       labels: {
@@ -86,9 +78,7 @@ export const ApexPareto = () => {
     stroke: {
       width: [0, 3] 
     },
-    fill: {
-      opacity: 1, // Ensure solid colors
-    },
+
     annotations: {
       xaxis: [
         {
@@ -128,7 +118,7 @@ export const ApexPareto = () => {
       name: 'Open Tickets',
       type: 'bar',
       data: openIssuesCountSorted,
-      color: ({ dataPointIndex }: { dataPointIndex: number }) => barColors[dataPointIndex], // Ensures correct color mapping
+      color: ({ dataPointIndex }: { dataPointIndex: number }) => barColors[dataPointIndex], 
     },
     {
       name: 'Percentage',

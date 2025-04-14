@@ -76,7 +76,14 @@ export const ApexPareto = () => {
       }
     ],
     stroke: {
-      width: [0, 3] 
+      width: [0, 0, 3] //bar width=0, dummy data width= 0, line width=3
+    },
+    legend: {
+      show: true,
+      
+      markers: {
+        fillColors: ["#c1121c", "#2E5894","#14b425" ],
+      },
     },
 
     annotations: {
@@ -121,11 +128,20 @@ export const ApexPareto = () => {
       color: ({ dataPointIndex }: { dataPointIndex: number }) => barColors[dataPointIndex], 
     },
     {
+      name: 'Open Tickets',
+      data: [],
+      type: 'line',
+      legendLabels: {
+        show: true,
+        name: "Open Tickets",
+      },
+    },
+    {
       name: 'Percentage',
       type: 'line',
       data: cumulativePercentage,
-      color: '#4CBB17'
-    }
+      color: '#4CBB17',
+    },
   ];
 
   return (

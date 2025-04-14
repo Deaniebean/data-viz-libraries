@@ -40,6 +40,11 @@ export const EchartsPareto = () => {
     },
     legend: {
       top: "bottom",
+      data: [
+        { name: "Open Tickets", icon: "rect" }, 
+        { name: "Open Tickets ", icon: "rect" },
+        { name: "Percentage", icon: "circle" },    
+      ]
     },
     xAxis: {
       type: "value",
@@ -109,8 +114,19 @@ export const EchartsPareto = () => {
                 formatter: "80% Threshold",
               },
             },
+            
           ],
         },
+      },     
+      {
+        name: "Open Tickets ", 
+        data: [],
+        type: "line",
+        icon: "rect",      
+        lineStyle: { width: 0 }, 
+        symbol: "none",
+        itemStyle: { color: "#ff0000" }, 
+        emphasis: { disabled: true }, 
       },
       {
         name: "Percentage",
@@ -142,7 +158,9 @@ export const EchartsPareto = () => {
             },
           ],
         },
-      },
+      },   
+   
+ 
     ],
   };
 

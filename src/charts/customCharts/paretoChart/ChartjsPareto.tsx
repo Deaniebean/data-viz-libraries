@@ -14,9 +14,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import annotationPlugin from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-
+import annotationPlugin from 'chartjs-plugin-annotation';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,17 +24,16 @@ ChartJS.register(
   PointElement,
   LineController,
   BarController,
+  annotationPlugin,
   ChartDataLabels,
   Tooltip,
   Legend,
-  annotationPlugin // Register annotation plugin
 );
 
 export const ChartjsPareto = () => {
   const [chartData] = useState(ParetoData);
   const categories = Array.from(new Set(chartData.map((data) => data.group)));
 
-  // Filter out issues with status "Done" and count open issues for each group
   const openIssuesCount = categories.map(
     (category) =>
       chartData.filter(
@@ -43,7 +41,6 @@ export const ChartjsPareto = () => {
       ).length
   );
 
-  // Sort categories based on open issue count
   const sortedData = categories
     .map((category, index) => ({ category, count: openIssuesCount[index] }))
     .sort((a, b) => b.count - a.count);
@@ -51,7 +48,6 @@ export const ChartjsPareto = () => {
   const sortedCategories = sortedData.map((item) => item.category);
   const openIssuesCountSorted = sortedData.map((item) => item.count);
 
-  // Calculate cumulative percentage for the line graph
   const totalOpenIssues = openIssuesCountSorted.reduce((acc, count) => acc + count, 0);
   let cumulativeSum = 0;
   const cumulativePercentage = openIssuesCountSorted.map((count) => {
@@ -59,21 +55,19 @@ export const ChartjsPareto = () => {
     return Math.floor((cumulativeSum / totalOpenIssues) * 100);
   });
 
-  // Find the index where the cumulative percentage reaches or exceeds 80%
   const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
-
 
   const barColors = openIssuesCountSorted.map((_, i) =>
     i <= index80 ? "#c1121c" : "#2E5894"
   );
-  
+
   const data = {
     labels: sortedCategories,
     datasets: [
       {
         datalabels: {
-        display: false, 
-      },
+          display: false,
+        },
         type: 'line' as const,
         label: 'Percentage',
         data: cumulativePercentage,
@@ -83,12 +77,12 @@ export const ChartjsPareto = () => {
         pointRadius: 3,
         fill: false,
         yAxisID: 'y2',
-      }, 
+      },
       {
         type: 'bar' as const,
         label: 'Open Tickets',
         data: openIssuesCountSorted,
-        backgroundColor: barColors, 
+        backgroundColor: barColors,
         borderColor: barColors,
         borderWidth: 1,
         datalabels: {
@@ -102,8 +96,20 @@ export const ChartjsPareto = () => {
           formatter: Math.round,
         },
       },
+      {
+        type: 'line' as const,
+        label: 'Open Tickets',
+        data: [], 
+        backgroundColor: '#2E5894',
+        borderColor: '#2E5894',
+        borderWidth: 1,
+        datalabels: {
+          display: false,
+        },
+      },
     ],
   };
+
   const options = {
     scales: {
       y: {
@@ -112,10 +118,9 @@ export const ChartjsPareto = () => {
           text: 'Open Tickets [-]',
         },
         max: 40,
-          axisLine: { show: true },
+        axisLine: { show: true },
       },
       y2: {
-        
         position: 'right',
         title: {
           display: true,
@@ -133,7 +138,7 @@ export const ChartjsPareto = () => {
         },
         grid: {
           display: false,
-        }
+        },
       },
     },
     plugins: {
@@ -173,13 +178,12 @@ export const ChartjsPareto = () => {
       },
     },
   };
-  
 
   return (
     <ChartWrapper title={'Chart.js Pareto'}>
-        {({ width, height }) => (
-      <Chart type='bar' data={data} options={options} style={{width, height}}/>
-        )}
+      {({ width, height }) => (
+        <Chart type='bar' data={data} options={options} style={{ width, height }} />
+      )}
     </ChartWrapper>
   );
 };

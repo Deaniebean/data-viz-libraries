@@ -142,6 +142,11 @@ export const ChartjsPareto = () => {
       },
     },
     plugins: {
+
+      legend: {
+        position: 'bottom',
+      },
+
       annotation: {
         annotations: {
           verticalLine: {

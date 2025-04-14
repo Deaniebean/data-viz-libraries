@@ -79,8 +79,7 @@ export const ApexPareto = () => {
       width: [0, 0, 3] //bar width=0, dummy data width= 0, line width=3
     },
     legend: {
-      show: true,
-      
+      show: true,    
       markers: {
         fillColors: ["#c1121c", "#2E5894","#14b425" ],
       },

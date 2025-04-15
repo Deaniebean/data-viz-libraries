@@ -1,13 +1,33 @@
-import ReactECharts from 'echarts-for-react';
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { BarChart, LineChart } from 'echarts/charts';
+import {
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  MarkLineComponent
+} from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+
 import { ChartWrapper } from '../../../common/chartWrapper';
 import { useState } from 'react';
 import { ParetoData } from '../../../utils/DataPareto';
+
+// Register only required components
+echarts.use([
+  BarChart,
+  LineChart,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  MarkLineComponent,
+  CanvasRenderer,
+]);
 
 export const EchartsPareto = () => {
   const [chartData] = useState(ParetoData);
   const categories = Array.from(new Set(chartData.map((data) => data.group)));
 
-  // Filter out issues with status "Done" and count open issues for each group
   const openIssuesCount = categories.map(
     (category) =>
       chartData.filter(
@@ -16,7 +36,6 @@ export const EchartsPareto = () => {
   );
   openIssuesCount.sort((a, b) => b - a);
 
-  // Calculate cumulative percentage for the line graph
   const totalOpenIssues = openIssuesCount.reduce((acc, count) => acc + count, 0);
   let cumulativeSum = 0;
   const cumulativePercentage = openIssuesCount.map((count) => {
@@ -24,9 +43,7 @@ export const EchartsPareto = () => {
     return Math.floor((cumulativeSum / totalOpenIssues) * 100);
   });
 
-  // Find the index where the cumulative percentage reaches or exceeds 80%
   const index80 = cumulativePercentage.findIndex((percentage) => percentage >= 80);
-  console.log('Index where cumulative percentage reaches or exceeds 80%:', index80);
   const barColors = openIssuesCount.map((_, i) =>
     i <= index80 ? "#c1121c" : "#2E5894"
   );
@@ -41,9 +58,9 @@ export const EchartsPareto = () => {
     legend: {
       top: "bottom",
       data: [
-        { name: "Open Tickets", icon: "rect" }, 
+        { name: "Open Tickets", icon: "rect" },
         { name: "Open Tickets ", icon: "rect" },
-        { name: "Percentage", icon: "circle" },    
+        { name: "Percentage", icon: "circle" },
       ]
     },
     xAxis: {
@@ -53,16 +70,13 @@ export const EchartsPareto = () => {
       interval: 1,
       axisLabel: {
         formatter: (value) => {
-          // Convert value (1, 2, 3, ...) to category names
           return categories[value - 1] ?? '';
         },
       },
     },
     yAxis: [
       {
-        axisTick: {
-          show: true,
-        },
+        axisTick: { show: true },
         type: "value",
         name: "Open Tickets [-]",
         axisLine: { show: true },
@@ -72,15 +86,9 @@ export const EchartsPareto = () => {
         name: "Percentage [%]",
         max: 100,
         position: "right",
-        splitLine: {
-          show: false,
-        },
-        axisLine: {
-          show: true,
-        },
-        axisTick: {
-          show: true,
-        },
+        splitLine: { show: false },
+        axisLine: { show: true },
+        axisTick: { show: true },
       },
     ],
     series: [
@@ -102,7 +110,7 @@ export const EchartsPareto = () => {
           symbol: "none",
           data: [
             {
-              xAxis: index80 + 1.5, // Position of the marker line between bars has to be 1.5 since the first item is at x-value 1 but the index is 0
+              xAxis: index80 + 1.5,
               lineStyle: {
                 color: "#2E5894",
                 width: 2,
@@ -114,19 +122,18 @@ export const EchartsPareto = () => {
                 formatter: "80% Threshold",
               },
             },
-            
           ],
         },
-      },     
+      },
       {
-        name: "Open Tickets ", 
+        name: "Open Tickets ",
         data: [],
         type: "line",
-        icon: "rect",      
-        lineStyle: { width: 0 }, 
+        icon: "rect",
+        lineStyle: { width: 0 },
         symbol: "none",
-        itemStyle: { color: "#ff0000" }, 
-        emphasis: { disabled: true }, 
+        itemStyle: { color: "#ff0000" },
+        emphasis: { disabled: true },
       },
       {
         name: "Percentage",
@@ -158,16 +165,18 @@ export const EchartsPareto = () => {
             },
           ],
         },
-      },   
-   
- 
+      },
     ],
   };
 
   return (
     <ChartWrapper title={'ECharts Pareto'}>
       {({ width, height }) => (
-        <ReactECharts option={options} style={{ width, height }} />
+        <ReactEChartsCore
+          echarts={echarts}
+          option={options}
+          style={{ width, height }}
+        />
       )}
     </ChartWrapper>
   );

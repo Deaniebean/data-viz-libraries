@@ -62,7 +62,6 @@ ParetoData.forEach((item) => {
 const data = {
     datasets: [
       {
-        label: "Sankey Example",
         data: links,
         datalabels: {
           display: false, 
@@ -161,8 +160,8 @@ const data = {
           <span
             style={{
               width: '20px',
-              height: '20px',
-              backgroundColor: "#008000",
+              height: '20px', 
+              backgroundColor: "#008000", // Green Done
               borderRadius: '50%',
               marginRight: '5px',
             }}

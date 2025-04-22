@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import ApexSankey from "apexsankey";
+import ApexSankey from "../../../lib/apexsankey";
 import { ParetoData } from "../../../utils/DataPareto";
 import { ChartWrapper } from "../../../common/chartWrapper";
 

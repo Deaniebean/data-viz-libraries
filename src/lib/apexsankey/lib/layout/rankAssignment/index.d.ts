@@ -1,0 +1,1 @@
+export { assignRanks } from './assignRanks';

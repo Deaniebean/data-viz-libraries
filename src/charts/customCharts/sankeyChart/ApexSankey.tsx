@@ -35,22 +35,22 @@ export const ApexSankeyChart = () => {
 
       const data = {
         nodes: [
-          { id: "Q1 Backlog", title: "", color: "#80808080" },
-          { id: "Q1 In Progress", title: "", color: "#FFA50080" },
-          { id: "Q1 In Review", title: "", color: "#FF69B480" },
-          { id: "Q1 Done", title: "", color: "#00800080" },
-          { id: "Q2 Backlog", title: "", color: "#80808080" },
-          { id: "Q2 In Progress", title: "", color: "#FFA50080" },
-          { id: "Q2 In Review", title: "", color: "#FF69B480" },
-          { id: "Q2 Done", title: "", color: "#00800080" },
-          { id: "Q3 Backlog", title: "", color: "#80808080" },
-          { id: "Q3 In Progress", title: "", color: "#FFA50080" },
-          { id: "Q3 In Review", title: "", color: "#FF69B480" },
-          { id: "Q3 Done", title: "", color: "#00800080" },
-          { id: "Q4 Backlog", title: "", color: "#80808080" },
-          { id: "Q4 In Progress", title: "", color: "#FFA50080" },
-          { id: "Q4 In Review", title: "", color: "#FF69B480" },
-          { id: "Q4 Done", title: "", color: "#00800080" },
+          { id: "Q1 Backlog", title: "Q1 Backlog", color: "#80808080" },
+          { id: "Q1 In Progress", title: "Q1 In Progress", color: "#FFA50080" },
+          { id: "Q1 In Review", title: "Q1 In Review", color: "#FF69B480" },
+          { id: "Q1 Done", title: "Q1 Done", color: "#00800080" },
+          { id: "Q2 Backlog", title: "Q2 Backlog", color: "#80808080" },
+          { id: "Q2 In Progress", title: "Q2 In Progress", color: "#FFA50080" },
+          { id: "Q2 In Review", title: "Q2 In Review", color: "#FF69B480" },
+          { id: "Q2 Done", title: "Q2 Done", color: "#00800080" },
+          { id: "Q3 Backlog", title: "Q3 Backlog", color: "#80808080" },
+          { id: "Q3 In Progress", title: "Q3 In Progress", color: "#FFA50080" },
+          { id: "Q3 In Review", title: "Q3 In Review", color: "#FF69B480" },
+          { id: "Q3 Done", title: "Q3 Done", color: "#00800080" },
+          { id: "Q4 Backlog", title: "Q4 Backlog", color: "#80808080" },
+          { id: "Q4 In Progress", title: "Q4 In Progress", color: "#FFA50080" },
+          { id: "Q4 In Review", title: "Q4 In Review", color: "#FF69B480" },
+          { id: "Q4 Done", title: "Q4 Done", color: "#00800080" },
         ],
         edges: edges,
         options: {
@@ -69,13 +69,6 @@ export const ApexSankeyChart = () => {
           tooltipBGColor: "#fff",
           edgeOpacity: 0.7,
           edgeGradientFill: true,
-        },
-        plotOptions: {
-          sankey: {
-            label: {
-              show: false, // Hides the labels
-            },
-          },
         },
       };
 

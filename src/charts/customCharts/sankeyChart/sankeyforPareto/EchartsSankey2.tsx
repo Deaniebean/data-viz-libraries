@@ -107,10 +107,55 @@ const options = {
       nodeGap: 20,
       layoutIterations: 0,
       label: {
-        show: true,
+        show: false,
+        /*
         formatter: function (params) {
           return params.name.split("_")[1]; // Show only the status name
-        },
+      
+        },  */
+      },
+    },
+  ],
+
+  graphic: [
+    {
+      type: 'text',
+      left: '5%',
+      top: '95%',
+      style: {
+        text: 'Sprint 1',
+        font: 'bold 14px Arial',
+        fill: '#000',
+      },
+    },
+    {
+      type: 'text',
+      left: '30%',
+      top: '95%',
+      style: {
+        text: 'Sprint 2',
+        font: 'bold 14px Arial',
+        fill: '#000',
+      },
+    },
+    {
+      type: 'text',
+      left: '53.5%',
+      top: '95%',
+      style: {
+        text: 'Sprint 3',
+        font: 'bold 14px Arial',
+        fill: '#000',
+      },
+    },
+    {
+      type: 'text',
+      left: '77%',
+      top: '95%',
+      style: {
+        text: 'Sprint 4',
+        font: 'bold 14px Arial',
+        fill: '#000',
       },
     },
   ],

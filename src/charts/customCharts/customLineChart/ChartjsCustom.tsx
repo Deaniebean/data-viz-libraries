@@ -144,6 +144,7 @@ export const ChartjsCustom = () => {
 
   const allMonths: string[] = formatMonths(dataJson.map((data) => data.month));
   const options = {
+    maintainAspectRatio: false,
     scales: {
       x: {
         type: "linear",

@@ -113,6 +113,10 @@ const data = {
     ],
   };
 
+  const options ={
+    maintainAspectRatio: false,
+  }
+
     // Custom Legend Component
     const Legend = () => (
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
@@ -177,7 +181,7 @@ const data = {
         <ChartWrapper title="chartjs">
            {({ width, height }) => (
           <div style={{ width, height }}>
-            <SankeyChart data={data} />
+            <SankeyChart data={data} options={options}/>
          
           <Legend/> 
           </div>

@@ -111,6 +111,7 @@ export const ChartjsPareto = () => {
   };
 
   const options = {
+    maintainAspectRatio:false,
     scales: {
       y: {
         title: {
@@ -144,13 +145,13 @@ export const ChartjsPareto = () => {
     plugins: {
 
       legend: {
-        position: 'bottom',
+        position: 'bottom' as const,
       },
 
       annotation: {
         annotations: {
           verticalLine: {
-            type: 'line',
+            type: "line" as const,
             value: index80 + 0.5,
             scaleID: 'x',
             borderColor: '#2E5894',
@@ -165,7 +166,7 @@ export const ChartjsPareto = () => {
             },
           },
           horizontalLine: {
-            type: 'line',
+            type: "line" as const,
             scaleID: 'y2',
             value: 80,
             borderColor: '#2E5894',

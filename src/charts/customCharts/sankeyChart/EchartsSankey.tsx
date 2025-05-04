@@ -182,8 +182,8 @@ export const EchartsSankey = () => {
   return (
       <ChartWrapper title="Echarts">
          {({ width, height }) => (
-          <div style={{ width, height }}>
-            <ReactECharts option={options}  />
+          <div >
+            <ReactECharts option={options} style={{ width, height }} />
             <Legend/>
           </div>
           )}        

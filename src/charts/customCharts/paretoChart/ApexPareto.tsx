@@ -146,7 +146,7 @@ export const ApexPareto = () => {
   return (
     <ChartWrapper title={'ApexCharts Pareto'}>
       {({ width, height }) => (
-        <Chart options={options} series={series} type="line" style={{ width, height }}></Chart>
+        <Chart options={options} series={series} type="line" width={width} height={height}></Chart>
       )}
     </ChartWrapper>
   );

@@ -89,7 +89,7 @@ export const ChartjsPareto = () => {
           display: 'auto',
           color: '#000000',
           anchor: 'end',
-          align: 'top',
+          align: 'end',
           font: {
             weight: 'bold',
           },

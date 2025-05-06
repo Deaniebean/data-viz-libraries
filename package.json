@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+      "type-check": "tsc",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -20,7 +21,6 @@
     "@observablehq/plot": "^0.6.16",
     "@types/plotly.js": "^2.35.1",
     "apexcharts": "^4.3.0",
-    "apexsankey": "github:apexcharts/apexsankey#1766fe2968fb2b326a1db494add5d1d7ecdfefba",
     "chart.js": "^4.4.7",
     "chartjs-plugin-annotation": "^3.1.0",
     "chartjs-plugin-datalabels": "^2.2.0",

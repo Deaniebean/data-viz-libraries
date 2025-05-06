@@ -6,7 +6,7 @@ import {
   LegendComponent,
   GridComponent,
   MarkLineComponent
-} from 'echarts/components';
+} from 'echarts/components'; 
 import { CanvasRenderer } from 'echarts/renderers';
 
 import { ChartWrapper } from '../../../common/chartWrapper';

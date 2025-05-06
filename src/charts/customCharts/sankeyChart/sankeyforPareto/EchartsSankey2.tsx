@@ -1,5 +1,16 @@
-import ReactECharts from "echarts-for-react";
+import ReactEChartsCore from "echarts-for-react/lib/core";
+import * as echarts from "echarts/core";
+import { SankeyChart } from "echarts/charts";
+import { TooltipComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
 import { ChartWrapper } from "../../../../common/chartWrapper";
+
+// Register only the required components
+echarts.use([
+  SankeyChart,
+  TooltipComponent,
+  CanvasRenderer,
+]);
 
 // Define colors for groups
 const groupColors: Record<string, string> = {
@@ -212,7 +223,7 @@ export const EchartsSankey2 = () => {
     <ChartWrapper title="Echarts">
        {({ width, height }) => (
          <div>
-           <ReactECharts option={options} onChartReady={onChartReady} style={{width, height}}/>
+           <ReactEChartsCore option={options} onChartReady={onChartReady} style={{width, height}}/>
            <Legend/>
          </div>
        )}

@@ -1,5 +1,16 @@
-import ReactECharts from "echarts-for-react";
+import ReactEChartsCore from "echarts-for-react/lib/core";
+import * as echarts from "echarts/core";
+import { SankeyChart } from "echarts/charts";
+import { TooltipComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
 import { ChartWrapper } from "../../../common/chartWrapper";
+
+// Register only the required components
+echarts.use([
+  SankeyChart,
+  TooltipComponent,
+  CanvasRenderer,
+]);
 
 // Define colors for statuses
 const statusColors = {
@@ -125,7 +136,7 @@ export const EchartsSankey3 = () => {
   return (
     <ChartWrapper title="Echarts">
        {({ width, height }) => (
-      <ReactECharts option={options} onChartReady={onChartReady} style={{width, height}}/>
+      <ReactEChartsCore echarts={echarts} option={options} onChartReady={onChartReady} style={{width, height}}/>
        )}
     </ChartWrapper>
   );

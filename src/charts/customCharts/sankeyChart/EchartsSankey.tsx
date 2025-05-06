@@ -1,6 +1,17 @@
+import ReactEChartsCore from "echarts-for-react/lib/core";
+import * as echarts from "echarts/core";
+import { SankeyChart } from "echarts/charts";
+import { TooltipComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
 import { ChartWrapper } from "../../../common/chartWrapper";
 import { ParetoData } from "../../../utils/DataPareto";
-import ReactECharts from 'echarts-for-react';
+
+// Register only the required components
+echarts.use([
+  SankeyChart,
+  TooltipComponent,
+  CanvasRenderer,
+]);
 
 export const EchartsSankey = () => {
   
@@ -183,7 +194,7 @@ export const EchartsSankey = () => {
       <ChartWrapper title="Echarts">
          {({ width, height }) => (
           <div >
-            <ReactECharts option={options} style={{ width, height }} />
+            <ReactEChartsCore option={options} style={{ width, height }} />
             <Legend/>
           </div>
           )}        

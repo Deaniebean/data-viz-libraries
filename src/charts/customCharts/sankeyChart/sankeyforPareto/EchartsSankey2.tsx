@@ -223,7 +223,7 @@ export const EchartsSankey2 = () => {
     <ChartWrapper title="Echarts">
        {({ width, height }) => (
          <div>
-           <ReactEChartsCore option={options} onChartReady={onChartReady} style={{width, height}}/>
+           <ReactEChartsCore echarts={echarts} option={options} onChartReady={onChartReady} style={{width, height}}/>
            <Legend/>
          </div>
        )}

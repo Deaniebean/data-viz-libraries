@@ -1,10 +1,13 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { visualizer } from "rollup-plugin-visualizer";
+import { defineConfig } from 'vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   plugins: [
-    react(),
-    visualizer({ open: true }) // This will open the report in your browser
+    visualizer({
+      open: true,              // Automatically opens report in browser
+      filename: 'stats.html',  // Optional: name of the output file
+      gzipSize: true,          // Optional: show gzip sizes
+      brotliSize: true         // Optional: show brotli sizes
+    })
   ]
 });

@@ -40,11 +40,12 @@ export const ApexPareto = () => {
     },
 
     xaxis: {
-      type: 'numeric',
+      type: 'numeric' as const,
       labels: {
-        formatter: function (value: number) {
+        formatter: function (value: string) {
+          const numericValue = parseInt(value, 10);
           // Map numeric values (1, 2, 3, ...) to category names
-          return categories[value - 1] ?? '';
+          return categories[numericValue - 1] ?? '';
         },
       },
     },
@@ -124,7 +125,7 @@ export const ApexPareto = () => {
       name: 'Open Tickets',
       type: 'bar',
       data: openIssuesCountSorted,
-      color: ({ dataPointIndex }: { dataPointIndex: number }) => barColors[dataPointIndex], 
+      color: ({ dataPointIndex }: { dataPointIndex: number }) => barColors[dataPointIndex] as string, 
     },
     {
       name: 'Open Tickets',
@@ -146,6 +147,7 @@ export const ApexPareto = () => {
   return (
     <ChartWrapper title={'ApexCharts Pareto'}>
       {({ width, height }) => (
+        //@ts-expect-error the series.color expected type is a string but we are passing a function, which is working as expected, but not included as a type
         <Chart options={options} series={series} type="line" width={width} height={height}></Chart>
       )}
     </ChartWrapper>

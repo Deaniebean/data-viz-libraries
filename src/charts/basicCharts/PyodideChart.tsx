@@ -1,10 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { usePyodide } from "../../hooks/usePyodide";
 
 export default function PyodideChart() {
   const { pyodide, loading } = usePyodide();
   const [imageSrc, setImageSrc] = useState<string | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     async function generateChart() {

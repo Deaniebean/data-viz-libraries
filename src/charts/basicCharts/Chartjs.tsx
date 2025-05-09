@@ -12,7 +12,7 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js/auto";
+} from "chart.js";
 
 import { ChartWrapper } from "../../common/chartWrapper";
 

@@ -11,99 +11,31 @@ export const Navbar = () => {
             Simple Charts
             <ul className="dropdown">
               <li>
-                <p>chart.js</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/chartjs/line-chart">Line Chart</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/chartjs/bar-chart">Bar Chart</NavLink>
-                  </li>
-                </ul>
+                <p><NavLink to="/chartjs/line-chart">Chart.js</NavLink></p>
               </li>
               <li>
-                <p>Nivo</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/nivo/line-chart">Line Chart</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/nivo/bar-chart">Bar Chart</NavLink>
-                  </li>
-                </ul>
+                <p> <NavLink to="/nivo/line-chart">Nivo</NavLink></p>
               </li>
               <li>
-                <p>Plotly</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/plotly/line-chart">Line Chart</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/plotly/custom-line-chart">Bar Chart</NavLink>
-                  </li>
-                </ul>
+                <p><NavLink to="/plotly/line-chart">Plotly</NavLink></p>
               </li>
               <li>
-                <p>matplotlib + pyodide</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/matplotlib/line-chart">Line Chart</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/plotly/custom-line-chart">Bar Chart</NavLink>
-                  </li>
-                </ul>
+                <p><NavLink to="/matplotlib/line-chart">matplotlib + pyodide</NavLink></p>
               </li>
               <li>
-                <p>Echarts</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/echarts/line-chart">Line Chart</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/echarts/bar-chart">Bar Chart</NavLink>
-                  </li>
-                </ul>
+                <p><NavLink to="/echarts/line-chart">ECharts</NavLink></p>
               </li>
               <li>
-                <p>Rechart</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/rechart/line-chart">Line Chart</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/rechart/line-chart-custom">Bar Chart</NavLink>
-                  </li>
-                </ul>
+                <p> <NavLink to="/rechart/line-chart">Rechart</NavLink></p>
               </li>
               <li>
-                <p>ApexCharts</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/apexcharts/line-chart">Line Chart</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/apexcharts/line-chart-custom">
-                      Bar Chart
-                    </NavLink>
-                  </li>
-                </ul>
+                <p>  <NavLink to="/apexcharts/line-chart">ApexCharts</NavLink></p>
               </li>{" "}
               <li>
-                <p>MUI</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/mui/line-chart">Line Chart</NavLink>
-                  </li>
-                </ul>
+                <p><NavLink to="/mui/line-chart">MUI</NavLink></p>
               </li>
               <li>
-                <p>D3</p>
-                <ul className="sub-dropdown">
-                  <li>
-                    <NavLink to="/d3/line-chart">Line Chart</NavLink>
-                  </li>
-                </ul>
+                <p><NavLink to="/d3/line-chart">D3</NavLink></p>
               </li>
             </ul>
           </li>

@@ -3,6 +3,7 @@ import * as echarts from "echarts/core";
 import { LineChart } from "echarts/charts";
 import { GridComponent, TooltipComponent, LegendComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
+import { ChartWrapper } from "../../../common/chartWrapper";
 
 
 echarts.use([LineChart, GridComponent, TooltipComponent, LegendComponent, CanvasRenderer]);
@@ -53,5 +54,15 @@ export const EChartsSimple = () => {
     ],
   };
 
-  return <ReactEChartsCore echarts={echarts} option={options} style={{ width: "100%", height: "600px" }} />;
+   return (
+      <ChartWrapper title="ECharts">
+        {({ width, height }) => (
+          <ReactEChartsCore
+            echarts={echarts}
+            option={options}
+            style={{ width, height }}
+          />
+        )}
+      </ChartWrapper>
+    );
 };

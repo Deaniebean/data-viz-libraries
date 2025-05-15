@@ -1,4 +1,5 @@
 import Chart from "react-apexcharts";
+import { ChartWrapper } from "../../../common/chartWrapper";
 export const ApexSimple = () => {
   const chartData: {
     series: { name: string; data: number[] }[];
@@ -42,13 +43,10 @@ export const ApexSimple = () => {
   };
 
   return (
-
-      <Chart
-        options={chartData.options}
-        series={chartData.series}
-        type="line"
-        style={{ width: "60%", height: "600px" }} 
-        
-      />
+    <ChartWrapper title={'ApexCharts Line Chart'}>
+      {({ width, height }) => (
+        <Chart options={chartData.options} series={chartData.series} type="line" width={width} height={height}></Chart>
+      )}
+    </ChartWrapper>
   );
 };

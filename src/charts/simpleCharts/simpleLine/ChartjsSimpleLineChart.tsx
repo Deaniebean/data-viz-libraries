@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";    
+import { ChartWrapper } from "../../../common/chartWrapper";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -32,20 +33,22 @@ export const ChartjsSimple = () => {
         borderWidth: 1,
       },
     ],
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "KPI's 2024",
+        },
+      },
+
+    }
   });
 
   return (
-      <Line
-        data={chartData}
-        options={{
-          plugins: {
-            title: {
-              display: true,
-              text: "KPI's 2024",
-            },
-          },
-        }}
-      />
-
+    <ChartWrapper title="Chart.js">
+      {({ width, height }) => (
+        <Line data={chartData} options={chartData.options} style={{ width, height }} />
+      )}
+    </ChartWrapper>
   );
 };

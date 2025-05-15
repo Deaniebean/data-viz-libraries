@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/App.scss";
 import { Navbar } from "./Navbar";
 import { LineChartMui } from "./charts/basicCharts/LineChartMui";
@@ -29,9 +29,10 @@ import { Home } from "./home/Home";
 
 function App() {
   return (
-    <div className="app-container">
+    <div className="app-container" >
       <Navbar />
       <div className="content">
+      <BrowserRouter basename="/data-viz-libraries">  {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/mui/line-chart" element={<LineChartMui />} />
@@ -66,7 +67,7 @@ function App() {
           <Route path="/echarts/echarts-line-simple" element={<EChartsSimple />} />
           <Route path="/apexcharts/apex-line-simple" element={<ApexSimple/>} />
         </Routes>
-
+      }</BrowserRouter>
 
         
       </div>

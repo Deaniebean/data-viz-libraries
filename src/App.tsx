@@ -29,49 +29,51 @@ import { Home } from "./home/Home";
 
 function App() {
   return (
-    <div className="app-container" >
-      <Navbar />
-      <div className="content">
-      <BrowserRouter basename="/data-viz-libraries">  
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/mui/line-chart" element={<LineChartMui />} />
-          <Route path="/chartjs/line-chart" element={<Chartjs />} />
-          <Route path="/echarts/line-chart" element={<Echarts />} />
-          <Route path="/nivo/line-chart" element={<Nivo />} />
-          <Route path="/Plotly/line-chart" element={<PlotlyChart />} />
-          <Route path="/rechart/line-chart" element={<Rechart />} />
-          <Route path="/d3/line-chart" element={<D3 />} />
-          <Route path="/apexcharts/line-chart" element={<ApexCharts />} />
-          <Route path="/matplotlib/line-chart" element={<PyodideChart />} />
-          
-          
-          <Route path="/apexcharts/line-chart-custom" element={<ApexChartsCustom />}/>          
-          <Route path="/chartjs/line-chart-custom" element={<ChartjsCustom />}/>
-          <Route path="/apexcharts/line-chart-custom-2" element={<ApexChartsCustom2 />}/>
-          <Route path="/echarts/line-chart-custom" element={<EchartsLineChart />}/>
-
-
-          <Route path="/apexcharts/pareto" element={<ApexPareto />} />
-          <Route path="/chartjs/pareto" element={<ChartjsPareto />} />
-          <Route path="/echarts/pareto" element={<EchartsPareto />} />
-
-          <Route path="/chartjs/pareto/simple" element={<ChartjsParetoSimple />} />
-
-          <Route path="/chartjs/sankey" element={<ChartjsSankey />} />
-          <Route path="/apexcharts/sankey" element={<ApexSankeyChart />} />
-          <Route path="/echarts/sankey" element={<EchartsSankey />} />
-          <Route path="/echarts/sankey2" element={<EchartsSankey2 />} />
+    <BrowserRouter basename="/data-viz-libraries"> 
+      <div className="app-container" >
+        <Navbar />
+        <div className="content">
         
-          <Route path="/chartjs/chartjs-line-simple" element={<ChartjsSimple />} />
-          <Route path="/echarts/echarts-line-simple" element={<EChartsSimple />} />
-          <Route path="/apexcharts/apex-line-simple" element={<ApexSimple/>} />
-        </Routes>
-      </BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/mui/line-chart" element={<LineChartMui />} />
+            <Route path="/chartjs/line-chart" element={<Chartjs />} />
+            <Route path="/echarts/line-chart" element={<Echarts />} />
+            <Route path="/nivo/line-chart" element={<Nivo />} />
+            <Route path="/Plotly/line-chart" element={<PlotlyChart />} />
+            <Route path="/rechart/line-chart" element={<Rechart />} />
+            <Route path="/d3/line-chart" element={<D3 />} />
+            <Route path="/apexcharts/line-chart" element={<ApexCharts />} />
+            <Route path="/matplotlib/line-chart" element={<PyodideChart />} />
+            
+            
+            <Route path="/apexcharts/line-chart-custom" element={<ApexChartsCustom />}/>          
+            <Route path="/chartjs/line-chart-custom" element={<ChartjsCustom />}/>
+            <Route path="/apexcharts/line-chart-custom-2" element={<ApexChartsCustom2 />}/>
+            <Route path="/echarts/line-chart-custom" element={<EchartsLineChart />}/>
 
-        
-      </div>
-    </div>
+
+            <Route path="/apexcharts/pareto" element={<ApexPareto />} />
+            <Route path="/chartjs/pareto" element={<ChartjsPareto />} />
+            <Route path="/echarts/pareto" element={<EchartsPareto />} />
+
+            <Route path="/chartjs/pareto/simple" element={<ChartjsParetoSimple />} />
+
+            <Route path="/chartjs/sankey" element={<ChartjsSankey />} />
+            <Route path="/apexcharts/sankey" element={<ApexSankeyChart />} />
+            <Route path="/echarts/sankey" element={<EchartsSankey />} />
+            <Route path="/echarts/sankey2" element={<EchartsSankey2 />} />
+          
+            <Route path="/chartjs/chartjs-line-simple" element={<ChartjsSimple />} />
+            <Route path="/echarts/echarts-line-simple" element={<EChartsSimple />} />
+            <Route path="/apexcharts/apex-line-simple" element={<ApexSimple/>} />
+          </Routes>
+      
+          
+        </div>
+      </div> 
+    </BrowserRouter>
+
   );
 }
 

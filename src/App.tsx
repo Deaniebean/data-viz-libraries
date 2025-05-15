@@ -32,7 +32,7 @@ function App() {
     <div className="app-container" >
       <Navbar />
       <div className="content">
-      <BrowserRouter basename="/data-viz-libraries">  {
+      <BrowserRouter basename="/data-viz-libraries">  
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/mui/line-chart" element={<LineChartMui />} />
@@ -67,7 +67,7 @@ function App() {
           <Route path="/echarts/echarts-line-simple" element={<EChartsSimple />} />
           <Route path="/apexcharts/apex-line-simple" element={<ApexSimple/>} />
         </Routes>
-      }</BrowserRouter>
+      </BrowserRouter>
 
         
       </div>

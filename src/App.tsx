@@ -29,7 +29,6 @@ import { Home } from "./home/Home";
 
 function App() {
   return (
-    <BrowserRouter basename="/data-viz-libraries"> 
       <div className="app-container" >
         <Navbar />
         <div className="content">
@@ -72,7 +71,7 @@ function App() {
           
         </div>
       </div> 
-    </BrowserRouter>
+ 
 
   );
 }

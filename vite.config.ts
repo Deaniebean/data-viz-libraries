@@ -9,5 +9,6 @@ export default defineConfig({
       gzipSize: true,          // Optional: show gzip sizes
       brotliSize: true         // Optional: show brotli sizes
     })
-  ]
+  ],
+  base: "/data-viz-libraries/",
 });

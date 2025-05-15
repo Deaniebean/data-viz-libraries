@@ -25,6 +25,7 @@ import { ChartjsSimple } from "./charts/simpleCharts/simpleLine/ChartjsSimpleLin
 import { ApexSimple } from "./charts/simpleCharts/simpleLine/ApexSimpleLine";
 import { EChartsSimple } from "./charts/simpleCharts/simpleLine/EchartsSimpleLineChart";
 import { ChartjsParetoSimple } from "./charts/simpleCharts/simplePareto/ChartjsParetoSimple";
+import { Home } from "./home/Home";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
+          <Route path="/" element={<Home/>}/>
           <Route path="/mui/line-chart" element={<LineChartMui />} />
           <Route path="/chartjs/line-chart" element={<Chartjs />} />
           <Route path="/echarts/line-chart" element={<Echarts />} />

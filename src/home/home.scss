@@ -1,0 +1,21 @@
+img{
+    width: 30%;
+    padding: 5px;
+}
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+    font-size: 1.5rem;
+    padding-bottom:15px;
+  };
+
+.intro{
+    text-align: left;
+}
+.hi{
+    font-size:2rem;
+    font-weight: bold;
+}

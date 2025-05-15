@@ -20,7 +20,7 @@ export const Navbar = () => {
                 <p><NavLink to="/plotly/line-chart">Plotly</NavLink></p>
               </li>
               <li>
-                <p><NavLink to="/matplotlib/line-chart">matplotlib + pyodide</NavLink></p>
+                <p><NavLink to="/matplotlib/line-chart">matplotlib</NavLink></p>
               </li>
               <li>
                 <p><NavLink to="/echarts/line-chart">ECharts</NavLink></p>

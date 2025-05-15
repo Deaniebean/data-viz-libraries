@@ -13,12 +13,12 @@ export const Home = () => {
       <div className="img-table">
         <h2>Use Cases</h2>
         <div>
-          <img src="/linechart.jpg"/>
-          <img src="/pareto.jpg"/>
+          <img src="/data-viz-libraries/linechart.jpg"/>
+          <img src="data-viz-libraries/pareto.jpg"/>
         </div>
         <div>
-        <img src="/sankey1.png"/>
-        <img src="/sankey2.png"/>
+        <img src="data-viz-libraries/sankey1.png"/>
+        <img src="data-viz-libraries/sankey2.png"/>
         </div>
       </div>
     </div>

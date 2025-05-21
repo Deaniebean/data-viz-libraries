@@ -15,63 +15,63 @@ export const ApexSankeyChart = () => {
      const edges: { source: string; target: string; value: number; type: string }[] = [];
     
       // Map the data to the nodes and links
-      ParetoData.forEach((item) => {
-        const history = item.history;
-        for (let i = 0; i < history.length - 1; i++) {
-          if (history[i] !== null && history[i + 1] !== null) {
-            const source = `Q${i + 1} ${getStatusName(history[i]!)}`;
-            const target = `Q${i + 2} ${getStatusName(history[i + 1]!)}`;
-            const existingLink = edges.find(
-              (edges) => edges.source === source && edges.target === target
-            );
-            if (existingLink) {
-              existingLink.value += 1;
-            } else {
-              edges.push({ source, target, value: 1, type: "curved" });
-            }
-          }
-        }
-      });
+      // Map the data to the nodes and links
+ParetoData.forEach((item) => {
+  const history = item.history;
+  for (let i = 0; i < history.length - 1; i++) {
+    if (history[i] !== null && history[i + 1] !== null) {
+      const source = `Sprint ${i + 1} ${getStatusName(history[i]!)}`;
+      const target = `Sprint ${i + 2} ${getStatusName(history[i + 1]!)}`;
+      const existingLink = edges.find(
+        (edges) => edges.source === source && edges.target === target
+      );
+      if (existingLink) {
+        existingLink.value += 1;
+      } else {
+        edges.push({ source, target, value: 1, type: "curved" });
+      }
+    }
+  }
+});
 
-      const data = {
-        nodes: [
-          { id: "Q1 Backlog", title: "Q1 Backlog", color: "#80808080" },
-          { id: "Q1 In Progress", title: "Q1 In Progress", color: "#FFA50080" },
-          { id: "Q1 In Review", title: "Q1 In Review", color: "#FF69B480" },
-          { id: "Q1 Done", title: "Q1 Done", color: "#00800080" },
-          { id: "Q2 Backlog", title: "Q2 Backlog", color: "#80808080" },
-          { id: "Q2 In Progress", title: "Q2 In Progress", color: "#FFA50080" },
-          { id: "Q2 In Review", title: "Q2 In Review", color: "#FF69B480" },
-          { id: "Q2 Done", title: "Q2 Done", color: "#00800080" },
-          { id: "Q3 Backlog", title: "Q3 Backlog", color: "#80808080" },
-          { id: "Q3 In Progress", title: "Q3 In Progress", color: "#FFA50080" },
-          { id: "Q3 In Review", title: "Q3 In Review", color: "#FF69B480" },
-          { id: "Q3 Done", title: "Q3 Done", color: "#00800080" },
-          { id: "Q4 Backlog", title: "Q4 Backlog", color: "#80808080" },
-          { id: "Q4 In Progress", title: "Q4 In Progress", color: "#FFA50080" },
-          { id: "Q4 In Review", title: "Q4 In Review", color: "#FF69B480" },
-          { id: "Q4 Done", title: "Q4 Done", color: "#00800080" },
-        ],
-        edges: edges,
-        options: {
-          nodeWidth: 30,
-          fontFamily: "Arial, sans-serif",
-          fontWeight: 600,
-          fontSize: "12px",
-          fontColor: "#000",
-          canvasStyle: "",
-          spacing: 5,
-          width: "100%",
-          height: "100%",
-          enableTooltip: true,
-          tooltipId: "sankey-tooltip",
-          tooltipBorderColor: "#ccc",
-          tooltipBGColor: "#fff",
-          edgeOpacity: 0.7,
-          edgeGradientFill: true,
-        },
-      };
-
+const data = {
+  nodes: [
+    { id: "Sprint 1 Backlog", title: "Sprint 1 Backlog", color: "#80808080" },
+    { id: "Sprint 1 In Progress", title: "Sprint 1 In Progress", color: "#FFA50080" },
+    { id: "Sprint 1 In Review", title: "Sprint 1 In Review", color: "#FF69B480" },
+    { id: "Sprint 1 Done", title: "Sprint 1 Done", color: "#00800080" },
+    { id: "Sprint 2 Backlog", title: "Sprint 2 Backlog", color: "#80808080" },
+    { id: "Sprint 2 In Progress", title: "Sprint 2 In Progress", color: "#FFA50080" },
+    { id: "Sprint 2 In Review", title: "Sprint 2 In Review", color: "#FF69B480" },
+    { id: "Sprint 2 Done", title: "Sprint 2 Done", color: "#00800080" },
+    { id: "Sprint 3 Backlog", title: "Sprint 3 Backlog", color: "#80808080" },
+    { id: "Sprint 3 In Progress", title: "Sprint 3 In Progress", color: "#FFA50080" },
+    { id: "Sprint 3 In Review", title: "Sprint 3 In Review", color: "#FF69B480" },
+    { id: "Sprint 3 Done", title: "Sprint 3 Done", color: "#00800080" },
+    { id: "Sprint 4 Backlog", title: "Sprint 4 Backlog", color: "#80808080" },
+    { id: "Sprint 4 In Progress", title: "Sprint 4 In Progress", color: "#FFA50080" },
+    { id: "Sprint 4 In Review", title: "Sprint 4 In Review", color: "#FF69B480" },
+    { id: "Sprint 4 Done", title: "Sprint 4 Done", color: "#00800080" },
+  ],
+  edges: edges,
+  options: {
+    nodeWidth: 30,
+    fontFamily: "Arial, sans-serif",
+    fontWeight: 600,
+    fontSize: "12px",
+    fontColor: "#000",
+    canvasStyle: "",
+    spacing: 5,
+    width: "100%",
+    height: "100%",
+    enableTooltip: true,
+    tooltipId: "sankey-tooltip",
+    tooltipBorderColor: "#ccc",
+    tooltipBGColor: "#fff",
+    edgeOpacity: 0.7,
+    edgeGradientFill: true,
+  },
+};
 
 
 

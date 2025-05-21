@@ -35,27 +35,27 @@ const getStatusName = (status: number) => {
 
   const extractStatus = (label: string) => {
     const parts = label.split(" ");
-    return parts.slice(1).join(" "); // Join everything after the first element
-};
+    return parts.slice(2).join(" "); 
+  }
   
 // Map the data to the nodes and links
 ParetoData.forEach((item) => {
-    const history = item.history;
-    for (let i = 0; i < history.length - 1; i++) {
-      if (history[i] !== null && history[i + 1] !== null) {
-        const source = `Q${i + 1} ${getStatusName(history[i]!)}`;
-        const target = `Q${i + 2} ${getStatusName(history[i + 1]!)}`;
-        const existingLink = links.find(
-          (link) => link.from === source && link.to === target
-        );
-        if (existingLink) {
-          existingLink.flow += 1;
-        } else {
-          links.push({ from: source, to: target, flow: 1 });
-        }
+  const history = item.history;
+  for (let i = 0; i < history.length - 1; i++) {
+    if (history[i] !== null && history[i + 1] !== null) {
+      const source = `Sprint ${i + 1} ${getStatusName(history[i]!)}`;
+      const target = `Sprint ${i + 2} ${getStatusName(history[i + 1]!)}`;
+      const existingLink = links.find(
+        (link) => link.from === source && link.to === target
+      );
+      if (existingLink) {
+        existingLink.flow += 1;
+      } else {
+        links.push({ from: source, to: target, flow: 1 });
       }
     }
-  });
+  }
+});
   
 
 

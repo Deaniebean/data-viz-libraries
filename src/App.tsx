@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./styles/App.scss";
 import { Navbar } from "./Navbar";
 import { LineChartMui } from "./charts/basicCharts/LineChartMui";

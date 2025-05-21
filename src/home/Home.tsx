@@ -17,8 +17,8 @@ export const Home = () => {
           <img src="/data-viz-libraries/pareto.jpg"/>
         </div>
         <div>
-        <img src="/data-viz-libraries/sankey1.png"/>
-        <img src="/data-viz-libraries/sankey2.png"/>
+        <img src="/data-viz-libraries/sankey_1.jpg"/>
+        <img src="/data-viz-libraries/sankey_2.jpg"/>
         </div>
       </div>
     </div>

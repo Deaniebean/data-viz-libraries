@@ -12,13 +12,6 @@ npm run build
 ```
 The script was configured to output the results of the bundle analyzer.
 
-# Related Projects
-New approach for measuring community and support:
-https://github.com/Deaniebean/DevCareScore.js
-
-A React wrapper created and used within this repo for the [chartjs-chart-sankey plugin ](https://www.npmjs.com/package/chartjs-chart-sankey):
-https://github.com/Deaniebean/react-sankey-chartjs
-
 # Installation
 To run this repo locally:
 - clone the repo
@@ -28,5 +21,11 @@ npm install
 npm run dev
 ```
 
+# Related Projects
+New approach for measuring community and support:
+https://github.com/Deaniebean/DevCareScore.js
+
+A React wrapper created and used within this repo for the [chartjs-chart-sankey plugin ](https://www.npmjs.com/package/chartjs-chart-sankey):
+https://github.com/Deaniebean/react-sankey-chartjs
 
 
